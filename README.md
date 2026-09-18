@@ -25,6 +25,7 @@ npm run ingest         # descarga y guarda la última nota trimestral
 npm run backfill-anual # series anuales 2001-2025 del CGPJ (data/anual)
 npm run indicadores    # congestión, pendencia y resolución por TSJ (data/indicadores)
 npm run editorial      # resumen editorial del último trimestre (data/editorial)
+npm run edictos        # evidencia real de edictos TEJU (data/edictos, requiere API key)
 npm run calibrar       # distribución de probabilidades + CSV para etiquetar
 npm run validar        # valida todos los JSON de data/ con Zod
 npm run watchdog       # comprueba que el informe trimestral esperado está publicado
@@ -132,9 +133,13 @@ La ingesta lee `data/edictos/AAAA-Tn.json` si existe y añade `edictos_represent
 jev recibe el texto redactado y el dashboard no muestra edictos.
 
 > El TEJU (`boe.es/buscar/edictos_judiciales.php`) solo es de acceso libre durante 4 meses
-> desde la publicación y no tiene API de datos abiertos, así que el scraper queda pendiente.
-> De momento la evidencia se aporta a mano o se genera con `clasificarEdicto` +
-> `seleccionarRepresentativos` + `escribirEvidencias`.
+> desde la publicación y no tiene API de datos abiertos. `npm run edictos` muestrea los
+> resultados por fechas (hasta `--por-ccaa` edictos por comunidad, con `--desde`, `--hasta`
+> y `--max-paginas`), mapea la provincia del órgano a su CCAA (`lib/edictos/provincias.ts`)
+> y clasifica solo las secciones seguras del documento: órgano, procedimiento, resolución y
+> objeto. La sección de destinatarios nunca entra en el texto clasificable.
+> El paso está en el workflow con `continue-on-error` para que un fallo del TEJU no tumbe
+> la ingesta.
 
 ## Verificación
 

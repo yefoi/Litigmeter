@@ -1,0 +1,186 @@
+{
+  "version_esquema": 1,
+  "generado_en": "2026-09-18T22:24:19.093Z",
+  "discrepancias": [
+    {
+      "ambito": "Nacional",
+      "anio": 2025,
+      "trimestre": 1,
+      "variable": "tasa_litigiosidad_anio_anterior",
+      "valor_nota": 40.07,
+      "valor_indicadores": 46.6,
+      "diferencia": -6.53,
+      "relativa_pct": -14.01,
+      "fuente_indicadores": "2026-T1 (año anterior)"
+    },
+    {
+      "ambito": "Canarias",
+      "anio": 2025,
+      "trimestre": 1,
+      "variable": "tasa_litigiosidad_anio_anterior",
+      "valor_nota": 63.91,
+      "valor_indicadores": 63.35,
+      "diferencia": 0.56,
+      "relativa_pct": 0.88,
+      "fuente_indicadores": "2026-T1 (año anterior)"
+    },
+    {
+      "ambito": "Madrid",
+      "anio": 2025,
+      "trimestre": 1,
+      "variable": "tasa_litigiosidad_anio_anterior",
+      "valor_nota": 50.99,
+      "valor_indicadores": 50.25,
+      "diferencia": 0.74,
+      "relativa_pct": 1.47,
+      "fuente_indicadores": "2026-T1 (año anterior)"
+    },
+    {
+      "ambito": "Asturias",
+      "anio": 2025,
+      "trimestre": 1,
+      "variable": "tasa_litigiosidad_anio_anterior",
+      "valor_nota": 50.98,
+      "valor_indicadores": 50.72,
+      "diferencia": 0.26,
+      "relativa_pct": 0.51,
+      "fuente_indicadores": "2026-T1 (año anterior)"
+    },
+    {
+      "ambito": "Andalucía",
+      "anio": 2025,
+      "trimestre": 1,
+      "variable": "tasa_litigiosidad_anio_anterior",
+      "valor_nota": 49.8,
+      "valor_indicadores": 49.56,
+      "diferencia": 0.24,
+      "relativa_pct": 0.48,
+      "fuente_indicadores": "2026-T1 (año anterior)"
+    },
+    {
+      "ambito": "Cataluña",
+      "anio": 2025,
+      "trimestre": 1,
+      "variable": "tasa_litigiosidad_anio_anterior",
+      "valor_nota": 48.06,
+      "valor_indicadores": 47.43,
+      "diferencia": 0.63,
+      "relativa_pct": 1.33,
+      "fuente_indicadores": "2026-T1 (año anterior)"
+    },
+    {
+      "ambito": "Baleares",
+      "anio": 2025,
+      "trimestre": 1,
+      "variable": "tasa_litigiosidad_anio_anterior",
+      "valor_nota": 46.97,
+      "valor_indicadores": 46.31,
+      "diferencia": 0.66,
+      "relativa_pct": 1.43,
+      "fuente_indicadores": "2026-T1 (año anterior)"
+    },
+    {
+      "ambito": "Murcia",
+      "anio": 2025,
+      "trimestre": 1,
+      "variable": "tasa_litigiosidad_anio_anterior",
+      "valor_nota": 45.16,
+      "valor_indicadores": 44.63,
+      "diferencia": 0.53,
+      "relativa_pct": 1.19,
+      "fuente_indicadores": "2026-T1 (año anterior)"
+    },
+    {
+      "ambito": "Comunidad Valenciana",
+      "anio": 2025,
+      "trimestre": 1,
+      "variable": "tasa_litigiosidad_anio_anterior",
+      "valor_nota": 44.55,
+      "valor_indicadores": 43.69,
+      "diferencia": 0.86,
+      "relativa_pct": 1.97,
+      "fuente_indicadores": "2026-T1 (año anterior)"
+    },
+    {
+      "ambito": "Castilla y León",
+      "anio": 2025,
+      "trimestre": 1,
+      "variable": "tasa_litigiosidad_anio_anterior",
+      "valor_nota": 42.88,
+      "valor_indicadores": 42.72,
+      "diferencia": 0.16,
+      "relativa_pct": 0.37,
+      "fuente_indicadores": "2026-T1 (año anterior)"
+    },
+    {
+      "ambito": "Galicia",
+      "anio": 2025,
+      "trimestre": 1,
+      "variable": "tasa_litigiosidad_anio_anterior",
+      "valor_nota": 42.51,
+      "valor_indicadores": 42.38,
+      "diferencia": 0.13,
+      "relativa_pct": 0.31,
+      "fuente_indicadores": "2026-T1 (año anterior)"
+    },
+    {
+      "ambito": "Cantabria",
+      "anio": 2025,
+      "trimestre": 1,
+      "variable": "tasa_litigiosidad_anio_anterior",
+      "valor_nota": 40.9,
+      "valor_indicadores": 40.71,
+      "diferencia": 0.19,
+      "relativa_pct": 0.47,
+      "fuente_indicadores": "2026-T1 (año anterior)"
+    },
+    {
+      "ambito": "Castilla-La Mancha",
+      "anio": 2025,
+      "trimestre": 1,
+      "variable": "tasa_litigiosidad_anio_anterior",
+      "valor_nota": 40.15,
+      "valor_indicadores": 39.74,
+      "diferencia": 0.41,
+      "relativa_pct": 1.03,
+      "fuente_indicadores": "2026-T1 (año anterior)"
+    },
+    {
+      "ambito": "La Rioja",
+      "anio": 2025,
+      "trimestre": 1,
+      "variable": "tasa_litigiosidad_anio_anterior",
+      "valor_nota": 39.13,
+      "valor_indicadores": 38.83,
+      "diferencia": 0.3,
+      "relativa_pct": 0.77,
+      "fuente_indicadores": "2026-T1 (año anterior)"
+    },
+    {
+      "ambito": "Navarra",
+      "anio": 2025,
+      "trimestre": 1,
+      "variable": "tasa_litigiosidad_anio_anterior",
+      "valor_nota": 38.98,
+      "valor_indicadores": 38.68,
+      "diferencia": 0.3,
+      "relativa_pct": 0.78,
+      "fuente_indicadores": "2026-T1 (año anterior)"
+    },
+    {
+      "ambito": "Aragón",
+      "anio": 2025,
+      "trimestre": 1,
+      "variable": "tasa_litigiosidad_anio_anterior",
+      "valor_nota": 37.19,
+      "valor_indicadores": 36.84,
+      "diferencia": 0.35,
+      "relativa_pct": 0.95,
+      "fuente_indicadores": "2026-T1 (año anterior)"
+    }
+  ],
+  "fuentes": {
+    "informes": 4,
+    "indicadores": 1
+  }
+}

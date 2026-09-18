@@ -13,7 +13,9 @@
     "backfill-anual": "tsx scripts/backfill-anual.ts",
     "indicadores": "tsx scripts/indicadores.ts",
     "editorial": "tsx scripts/editorial.ts",
+    "edictos": "tsx scripts/edictos.ts",
     "calibrar": "tsx scripts/calibrar.ts",
+    "reconciliar": "tsx scripts/reconciliar.ts",
     "validar": "tsx scripts/validar.ts",
     "watchdog": "tsx scripts/watchdog.ts"
   },

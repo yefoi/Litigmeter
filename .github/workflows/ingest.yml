@@ -51,6 +51,12 @@ jobs:
         env:
           TYPESAFE_AI_API_KEY: ${{ secrets.TYPESAFE_AI_API_KEY }}
 
+      - name: Edictos TEJU (evidencia)
+        run: npm run edictos
+        continue-on-error: true
+        env:
+          TYPESAFE_AI_API_KEY: ${{ secrets.TYPESAFE_AI_API_KEY }}
+
       - name: Validar datos
         run: npm run validar
 

@@ -120,6 +120,25 @@ export const editorialSchema = z.object({
   fuente: z.object({ url: z.string().min(1), titulo: z.string() }),
 });
 
+export const reconciliacionSchema = z.object({
+  version_esquema: z.literal(1),
+  generado_en: z.string(),
+  discrepancias: z.array(
+    z.object({
+      ambito: z.string(),
+      anio: z.number().int(),
+      trimestre: z.number().int().min(1).max(4),
+      variable: z.string(),
+      valor_nota: z.number(),
+      valor_indicadores: z.number(),
+      diferencia: z.number(),
+      relativa_pct: z.number(),
+      fuente_indicadores: z.string(),
+    }),
+  ),
+  fuentes: z.object({ informes: z.number(), indicadores: z.number() }),
+});
+
 export interface ErrorValidacion {
   ruta: string;
   error: string;
@@ -169,6 +188,8 @@ export async function validarDatos(dataBaseDir: string): Promise<ErrorValidacion
   }
   const anual = path.join(dataBaseDir, "anual", "litigiosidad-anual.json");
   if (existsSync(anual)) await comprobar(anual, serieAnualSchema);
+  const reconciliacion = path.join(dataBaseDir, "reconciliacion.json");
+  if (existsSync(reconciliacion)) await comprobar(reconciliacion, reconciliacionSchema);
 
   return errores;
 }
