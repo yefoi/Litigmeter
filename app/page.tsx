@@ -1,4 +1,5 @@
 import path from "node:path";
+import Faq from "./components/Faq";
 import Heatmap from "./components/Heatmap";
 import TendenciaChart from "./components/TendenciaChart";
 import styles from "./page.module.css";
@@ -198,6 +199,8 @@ export default async function Home() {
           .
         </p>
       </footer>
+
+      <Faq />
     </main>
   );
 }
