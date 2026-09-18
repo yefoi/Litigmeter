@@ -318,3 +318,46 @@ div[id] {
 .heatmap tbody tr:hover th {
   color: var(--acento);
 }
+
+/* --- Mapa de España --- */
+
+.mapaContenedor {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.mapaContenedor svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.mapaContenedor path {
+  stroke: var(--background);
+  stroke-width: 1;
+  transition: opacity var(--transicion);
+}
+
+.mapaContenedor a {
+  cursor: pointer;
+}
+
+.mapaContenedor a:hover path {
+  opacity: 0.75;
+}
+
+.mapaContenedor a:focus-visible {
+  outline: none;
+}
+
+.mapaContenedor a:focus-visible path {
+  stroke: var(--acento);
+  stroke-width: 2.5;
+}
+
+.mapaNota {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--texto-suave);
+  text-align: center;
+}

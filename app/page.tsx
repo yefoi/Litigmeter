@@ -4,6 +4,7 @@ import Editorial from "./components/Editorial";
 import Faq from "./components/Faq";
 import Heatmap from "./components/Heatmap";
 import Logo from "./components/Logo";
+import MapaCcaa from "./components/MapaCcaa";
 import TablaUltimoTrimestre from "./components/TablaUltimoTrimestre";
 import TendenciaChart from "./components/TendenciaChart";
 import styles from "./page.module.css";
@@ -68,6 +69,13 @@ export default async function Home() {
   for (const [nombre, resultado] of indices) {
     indicesPlanos[nombre] = resultado.valor;
   }
+  const datosMapa: Record<string, { tasa: number; indice?: number }> = {};
+  for (const comunidad of ultimo.comunidades) {
+    datosMapa[comunidad.comunidad_autonoma] = {
+      tasa: comunidad.tasa_litigiosidad,
+      indice: indicesPlanos[comunidad.comunidad_autonoma],
+    };
+  }
 
   return (
     <main className={styles.main}>
@@ -100,6 +108,7 @@ export default async function Home() {
         <a href="#resumen">Resumen</a>
         <a href="#evolucion">Evolución</a>
         <a href="#mapa">Mapa</a>
+        <a href="#mapa-espana">España</a>
         <a href="#tabla">Tabla</a>
         {editorial ? <a href="#editorial">Editorial</a> : null}
         <a href="#faq">FAQ</a>
@@ -149,6 +158,11 @@ export default async function Home() {
           evolución.
         </p>
         <Heatmap informes={informes} />
+      </section>
+
+      <section id="mapa-espana" className={styles.bloque}>
+        <h2>Mapa de España · {etiquetaTrimestre(ultimo)}</h2>
+        <MapaCcaa datos={datosMapa} etiqueta={etiquetaTrimestre(ultimo)} />
       </section>
 
       <section id="tabla" className={styles.bloque}>
