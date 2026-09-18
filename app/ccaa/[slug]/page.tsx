@@ -1,13 +1,16 @@
 import path from "node:path";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import FichaClasificacion from "../../components/FichaClasificacion";
 import SerieAnualChart from "../../components/SerieAnualChart";
 import TablaTrimestres from "../../components/TablaTrimestres";
 import TendenciaChart from "../../components/TendenciaChart";
 import styles from "../../page.module.css";
+import { leerEvidencias } from "@/lib/edictos/evidencias";
 import { leerIndicadores } from "@/lib/indicadores/ficheros";
 import { COMUNIDADES } from "@/lib/litigiosidad/ccaa";
 import { leerInformes } from "@/lib/litigiosidad/historico";
+import { indicesDeInforme } from "@/lib/litigiosidad/indice";
 import {
   CLAVE_NACIONAL,
   comunidadDeSlug,
@@ -69,6 +72,21 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     : [];
   const indicadores = await leerIndicadores(baseDir, ultimo.anio, ultimo.trimestre);
   const tasas = indicadores?.comunidades[comunidad];
+  const evidencias = (
+    await leerEvidencias(path.join(baseDir, "edictos"), ultimo.anio, ultimo.trimestre)
+  )?.comunidades[comunidad];
+
+  const indicesPorTrimestre: Record<string, number> = {};
+  for (const informe of informes) {
+    const indicadoresInforme =
+      informe.anio === ultimo.anio && informe.trimestre === ultimo.trimestre
+        ? indicadores
+        : undefined;
+    const resultado = indicesDeInforme(informe, indicadoresInforme).get(comunidad);
+    if (resultado) {
+      indicesPorTrimestre[`${informe.anio}-T${informe.trimestre}`] = resultado.valor;
+    }
+  }
 
   const series: Record<string, PuntoSerie[]> = {
     [comunidad]: seriePorComunidad(informes, comunidad),
@@ -146,6 +164,15 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         </article>
       </section>
 
+      {registro?.clasificacion ? (
+        <FichaClasificacion
+          registro={registro}
+          clasificacion={registro.clasificacion}
+          indicadores={tasas}
+          evidencias={evidencias}
+        />
+      ) : null}
+
       <section className={styles.bloque}>
         <h2>Evolución trimestral</h2>
         <TendenciaChart
@@ -168,7 +195,11 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
       <section className={styles.bloque}>
         <h2>Histórico trimestral</h2>
-        <TablaTrimestres informes={informes} comunidad={comunidad} />
+        <TablaTrimestres
+          informes={informes}
+          comunidad={comunidad}
+          indices={indicesPorTrimestre}
+        />
       </section>
 
       <nav className={styles.paginacion} aria-label="Otras comunidades">

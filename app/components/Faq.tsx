@@ -63,6 +63,19 @@ const PREGUNTAS: Pregunta[] = [
     ),
   },
   {
+    pregunta: "¿Qué es el índice Litigmeter?",
+    respuesta: (
+      <p>
+        Un indicador propio de presión judicial de 0 a 100 por comunidad y trimestre:
+        pondera el nivel de litigiosidad (40 %), la tendencia interanual (25 %), la
+        congestión (20 %) y la pendencia (15 %). Si falta algún componente —porque el
+        CGPJ no lo publica ese trimestre—, los pesos se renormalizan entre los
+        disponibles. No sustituye al dato oficial: sirve para comparar y ordenar
+        comunidades de forma transparente.
+      </p>
+    ),
+  },
+  {
     pregunta: "¿Gravedad es lo mismo que congestión judicial?",
     respuesta: (
       <p>

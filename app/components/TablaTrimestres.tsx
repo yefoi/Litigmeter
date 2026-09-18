@@ -18,9 +18,11 @@ const CLASE_TENDENCIA: Record<Tendencia, string> = {
 export default function TablaTrimestres({
   informes,
   comunidad,
+  indices = {},
 }: {
   informes: InformeTrimestral[];
   comunidad: string;
+  indices?: Record<string, number>;
 }) {
   const filas = [...informes].reverse().map((informe) => ({
     informe,
@@ -35,6 +37,7 @@ export default function TablaTrimestres({
             <th scope="col">Trimestre</th>
             <th scope="col">Tasa</th>
             <th scope="col">Interanual</th>
+            <th scope="col">Índice</th>
             <th scope="col">Tendencia</th>
             <th scope="col">Gravedad</th>
             <th scope="col">Confianza</th>
@@ -47,6 +50,13 @@ export default function TablaTrimestres({
               <td className={styles.comunidad}>{etiquetaTrimestre(informe)}</td>
               <td>{formatearTasa(registro?.tasa_litigiosidad)}</td>
               <td>{formatearPorcentaje(registro?.variacion_interanual_pct)}</td>
+              <td>
+                {indices[`${informe.anio}-T${informe.trimestre}`] !== undefined
+                  ? indices[`${informe.anio}-T${informe.trimestre}`]
+                      .toFixed(1)
+                      .replace(".", ",")
+                  : "—"}
+              </td>
               <td>
                 {registro?.clasificacion ? (
                   <span

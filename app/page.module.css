@@ -463,6 +463,104 @@
   margin: 0 6px;
 }
 
+.fichaRejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.fichaTarjeta {
+  background: var(--superficie-suave);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio-pequeno);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fichaTarjeta h3 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--texto-suave);
+}
+
+.fichaRespuesta {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.fichaDetalle {
+  font-size: 12.5px;
+  color: var(--texto-suave);
+}
+
+.fichaCriterios {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12.5px;
+  color: var(--texto-suave);
+  line-height: 1.45;
+}
+
+.fichaCriterioActivo {
+  color: var(--foreground);
+  background: var(--acento-suave);
+  border-radius: 6px;
+  padding: 4px 6px;
+  font-weight: 500;
+  margin: 0 -6px;
+}
+
+.fichaDatos {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.fichaDatos h3 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--texto-suave);
+}
+
+.fichaDatos dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 10px;
+}
+
+.fichaDatos dt {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--texto-suave);
+}
+
+.fichaDatos dd {
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.fichaEvidencias {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--texto-suave);
+}
+
+.fichaEvidencias li {
+  border-left: 3px solid var(--borde);
+  padding-left: 10px;
+}
+
 @media (max-width: 760px) {
   .soloEscritorio {
     display: none;

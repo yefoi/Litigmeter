@@ -8,7 +8,9 @@ import TablaUltimoTrimestre from "./components/TablaUltimoTrimestre";
 import TendenciaChart from "./components/TendenciaChart";
 import styles from "./page.module.css";
 import { leerEditorial } from "@/lib/editorial/ficheros";
+import { leerIndicadores } from "@/lib/indicadores/ficheros";
 import { leerInformes } from "@/lib/litigiosidad/historico";
+import { indicesDeInforme } from "@/lib/litigiosidad/indice";
 import {
   CLAVE_NACIONAL,
   etiquetaTrimestre,
@@ -60,6 +62,12 @@ export default async function Home() {
     (comunidad) => comunidad.clasificacion?.es_noticiable,
   );
   const editorial = await leerEditorial(dataBase, ultimo.anio, ultimo.trimestre);
+  const indicadores = await leerIndicadores(dataBase, ultimo.anio, ultimo.trimestre);
+  const indices = indicesDeInforme(ultimo, indicadores);
+  const indicesPlanos: Record<string, number> = {};
+  for (const [nombre, resultado] of indices) {
+    indicesPlanos[nombre] = resultado.valor;
+  }
 
   return (
     <main className={styles.main}>
@@ -158,6 +166,7 @@ export default async function Home() {
         <TablaUltimoTrimestre
           comunidades={ultimo.comunidades}
           etiqueta={etiquetaTrimestre(ultimo)}
+          indices={indicesPlanos}
         />
       </section>
 

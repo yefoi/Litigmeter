@@ -113,6 +113,16 @@ y `clasificacion`.
 - `data/editorial/AAAA-Tn.json` guarda el resumen editorial: jev elige el foco entre los
   candidatos que ordena el código (noticiables, gravedad) y el texto se compone con
   plantillas, sin generación libre.
+
+## Índice Litigmeter
+
+Indicador propio de presión judicial (0–100) por CCAA y trimestre: pondera nivel de
+litigiosidad (40 %), tendencia interanual (25 %), congestión (20 %) y pendencia (15 %). Si
+falta un componente —porque el CGPJ no publica ese indicador ese trimestre— los pesos se
+renormalizan entre los disponibles. Es una métrica editorial del proyecto, no un dato
+oficial; la metodología vive en `lib/litigiosidad/indice.ts` y se muestra (junto a los
+criterios y la evidencia de cada clasificación) en la ficha "Cómo lo clasifica jev" de cada
+comunidad.
 - Hay huecos tal y como los publicó el CGPJ: 2025-T1 no trae la tasa de País Vasco y 2025-T2
   no trae la de La Rioja. Se registran en `comunidades_ausentes` al parsear y se muestran
   como celdas vacías.

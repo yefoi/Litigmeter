@@ -25,9 +25,14 @@ type Campo =
   | "tasa_litigiosidad"
   | "diferencial_vs_nacional"
   | "variacion_interanual_pct"
+  | "indice"
   | "gravedad";
 
-function valorDe(registro: RegistroComunidad, campo: Campo): number | string {
+function valorDe(
+  registro: RegistroComunidad,
+  campo: Campo,
+  indices: Record<string, number>,
+): number | string {
   switch (campo) {
     case "comunidad_autonoma":
       return registro.comunidad_autonoma;
@@ -37,6 +42,8 @@ function valorDe(registro: RegistroComunidad, campo: Campo): number | string {
       return registro.diferencial_vs_nacional ?? 0;
     case "variacion_interanual_pct":
       return registro.variacion_interanual_pct ?? 0;
+    case "indice":
+      return indices[registro.comunidad_autonoma] ?? -1;
     case "gravedad":
       return registro.clasificacion?.gravedad_congestion ?? -1;
     default:
@@ -53,9 +60,11 @@ function aCsv(valor: string | number | undefined): string {
 export default function TablaUltimoTrimestre({
   comunidades,
   etiqueta,
+  indices = {},
 }: {
   comunidades: RegistroComunidad[];
   etiqueta: string;
+  indices?: Record<string, number>;
 }) {
   const [orden, setOrden] = useState<{ campo: Campo; direccion: "asc" | "desc" }>({
     campo: "posicion_nacional",
@@ -72,14 +81,14 @@ export default function TablaUltimoTrimestre({
     });
     const factor = orden.direccion === "asc" ? 1 : -1;
     return [...filtradas].sort((a, b) => {
-      const valorA = valorDe(a, orden.campo);
-      const valorB = valorDe(b, orden.campo);
+      const valorA = valorDe(a, orden.campo, indices);
+      const valorB = valorDe(b, orden.campo, indices);
       if (typeof valorA === "string" || typeof valorB === "string") {
         return String(valorA).localeCompare(String(valorB), "es") * factor;
       }
       return (valorA - valorB) * factor;
     });
-  }, [comunidades, filtro, orden, soloNoticiables]);
+  }, [comunidades, filtro, indices, orden, soloNoticiables]);
 
   const alternarOrden = (campo: Campo) => {
     setOrden((actual) =>
@@ -96,6 +105,7 @@ export default function TablaUltimoTrimestre({
       "tasa_litigiosidad",
       "diferencial_vs_nacional",
       "variacion_interanual_pct",
+      "indice",
       "tendencia",
       "gravedad",
       "confianza_minima",
@@ -108,6 +118,7 @@ export default function TablaUltimoTrimestre({
       c.tasa_litigiosidad,
       c.diferencial_vs_nacional,
       c.variacion_interanual_pct,
+      indices[c.comunidad_autonoma],
       c.clasificacion?.tendencia,
       c.clasificacion ? etiquetaGravedad(c.clasificacion.gravedad_congestion) : undefined,
       confianzaMinima(c.clasificacion)?.toFixed(2),
@@ -174,6 +185,7 @@ export default function TablaUltimoTrimestre({
               {encabezado("tasa_litigiosidad", "Tasa")}
               {encabezado("diferencial_vs_nacional", "vs media")}
               {encabezado("variacion_interanual_pct", "Interanual")}
+              {encabezado("indice", "Índice")}
               <th scope="col">Tendencia</th>
               {encabezado("gravedad", "Gravedad")}
               <th scope="col">Confianza</th>
@@ -192,6 +204,11 @@ export default function TablaUltimoTrimestre({
                 <td>{formatearTasa(comunidad.tasa_litigiosidad)}</td>
                 <td>{formatearPorcentaje(comunidad.diferencial_vs_nacional)}</td>
                 <td>{formatearPorcentaje(comunidad.variacion_interanual_pct)}</td>
+                <td>
+                  {indices[comunidad.comunidad_autonoma] !== undefined
+                    ? indices[comunidad.comunidad_autonoma].toFixed(1).replace(".", ",")
+                    : "—"}
+                </td>
                 <td>
                   {comunidad.clasificacion ? (
                     <span
@@ -258,6 +275,14 @@ export default function TablaUltimoTrimestre({
               <div>
                 <dt>Interanual</dt>
                 <dd>{formatearPorcentaje(comunidad.variacion_interanual_pct)}</dd>
+              </div>
+              <div>
+                <dt>Índice</dt>
+                <dd>
+                  {indices[comunidad.comunidad_autonoma] !== undefined
+                    ? indices[comunidad.comunidad_autonoma].toFixed(1).replace(".", ",")
+                    : "—"}
+                </dd>
               </div>
               <div>
                 <dt>Gravedad</dt>
