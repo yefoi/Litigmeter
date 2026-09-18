@@ -139,6 +139,27 @@ export const reconciliacionSchema = z.object({
   fuentes: z.object({ informes: z.number(), indicadores: z.number() }),
 });
 
+export const alertasSchema = z.object({
+  version_esquema: z.literal(1),
+  anio: z.number().int(),
+  trimestre: z.number().int().min(1).max(4),
+  generado_en: z.string(),
+  alertas: z.array(
+    z.object({
+      comunidad_autonoma: z.string(),
+      tipo: z.enum([
+        "noticiable",
+        "cambio_tendencia",
+        "salto_interanual",
+        "extremo_serie",
+        "diferencial_nacional",
+      ]),
+      severidad: z.enum(["alta", "media", "baja"]),
+      detalle: z.string(),
+    }),
+  ),
+});
+
 export const previsionesSchema = z.object({
   version_esquema: z.literal(1),
   generado_en: z.string(),
@@ -224,6 +245,8 @@ export async function validarDatos(dataBaseDir: string): Promise<ErrorValidacion
   if (existsSync(reconciliacion)) await comprobar(reconciliacion, reconciliacionSchema);
   const previsiones = path.join(dataBaseDir, "previsiones.json");
   if (existsSync(previsiones)) await comprobar(previsiones, previsionesSchema);
+  const alertas = path.join(dataBaseDir, "alertas.json");
+  if (existsSync(alertas)) await comprobar(alertas, alertasSchema);
 
   return errores;
 }

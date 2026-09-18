@@ -131,6 +131,17 @@ trimestre siguiente (estacional simple —mismo trimestre del año anterior— c
 amortiguada) y un marcador que compara cada previsión con el dato real cuando el CGPJ lo
 publica (error medio absoluto y comunidades dentro del ±5 %). El paso va en el workflow, así
 que el marcador se actualiza solo con cada ingesta.
+
+## Alertas y RSS
+
+`npm run alertas` genera `data/alertas.json` con los eventos del último trimestre: casos
+marcados como noticiables, cambios de tendencia, saltos interanuales, extremos de la serie y
+diferenciales frente a la media nacional, con severidad alta/media/baja. Se muestran en la
+portada y, si defines `RESEND_API_KEY`, `ALERTAS_DESTINO` y `ALERTAS_REMITENTE`, el script
+envía un email solo con las alertas altas nuevas (sin repetir en cada ejecución).
+
+Además, cada comunidad tiene su propio RSS en `/ccaa/<slug>/feed.xml`, enlazado desde su
+página, para seguirla por separado.
 - Hay huecos tal y como los publicó el CGPJ: 2025-T1 no trae la tasa de País Vasco y 2025-T2
   no trae la de La Rioja. Se registran en `comunidades_ausentes` al parsear y se muestran
   como celdas vacías.

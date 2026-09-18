@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { construirRss } from "../lib/litigiosidad/feed";
+import { construirRss, construirRssComunidad } from "../lib/litigiosidad/feed";
 import type { InformeTrimestral } from "../lib/litigiosidad/tipos";
 
 function informe(): InformeTrimestral {
@@ -39,5 +39,16 @@ describe("construirRss", () => {
 
     expect(xml).toContain("<channel>");
     expect(xml).not.toContain("<item>");
+  });
+});
+
+describe("construirRssComunidad", () => {
+  test("genera el feed de una comunidad", () => {
+    const xml = construirRssComunidad([informe()], "Canarias", "canarias", "https://ejemplo.test");
+
+    expect(xml).toContain("Litigmeter · Canarias");
+    expect(xml).toContain("https://ejemplo.test/ccaa/canarias");
+    expect(xml).toContain("Canarias · T1 26");
+    expect(xml).toContain("<item>");
   });
 });

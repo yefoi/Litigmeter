@@ -121,7 +121,9 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           <a href={ultimo.fuente.url} target="_blank" rel="noopener noreferrer">
             Nota de prensa
           </a>
-          <Link href="/feed.xml">RSS</Link>
+          <a href={`/ccaa/${slug}/feed.xml`} title={`RSS de ${comunidad}`}>
+            RSS
+          </a>
         </div>
       </header>
 

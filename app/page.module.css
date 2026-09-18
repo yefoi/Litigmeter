@@ -575,6 +575,35 @@
   margin-bottom: 8px;
 }
 
+.listaAlertas {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.listaAlertas li {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+
+.listaAlertas a {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.listaAlertas a:hover {
+  text-decoration: underline;
+}
+
+.alertaDetalle {
+  color: var(--texto-suave);
+  font-size: 13px;
+}
+
 @media (max-width: 760px) {
   .soloEscritorio {
     display: none;

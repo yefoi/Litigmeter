@@ -1,5 +1,6 @@
 import path from "node:path";
 import Link from "next/link";
+import Alertas from "./components/Alertas";
 import Editorial from "./components/Editorial";
 import Faq from "./components/Faq";
 import Heatmap from "./components/Heatmap";
@@ -9,6 +10,7 @@ import PrevisionPanel from "./components/PrevisionPanel";
 import TablaUltimoTrimestre from "./components/TablaUltimoTrimestre";
 import TendenciaChart from "./components/TendenciaChart";
 import styles from "./page.module.css";
+import { leerAlertas } from "@/lib/alertas";
 import { leerEditorial } from "@/lib/editorial/ficheros";
 import { leerIndicadores } from "@/lib/indicadores/ficheros";
 import { leerInformes } from "@/lib/litigiosidad/historico";
@@ -66,6 +68,7 @@ export default async function Home() {
   );
   const editorial = await leerEditorial(dataBase, ultimo.anio, ultimo.trimestre);
   const previsiones = await leerPrevisiones(dataBase);
+  const alertas = await leerAlertas(dataBase);
   const tasasActuales: Record<string, number> = {};
   for (const comunidad of ultimo.comunidades) {
     tasasActuales[comunidad.comunidad_autonoma] = comunidad.tasa_litigiosidad;
@@ -120,6 +123,7 @@ export default async function Home() {
         {previsiones && previsiones.previsiones.length > 0 ? (
           <a href="#prevision">Previsión</a>
         ) : null}
+        {alertas && alertas.alertas.length > 0 ? <a href="#alertas">Alertas</a> : null}
         {editorial ? <a href="#editorial">Editorial</a> : null}
         <a href="#faq">FAQ</a>
         <a href="/feed.xml">RSS</a>
@@ -198,6 +202,13 @@ export default async function Home() {
         <section id="prevision" className={styles.bloque}>
           <h2>Previsión y aciertos</h2>
           <PrevisionPanel previsiones={previsiones} actual={tasasActuales} />
+        </section>
+      ) : null}
+
+      {alertas && alertas.alertas.length > 0 ? (
+        <section id="alertas" className={styles.bloque}>
+          <h2>Alertas · {etiquetaTrimestre(alertas)}</h2>
+          <Alertas fichero={alertas} />
         </section>
       ) : null}
 

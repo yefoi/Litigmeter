@@ -10,6 +10,64 @@ function escaparXml(texto: string): string {
     .replace(/'/g, "&apos;");
 }
 
+export function construirRssComunidad(
+  informes: InformeTrimestral[],
+  comunidad: string,
+  slug: string,
+  sitio: string,
+): string {
+  const items = [...informes]
+    .reverse()
+    .slice(0, 20)
+    .map((informe) => {
+      const registro = informe.comunidades.find(
+        (candidato) => candidato.comunidad_autonoma === comunidad,
+      );
+      const clasificacion = registro?.clasificacion;
+      const titulo = `${comunidad} · ${etiquetaTrimestre(informe)}: ${formatearTasa(
+        registro?.tasa_litigiosidad,
+      )}`;
+      const descripcion =
+        [
+          registro
+            ? `Variación interanual ${formatearPorcentaje(registro.variacion_interanual_pct)}`
+            : "Sin dato en este informe",
+          clasificacion ? `tendencia ${clasificacion.tendencia}` : undefined,
+          clasificacion?.es_noticiable ? "marcada como noticiable" : undefined,
+        ]
+          .filter((parte): parte is string => Boolean(parte))
+          .join(" · ") + ".";
+      const fecha = informe.fuente.fecha_publicacion ?? informe.generado_en.slice(0, 10);
+      const pubDate = new Date(`${fecha}T06:00:00Z`).toUTCString();
+      const enlace = `${sitio}/ccaa/${slug}`;
+
+      return [
+        "    <item>",
+        `      <title>${escaparXml(titulo)}</title>`,
+        `      <link>${escaparXml(enlace)}</link>`,
+        `      <guid isPermaLink="true">${escaparXml(`${enlace}#${etiquetaTrimestre(informe)}`)}</guid>`,
+        `      <pubDate>${pubDate}</pubDate>`,
+        `      <description>${escaparXml(descripcion)}</description>`,
+        "    </item>",
+      ].join("\n");
+    })
+    .join("\n");
+
+  return [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<rss version="2.0">',
+    "  <channel>",
+    `    <title>Litigmeter · ${escaparXml(comunidad)}</title>`,
+    `    <link>${escaparXml(`${sitio}/ccaa/${slug}`)}</link>`,
+    `    <description>Litigiosidad trimestral de ${escaparXml(comunidad)} según las notas del CGPJ.</description>`,
+    "    <language>es</language>",
+    items,
+    "  </channel>",
+    "</rss>",
+    "",
+  ].join("\n");
+}
+
 export function construirRss(informes: InformeTrimestral[], sitio: string): string {
   const items = [...informes]
     .reverse()

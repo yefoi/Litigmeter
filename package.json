@@ -15,6 +15,7 @@
     "editorial": "tsx scripts/editorial.ts",
     "edictos": "tsx scripts/edictos.ts",
     "prevision": "tsx scripts/prevision.ts",
+    "alertas": "tsx scripts/alertas.ts",
     "calibrar": "tsx scripts/calibrar.ts",
     "reconciliar": "tsx scripts/reconciliar.ts",
     "validar": "tsx scripts/validar.ts",

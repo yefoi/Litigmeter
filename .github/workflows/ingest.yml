@@ -60,6 +60,13 @@ jobs:
       - name: Previsión y aciertos
         run: npm run prevision
 
+      - name: Alertas
+        run: npm run alertas
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          ALERTAS_DESTINO: ${{ secrets.ALERTAS_DESTINO }}
+          ALERTAS_REMITENTE: ${{ secrets.ALERTAS_REMITENTE }}
+
       - name: Validar datos
         run: npm run validar
 

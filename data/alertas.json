@@ -1,0 +1,218 @@
+{
+  "version_esquema": 1,
+  "anio": 2026,
+  "trimestre": 1,
+  "generado_en": "2026-09-18T23:11:02.083Z",
+  "alertas": [
+    {
+      "comunidad_autonoma": "Andalucía",
+      "tipo": "noticiable",
+      "severidad": "alta",
+      "detalle": "jev la marca como noticiable (P(true) = 91 %, umbral 0.75)"
+    },
+    {
+      "comunidad_autonoma": "Canarias",
+      "tipo": "noticiable",
+      "severidad": "alta",
+      "detalle": "jev la marca como noticiable (P(true) = 93 %, umbral 0.75)"
+    },
+    {
+      "comunidad_autonoma": "Canarias",
+      "tipo": "salto_interanual",
+      "severidad": "alta",
+      "detalle": "variación interanual de -29,6 %"
+    },
+    {
+      "comunidad_autonoma": "Castilla y León",
+      "tipo": "noticiable",
+      "severidad": "alta",
+      "detalle": "jev la marca como noticiable (P(true) = 90 %, umbral 0.75)"
+    },
+    {
+      "comunidad_autonoma": "Castilla-La Mancha",
+      "tipo": "noticiable",
+      "severidad": "alta",
+      "detalle": "jev la marca como noticiable (P(true) = 90 %, umbral 0.75)"
+    },
+    {
+      "comunidad_autonoma": "Comunidad Valenciana",
+      "tipo": "noticiable",
+      "severidad": "alta",
+      "detalle": "jev la marca como noticiable (P(true) = 90 %, umbral 0.75)"
+    },
+    {
+      "comunidad_autonoma": "Extremadura",
+      "tipo": "noticiable",
+      "severidad": "alta",
+      "detalle": "jev la marca como noticiable (P(true) = 90 %, umbral 0.75)"
+    },
+    {
+      "comunidad_autonoma": "La Rioja",
+      "tipo": "noticiable",
+      "severidad": "alta",
+      "detalle": "jev la marca como noticiable (P(true) = 93 %, umbral 0.75)"
+    },
+    {
+      "comunidad_autonoma": "La Rioja",
+      "tipo": "salto_interanual",
+      "severidad": "alta",
+      "detalle": "variación interanual de -28,3 %"
+    },
+    {
+      "comunidad_autonoma": "Madrid",
+      "tipo": "noticiable",
+      "severidad": "alta",
+      "detalle": "jev la marca como noticiable (P(true) = 90 %, umbral 0.75)"
+    },
+    {
+      "comunidad_autonoma": "Andalucía",
+      "tipo": "salto_interanual",
+      "severidad": "media",
+      "detalle": "variación interanual de -24,8 %"
+    },
+    {
+      "comunidad_autonoma": "Asturias",
+      "tipo": "noticiable",
+      "severidad": "media",
+      "detalle": "jev la marca como noticiable (P(true) = 85 %, umbral 0.75)"
+    },
+    {
+      "comunidad_autonoma": "Asturias",
+      "tipo": "salto_interanual",
+      "severidad": "media",
+      "detalle": "variación interanual de -18,1 %"
+    },
+    {
+      "comunidad_autonoma": "Baleares",
+      "tipo": "noticiable",
+      "severidad": "media",
+      "detalle": "jev la marca como noticiable (P(true) = 89 %, umbral 0.75)"
+    },
+    {
+      "comunidad_autonoma": "Baleares",
+      "tipo": "salto_interanual",
+      "severidad": "media",
+      "detalle": "variación interanual de -21,4 %"
+    },
+    {
+      "comunidad_autonoma": "Cantabria",
+      "tipo": "noticiable",
+      "severidad": "media",
+      "detalle": "jev la marca como noticiable (P(true) = 89 %, umbral 0.75)"
+    },
+    {
+      "comunidad_autonoma": "Cantabria",
+      "tipo": "salto_interanual",
+      "severidad": "media",
+      "detalle": "variación interanual de -19,2 %"
+    },
+    {
+      "comunidad_autonoma": "Castilla y León",
+      "tipo": "salto_interanual",
+      "severidad": "media",
+      "detalle": "variación interanual de -21,1 %"
+    },
+    {
+      "comunidad_autonoma": "Castilla-La Mancha",
+      "tipo": "salto_interanual",
+      "severidad": "media",
+      "detalle": "variación interanual de -22,8 %"
+    },
+    {
+      "comunidad_autonoma": "Cataluña",
+      "tipo": "noticiable",
+      "severidad": "media",
+      "detalle": "jev la marca como noticiable (P(true) = 87 %, umbral 0.75)"
+    },
+    {
+      "comunidad_autonoma": "Cataluña",
+      "tipo": "salto_interanual",
+      "severidad": "media",
+      "detalle": "variación interanual de -18,0 %"
+    },
+    {
+      "comunidad_autonoma": "Comunidad Valenciana",
+      "tipo": "salto_interanual",
+      "severidad": "media",
+      "detalle": "variación interanual de -20,4 %"
+    },
+    {
+      "comunidad_autonoma": "Extremadura",
+      "tipo": "salto_interanual",
+      "severidad": "media",
+      "detalle": "variación interanual de -21,8 %"
+    },
+    {
+      "comunidad_autonoma": "Galicia",
+      "tipo": "noticiable",
+      "severidad": "media",
+      "detalle": "jev la marca como noticiable (P(true) = 89 %, umbral 0.75)"
+    },
+    {
+      "comunidad_autonoma": "Galicia",
+      "tipo": "salto_interanual",
+      "severidad": "media",
+      "detalle": "variación interanual de -24,4 %"
+    },
+    {
+      "comunidad_autonoma": "La Rioja",
+      "tipo": "diferencial_nacional",
+      "severidad": "media",
+      "detalle": "-9,1 puntos frente a la media nacional"
+    },
+    {
+      "comunidad_autonoma": "Madrid",
+      "tipo": "salto_interanual",
+      "severidad": "media",
+      "detalle": "variación interanual de -20,4 %"
+    },
+    {
+      "comunidad_autonoma": "Murcia",
+      "tipo": "noticiable",
+      "severidad": "media",
+      "detalle": "jev la marca como noticiable (P(true) = 89 %, umbral 0.75)"
+    },
+    {
+      "comunidad_autonoma": "Murcia",
+      "tipo": "salto_interanual",
+      "severidad": "media",
+      "detalle": "variación interanual de -17,2 %"
+    },
+    {
+      "comunidad_autonoma": "País Vasco",
+      "tipo": "noticiable",
+      "severidad": "media",
+      "detalle": "jev la marca como noticiable (P(true) = 83 %, umbral 0.75)"
+    },
+    {
+      "comunidad_autonoma": "País Vasco",
+      "tipo": "diferencial_nacional",
+      "severidad": "media",
+      "detalle": "-9,1 puntos frente a la media nacional"
+    },
+    {
+      "comunidad_autonoma": "Canarias",
+      "tipo": "diferencial_nacional",
+      "severidad": "baja",
+      "detalle": "+7,9 puntos frente a la media nacional"
+    },
+    {
+      "comunidad_autonoma": "Castilla-La Mancha",
+      "tipo": "diferencial_nacional",
+      "severidad": "baja",
+      "detalle": "-6,2 puntos frente a la media nacional"
+    },
+    {
+      "comunidad_autonoma": "Extremadura",
+      "tipo": "diferencial_nacional",
+      "severidad": "baja",
+      "detalle": "-6,2 puntos frente a la media nacional"
+    },
+    {
+      "comunidad_autonoma": "Galicia",
+      "tipo": "diferencial_nacional",
+      "severidad": "baja",
+      "detalle": "-5,0 puntos frente a la media nacional"
+    }
+  ]
+}
