@@ -14,6 +14,7 @@
     "indicadores": "tsx scripts/indicadores.ts",
     "editorial": "tsx scripts/editorial.ts",
     "edictos": "tsx scripts/edictos.ts",
+    "prevision": "tsx scripts/prevision.ts",
     "calibrar": "tsx scripts/calibrar.ts",
     "reconciliar": "tsx scripts/reconciliar.ts",
     "validar": "tsx scripts/validar.ts",

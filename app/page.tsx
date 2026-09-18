@@ -5,6 +5,7 @@ import Faq from "./components/Faq";
 import Heatmap from "./components/Heatmap";
 import Logo from "./components/Logo";
 import MapaCcaa from "./components/MapaCcaa";
+import PrevisionPanel from "./components/PrevisionPanel";
 import TablaUltimoTrimestre from "./components/TablaUltimoTrimestre";
 import TendenciaChart from "./components/TendenciaChart";
 import styles from "./page.module.css";
@@ -12,6 +13,7 @@ import { leerEditorial } from "@/lib/editorial/ficheros";
 import { leerIndicadores } from "@/lib/indicadores/ficheros";
 import { leerInformes } from "@/lib/litigiosidad/historico";
 import { indicesDeInforme } from "@/lib/litigiosidad/indice";
+import { leerPrevisiones } from "@/lib/prevision";
 import {
   CLAVE_NACIONAL,
   etiquetaTrimestre,
@@ -63,6 +65,11 @@ export default async function Home() {
     (comunidad) => comunidad.clasificacion?.es_noticiable,
   );
   const editorial = await leerEditorial(dataBase, ultimo.anio, ultimo.trimestre);
+  const previsiones = await leerPrevisiones(dataBase);
+  const tasasActuales: Record<string, number> = {};
+  for (const comunidad of ultimo.comunidades) {
+    tasasActuales[comunidad.comunidad_autonoma] = comunidad.tasa_litigiosidad;
+  }
   const indicadores = await leerIndicadores(dataBase, ultimo.anio, ultimo.trimestre);
   const indices = indicesDeInforme(ultimo, indicadores);
   const indicesPlanos: Record<string, number> = {};
@@ -110,6 +117,9 @@ export default async function Home() {
         <a href="#mapa">Mapa</a>
         <a href="#mapa-espana">España</a>
         <a href="#tabla">Tabla</a>
+        {previsiones && previsiones.previsiones.length > 0 ? (
+          <a href="#prevision">Previsión</a>
+        ) : null}
         {editorial ? <a href="#editorial">Editorial</a> : null}
         <a href="#faq">FAQ</a>
         <a href="/feed.xml">RSS</a>
@@ -183,6 +193,13 @@ export default async function Home() {
           indices={indicesPlanos}
         />
       </section>
+
+      {previsiones && previsiones.previsiones.length > 0 ? (
+        <section id="prevision" className={styles.bloque}>
+          <h2>Previsión y aciertos</h2>
+          <PrevisionPanel previsiones={previsiones} actual={tasasActuales} />
+        </section>
+      ) : null}
 
       {editorial ? (
         <div id="editorial">

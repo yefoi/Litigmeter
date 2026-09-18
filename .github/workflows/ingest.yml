@@ -57,6 +57,9 @@ jobs:
         env:
           TYPESAFE_AI_API_KEY: ${{ secrets.TYPESAFE_AI_API_KEY }}
 
+      - name: Previsión y aciertos
+        run: npm run prevision
+
       - name: Validar datos
         run: npm run validar
 

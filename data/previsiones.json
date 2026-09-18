@@ -1,0 +1,86 @@
+{
+  "version_esquema": 1,
+  "generado_en": "2026-09-18T23:04:04.689Z",
+  "previsiones": [
+    {
+      "anio": 2026,
+      "trimestre": 2,
+      "generado_desde": "2026-T1",
+      "comunidades": {
+        "Canarias": {
+          "tasa": 46.08,
+          "metodo": "estacional simple con deriva amortiguada"
+        },
+        "Asturias": {
+          "tasa": 35.77,
+          "metodo": "estacional simple con deriva amortiguada"
+        },
+        "Madrid": {
+          "tasa": 40,
+          "metodo": "estacional simple con deriva amortiguada"
+        },
+        "Cataluña": {
+          "tasa": 36.97,
+          "metodo": "estacional simple con deriva amortiguada"
+        },
+        "Andalucía": {
+          "tasa": 34.95,
+          "metodo": "estacional simple con deriva amortiguada"
+        },
+        "Murcia": {
+          "tasa": 40.24,
+          "metodo": "estacional simple con deriva amortiguada"
+        },
+        "Baleares": {
+          "tasa": 36.26,
+          "metodo": "estacional simple con deriva amortiguada"
+        },
+        "Comunidad Valenciana": {
+          "tasa": 34.11,
+          "metodo": "estacional simple con deriva amortiguada"
+        },
+        "Navarra": {
+          "tasa": 29.92,
+          "metodo": "estacional simple con deriva amortiguada"
+        },
+        "Castilla y León": {
+          "tasa": 32.01,
+          "metodo": "estacional simple con deriva amortiguada"
+        },
+        "Aragón": {
+          "tasa": 33.79,
+          "metodo": "estacional simple con deriva amortiguada"
+        },
+        "Cantabria": {
+          "tasa": 31.56,
+          "metodo": "estacional simple con deriva amortiguada"
+        },
+        "Galicia": {
+          "tasa": 31.8,
+          "metodo": "estacional simple con deriva amortiguada"
+        },
+        "Castilla-La Mancha": {
+          "tasa": 30.22,
+          "metodo": "estacional simple con deriva amortiguada"
+        },
+        "Extremadura": {
+          "tasa": 27.38,
+          "metodo": "estacional simple con deriva amortiguada"
+        },
+        "La Rioja": {
+          "tasa": 24.07,
+          "metodo": "estacional simple con deriva amortiguada"
+        },
+        "País Vasco": {
+          "tasa": 27.85,
+          "metodo": "estacional simple con deriva amortiguada"
+        }
+      },
+      "nacional": {
+        "tasa": 35.63,
+        "metodo": "estacional simple con deriva amortiguada"
+      }
+    }
+  ],
+  "aciertos": []
+}

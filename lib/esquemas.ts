@@ -139,6 +139,38 @@ export const reconciliacionSchema = z.object({
   fuentes: z.object({ informes: z.number(), indicadores: z.number() }),
 });
 
+export const previsionesSchema = z.object({
+  version_esquema: z.literal(1),
+  generado_en: z.string(),
+  previsiones: z.array(
+    z.object({
+      anio: z.number().int(),
+      trimestre: z.number().int().min(1).max(4),
+      generado_desde: z.string(),
+      comunidades: z.record(z.string(), z.object({ tasa: z.number(), metodo: z.string() })),
+      nacional: z.object({ tasa: z.number(), metodo: z.string() }),
+    }),
+  ),
+  aciertos: z.array(
+    z.object({
+      anio: z.number().int(),
+      trimestre: z.number().int().min(1).max(4),
+      comunidades: z.record(
+        z.string(),
+        z.object({
+          previsto: z.number(),
+          real: z.number(),
+          error: z.number(),
+          error_pct: z.number(),
+        }),
+      ),
+      error_medio: z.number(),
+      dentro_5pct: z.number(),
+      total: z.number(),
+    }),
+  ),
+});
+
 export interface ErrorValidacion {
   ruta: string;
   error: string;
@@ -190,6 +222,8 @@ export async function validarDatos(dataBaseDir: string): Promise<ErrorValidacion
   if (existsSync(anual)) await comprobar(anual, serieAnualSchema);
   const reconciliacion = path.join(dataBaseDir, "reconciliacion.json");
   if (existsSync(reconciliacion)) await comprobar(reconciliacion, reconciliacionSchema);
+  const previsiones = path.join(dataBaseDir, "previsiones.json");
+  if (existsSync(previsiones)) await comprobar(previsiones, previsionesSchema);
 
   return errores;
 }

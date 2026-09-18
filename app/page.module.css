@@ -561,6 +561,20 @@
   padding-left: 10px;
 }
 
+.previsionListas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.previsionTitulo {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--texto-suave);
+  margin-bottom: 8px;
+}
+
 @media (max-width: 760px) {
   .soloEscritorio {
     display: none;

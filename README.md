@@ -123,6 +123,14 @@ renormalizan entre los disponibles. Es una métrica editorial del proyecto, no u
 oficial; la metodología vive en `lib/litigiosidad/indice.ts` y se muestra (junto a los
 criterios y la evidencia de cada clasificación) en la ficha "Cómo lo clasifica jev" de cada
 comunidad.
+
+## Previsión y aciertos
+
+`npm run prevision` genera `data/previsiones.json`: una previsión transparente para el
+trimestre siguiente (estacional simple —mismo trimestre del año anterior— con deriva
+amortiguada) y un marcador que compara cada previsión con el dato real cuando el CGPJ lo
+publica (error medio absoluto y comunidades dentro del ±5 %). El paso va en el workflow, así
+que el marcador se actualiza solo con cada ingesta.
 - Hay huecos tal y como los publicó el CGPJ: 2025-T1 no trae la tasa de País Vasco y 2025-T2
   no trae la de La Rioja. Se registran en `comunidades_ausentes` al parsear y se muestran
   como celdas vacías.
