@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Litigmeter
 
-## Getting Started
+Seguimiento trimestral de la tasa de litigiosidad por comunidad autónoma a partir de las
+notas de prensa del CGPJ, con tendencia, gravedad y noticiabilidad clasificadas por
+[jev](https://docs.typesafe.ai/) (TypeSafe AI) a través del AI SDK.
 
-First, run the development server:
+- **Ingesta**: descubre la última nota trimestral nacional, extrae la tasa nacional y las 17
+  autonómicas con cheerio y guarda un JSON versionado en `data/litigiosidad/AAAA-Tn.json`.
+- **Enriquecimiento**: compara con el trimestre anterior, el mismo trimestre del año anterior
+  y su propia serie histórica usando los informes ya guardados.
+- **Clasificación**: una llamada a `experimental_evaluate` por CCAA y trimestre (~68 al año).
+- **Visualización**: web Next.js prerenderizada con línea de tendencia (Recharts), mapa de
+  calor por CCAA y tabla del último informe.
+
+## Puesta en marcha
+
+Requisitos: Node.js 22 o superior y npm.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev            # web en http://localhost:3000
+npm run ingest         # descarga y guarda la última nota trimestral
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Opciones de ingesta:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run ingest -- --todas              # backfill: todas las notas del feed, en orden
+npm run ingest -- --url=https://...    # una nota concreta
+npm run ingest -- --sin-clasificar     # solo datos, sin llamar a jev
+npm run ingest -- --force              # reescribe el JSON aunque ya exista
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Clasificación con jev
 
-## Learn More
+Copia `.env.example` a `.env` y define la clave:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+TYPESAFE_AI_API_KEY=...
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Sin clave, la ingesta guarda los datos con `clasificacion` vacía; cuando la definas,
+vuelve a ejecutar la ingesta y se rellenan solo las clasificaciones que falten.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+El esquema de preguntas vive en `lib/litigiosidad/classify.ts`:
 
-## Deploy on Vercel
+| Pregunta | Primitivo | Respuesta |
+| --- | --- | --- |
+| `tendencia` | `choice` | `mejora` / `estable` / `empeora` |
+| `gravedad_congestion` | `score` | posición fraccionaria 0–4 (la UI la muestra como 1–5) |
+| `es_noticiable` | `boolean` | `probability` = P(true); el umbral 0.6 es ajustable |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Detalles del provider que conviene tener presentes:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `experimental_evaluate` requiere AI SDK ≥ 7.0.105 y el provider exige Node ≥ 22.
+- `boolean` es el nombre del primitivo Noul en el AI SDK; usa `probability`, no `confidence`.
+- La confianza de Choice/Score (estadístico de TypeSafe) está en
+  `result.providerMetadata.typesafe.confidence[questionId]` y se guarda como `confianza_*`.
+- `score` está indexado desde 0: cinco niveles devuelven 0–4, no 1–5.
+
+## Automatización
+
+`.github/workflows/ingest.yml` ejecuta la ingesta **todos los lunes a las 06:00 UTC** y
+commitea `data/` si hay cambios. Para que clasifique, añade el secreto
+`TYPESAFE_AI_API_KEY` en el repositorio de GitHub (es opcional: sin él solo recopila datos).
+
+No se usa Vercel Cron a propósito: el filesystem de Vercel es de solo lectura, así que un
+cron allí no puede persistir el JSON en el repositorio. Con la Action, el commit dispara el
+despliegue en Vercel y la web se regenera con los datos nuevos.
+
+Deploy en Vercel: importa el repositorio tal cual. Los datos se leen en el build
+(`data/litigiosidad`), por lo que la página se prerenderiza y no necesita variables de
+entorno en producción.
+
+## Datos
+
+Cada `InformeTrimestral` incluye `fuente` (URL de la nota, fecha y PDF), `resumen_nota`
+(párrafos de contexto para jev), `nacional` y `comunidades` con tasa, posición, variaciones
+y `clasificacion`.
+
+- `tasa_litigiosidad_trimestre_anterior` y `variacion_interanual_pct` se derivan de los JSON
+  guardados: si aún no hay histórico, quedan vacíos.
+- Hay huecos tal y como los publicó el CGPJ: 2025-T1 no trae la tasa de País Vasco y 2025-T2
+  no trae la de La Rioja. Se registran en `comunidades_ausentes` al parsear y se muestran
+  como celdas vacías.
+
+## Verificación
+
+```bash
+npm test          # parser (3 plantillas reales) y enriquecimiento
+npm run typecheck
+npm run lint
+npm run build
+```
+
+## Roadmap
+
+- Backfill completo 2001–2025 con las series históricas del CGPJ
+  (`Series Tasa de Litigiosidad por TSJ 2001-2025.xlsx`) o PC-AXIS (`.px`) desde 1995.
+- Añadir congestión, pendencia y resolución por orden jurisdiccional.
+- Calibrar los umbrales de `es_noticiable` y la gravedad con casos etiquetados.
+
+## Atribución
+
+Datos públicos del Consejo General del Poder Judicial. La ingesta consulta sus páginas una
+vez por semana; este proyecto no está afiliado al CGPJ.

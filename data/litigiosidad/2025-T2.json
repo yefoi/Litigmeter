@@ -1,0 +1,146 @@
+{
+  "version_esquema": 1,
+  "anio": 2025,
+  "trimestre": 2,
+  "generado_en": "2026-09-18T19:28:00.567Z",
+  "fuente": {
+    "url": "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Consejo-General-del-Poder-Judicial/Oficina-de-Comunicacion/Archivo-de-notas-de-prensa/Los-organos-judiciales-resolvieron-en-el-segundo-trimestre-del-ano-2-040-739-asuntos--un-4---mas-que-en-el-mismo-periodo-de-2024-",
+    "titulo": "Los órganos judiciales resolvieron en el segundo trimestre del año 2.040.739 asuntos, un 4 % más que en el mismo periodo de 2024",
+    "fecha_publicacion": "2025-10-20",
+    "pdf_url": "https://www.poderjudicial.es/stfls/TRIBUNALES%20SUPERIORES%20DE%20JUSTICIA/TSJ%20Comunidad%20Valenciana/DOCUMENTOS%20DE%20INTERES/Datos%20nacionales%20segundo%20trimestre%202025.pdf"
+  },
+  "resumen_nota": "El número de asuntos ingresados en los órganos judiciales de toda España, que en total sumaron 1.936.658, disminuyó durante el segundo trimestre del año en un 5,3 por ciento en relación con el mismo periodo de 2024. La tendencia fue a la baja en todos los órdenes jurisdiccionales, a excepción del penal, en el que la cantidad de asuntos de nuevo ingreso fue muy similar a la del ejercicio anterior al mostrar un incremento del 0,2 por ciento. En la jurisdicción civil, el descenso fue del 10 % con respecto a los asuntos registrados en el segundo trimestre de 2024; y, tanto en los órdenes contencioso-administrativo como en el social, fue del 8,8 por ciento. Los datos contenidos en el informe estadístico sobre la “Situación de los órganos judiciales en el segundo trimestre de 2025”, que el Consejo General del Poder Judicial ha hecho público hoy, muestran también un aumento del 4 % en la capacidad de resolución de los órganos judiciales de toda España, al sumar los asuntos resueltos un total de 2.040.739. Finalmente, al final del trimestre quedaron pendientes un total de 4.687.368 asuntos, lo que ha supuesto un incremento del 12,1 por ciento respecto al segundo trimestre de 2024. Pese a la elevada pendencia, los datos muestran que su crecimiento en el trimestre analizado fue algo menor (dos puntos porcentuales menos) que entre marzo y junio del pasado año. Por jurisdicciones, las estadísticas muestran que los asuntos de nuevo ingreso en el orden Civil fueron 837.992, un 10 % menos que un año antes; los resueltos sumaron 950.867, un 11,1 % más, y quedaron en trámite 2.849.018, un 16 % más que al final del segundo trimestre de 2024. Los asuntos registrados en la jurisdicción Penal ascendieron a 914.740, cifra prácticamente equivalente a la registrada en el mismo trimestre de 2024, con respecto a la que ha variado un 0,2 por ciento. En el mismo periodo, se resolvieron 905.936 asuntos, un 0,3 % menos, y quedaron en trámite 1.135.565 asuntos, un 7,7 % más. En la jurisdicción de lo Contencioso-Administrativo se registraron 51.843 nuevos asuntos, lo que equivale a un descenso del 8,8 por ciento. Los asuntos resueltos fueron 58.626, un 5,2 % menos que el año anterior. También se redujeron, en un 2,4 por ciento, los que quedaron pendientes de resolución (216.418). En la jurisdicción Social ingresaron 132.058 nuevos asuntos, lo que supuso un descenso del 8,8 % respecto a 2024. Los resueltos bajaron un 7,8 % al alcanzar la cifra de 125.296 asuntos y los pendientes al final…",
+  "nacional": {
+    "tasa_litigiosidad": 39.83,
+    "tasa_litigiosidad_anio_anterior": 41.92,
+    "variacion_interanual_pct": -4.99
+  },
+  "comunidades": [
+    {
+      "comunidad_autonoma": "Canarias",
+      "tasa_litigiosidad": 54.07,
+      "tasa_litigiosidad_trimestre_anterior": 63.91,
+      "variacion_trimestral_pct": -15.4,
+      "diferencial_vs_nacional": 14.24,
+      "posicion_nacional": 1
+    },
+    {
+      "comunidad_autonoma": "Madrid",
+      "tasa_litigiosidad": 44.54,
+      "tasa_litigiosidad_trimestre_anterior": 50.99,
+      "variacion_trimestral_pct": -12.65,
+      "diferencial_vs_nacional": 4.71,
+      "posicion_nacional": 2
+    },
+    {
+      "comunidad_autonoma": "Murcia",
+      "tasa_litigiosidad": 44.02,
+      "tasa_litigiosidad_trimestre_anterior": 45.16,
+      "variacion_trimestral_pct": -2.52,
+      "diferencial_vs_nacional": 4.19,
+      "posicion_nacional": 3
+    },
+    {
+      "comunidad_autonoma": "Cataluña",
+      "tasa_litigiosidad": 40.64,
+      "tasa_litigiosidad_trimestre_anterior": 48.06,
+      "variacion_trimestral_pct": -15.44,
+      "diferencial_vs_nacional": 0.81,
+      "posicion_nacional": 4
+    },
+    {
+      "comunidad_autonoma": "Baleares",
+      "tasa_litigiosidad": 40.61,
+      "tasa_litigiosidad_trimestre_anterior": 46.97,
+      "variacion_trimestral_pct": -13.54,
+      "diferencial_vs_nacional": 0.78,
+      "posicion_nacional": 5
+    },
+    {
+      "comunidad_autonoma": "Andalucía",
+      "tasa_litigiosidad": 39.9,
+      "tasa_litigiosidad_trimestre_anterior": 49.8,
+      "variacion_trimestral_pct": -19.88,
+      "diferencial_vs_nacional": 0.07,
+      "posicion_nacional": 6
+    },
+    {
+      "comunidad_autonoma": "Asturias",
+      "tasa_litigiosidad": 39.34,
+      "tasa_litigiosidad_trimestre_anterior": 50.98,
+      "variacion_trimestral_pct": -22.83,
+      "diferencial_vs_nacional": -0.49,
+      "posicion_nacional": 7
+    },
+    {
+      "comunidad_autonoma": "Comunidad Valenciana",
+      "tasa_litigiosidad": 37.98,
+      "tasa_litigiosidad_trimestre_anterior": 44.55,
+      "variacion_trimestral_pct": -14.75,
+      "diferencial_vs_nacional": -1.85,
+      "posicion_nacional": 8
+    },
+    {
+      "comunidad_autonoma": "Galicia",
+      "tasa_litigiosidad": 36.21,
+      "tasa_litigiosidad_trimestre_anterior": 42.51,
+      "variacion_trimestral_pct": -14.82,
+      "diferencial_vs_nacional": -3.62,
+      "posicion_nacional": 9
+    },
+    {
+      "comunidad_autonoma": "Castilla y León",
+      "tasa_litigiosidad": 35.79,
+      "tasa_litigiosidad_trimestre_anterior": 42.88,
+      "variacion_trimestral_pct": -16.53,
+      "diferencial_vs_nacional": -4.04,
+      "posicion_nacional": 10
+    },
+    {
+      "comunidad_autonoma": "Aragón",
+      "tasa_litigiosidad": 35.67,
+      "tasa_litigiosidad_trimestre_anterior": 37.19,
+      "variacion_trimestral_pct": -4.09,
+      "diferencial_vs_nacional": -4.16,
+      "posicion_nacional": 11
+    },
+    {
+      "comunidad_autonoma": "Cantabria",
+      "tasa_litigiosidad": 34.91,
+      "tasa_litigiosidad_trimestre_anterior": 40.9,
+      "variacion_trimestral_pct": -14.65,
+      "diferencial_vs_nacional": -4.92,
+      "posicion_nacional": 12
+    },
+    {
+      "comunidad_autonoma": "Castilla-La Mancha",
+      "tasa_litigiosidad": 34.12,
+      "tasa_litigiosidad_trimestre_anterior": 40.15,
+      "variacion_trimestral_pct": -15.02,
+      "diferencial_vs_nacional": -5.71,
+      "posicion_nacional": 13
+    },
+    {
+      "comunidad_autonoma": "Navarra",
+      "tasa_litigiosidad": 31.79,
+      "tasa_litigiosidad_trimestre_anterior": 38.98,
+      "variacion_trimestral_pct": -18.45,
+      "diferencial_vs_nacional": -8.04,
+      "posicion_nacional": 14
+    },
+    {
+      "comunidad_autonoma": "Extremadura",
+      "tasa_litigiosidad": 30.73,
+      "tasa_litigiosidad_trimestre_anterior": 39.57,
+      "variacion_trimestral_pct": -22.34,
+      "diferencial_vs_nacional": -9.1,
+      "posicion_nacional": 15
+    },
+    {
+      "comunidad_autonoma": "País Vasco",
+      "tasa_litigiosidad": 27.85,
+      "diferencial_vs_nacional": -11.98,
+      "posicion_nacional": 16
+    }
+  ]
+}

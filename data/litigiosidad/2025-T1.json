@@ -1,0 +1,116 @@
+{
+  "version_esquema": 1,
+  "anio": 2025,
+  "trimestre": 1,
+  "generado_en": "2026-09-18T19:28:00.555Z",
+  "fuente": {
+    "url": "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Consejo-General-del-Poder-Judicial/Oficina-de-Comunicacion/Archivo-de-notas-de-prensa/El-ingreso-de-nuevos-asuntos-en-los-organos-judiciales-mantiene-su-tendencia-al-alza-al-aumentar-un-15-6---en-el-primer-trimestre-de-2025-",
+    "titulo": "El ingreso de nuevos asuntos en los órganos judiciales mantiene su tendencia al alza al aumentar un 15,6 % en el primer trimestre de 2025",
+    "fecha_publicacion": "2025-06-20",
+    "pdf_url": "https://www.poderjudicial.es/stfls/SALA%20DE%20PRENSA/DOCUMENTOS%20DE%20INTERES/Datos%20nacionales%20primer%20trimestre%202025.pdf"
+  },
+  "resumen_nota": "Los órganos judiciales españoles registraron durante el primer trimestre de 2025 un total de 2.288.305 asuntos, un 15,6 % más que hace un año, consolidándose así la tendencia al alza de los últimos ejercicios. La mayoría de las jurisdicciones experimentaron un incremento interanual, pero el más significativo fue el del orden Civil, con un 31,5 % más asuntos de nuevo ingreso. El incremento en la resolución de asuntos, que se produjo en todas las jurisdicciones, se situó en el 8 por ciento. Estos y otros datos figuran en el informe estadístico sobre la Situación de los órganos judiciales en el primer trimestre de 2025, hecho público hoy por el Servicio de Estadística del Consejo General del Poder Judicial. Durante el primer trimestre de este año, tuvieron entrada en el conjunto de los órganos judiciales de toda España un total de 2.288.305 asuntos, un 15,6 por ciento más que en el mismo trimestre de 2024. Entre enero y marzo pasados, los tribunales españoles resolvieron 2.027.120 asuntos, un 8 % más que hace un año; los asuntos que quedaron en trámite al final del trimestre ascendieron a 4.784.126, lo que ha supuesto un incremento interanual del 17,1 por ciento. Civil, la jurisdicción con mayor incremento de nuevos asuntos En la jurisdicción Civil, se registraron 1.212.424 nuevos asuntos, con un aumento del 31,5 %; se resolvieron 935.835, un 14,6 % más, y quedaron en trámite 2.961.998, un 24,4 % más que al final del primer trimestre de 2024. La jurisdicción Penal registró 887.573 nuevos asuntos, un 2,6 % más que un año antes. Se resolvieron 898.273 asuntos, un 2,1 % más, y quedaron en trámite 1.119.714, un 7,6 % más. El incremento más reducido en el ingreso de asuntos se dio en la jurisdicción de lo Contencioso-Administrativo que, con 54.069 nuevos casos, fue del 1 por ciento. Los asuntos resueltos fueron 60.720, un 5 % más que el año anterior y los que quedaron en trámite, 221.063, lo que ha supuesto una disminución del 1,7 por ciento. En la jurisdicción Social se registraron 133.211 asuntos, un 3,5 % menos que entre enero y marzo de 2024. Se resolvieron 132.270 asuntos, un 7,9 % más, y quedaron tramitándose 481.321 asuntos, un 9,1 % más. Canarias, seguida de Madrid y Asturias, a la cabeza de la litigiosidad La tasa de litigiosidad en el conjunto de España fue de 40,07 asuntos por cada 1.000 habitantes, una ratio muy próxima a la de hace un año, que fue de 40,67. La Comunidad Autónoma con la tasa de litigiosidad más alta fue Canarias (63,91), seguida por…",
+  "nacional": {
+    "tasa_litigiosidad": 40.07,
+    "tasa_litigiosidad_anio_anterior": 40.67,
+    "variacion_interanual_pct": -1.48
+  },
+  "comunidades": [
+    {
+      "comunidad_autonoma": "Canarias",
+      "tasa_litigiosidad": 63.91,
+      "diferencial_vs_nacional": 23.84,
+      "posicion_nacional": 1
+    },
+    {
+      "comunidad_autonoma": "Madrid",
+      "tasa_litigiosidad": 50.99,
+      "diferencial_vs_nacional": 10.92,
+      "posicion_nacional": 2
+    },
+    {
+      "comunidad_autonoma": "Asturias",
+      "tasa_litigiosidad": 50.98,
+      "diferencial_vs_nacional": 10.91,
+      "posicion_nacional": 3
+    },
+    {
+      "comunidad_autonoma": "Andalucía",
+      "tasa_litigiosidad": 49.8,
+      "diferencial_vs_nacional": 9.73,
+      "posicion_nacional": 4
+    },
+    {
+      "comunidad_autonoma": "Cataluña",
+      "tasa_litigiosidad": 48.06,
+      "diferencial_vs_nacional": 7.99,
+      "posicion_nacional": 5
+    },
+    {
+      "comunidad_autonoma": "Baleares",
+      "tasa_litigiosidad": 46.97,
+      "diferencial_vs_nacional": 6.9,
+      "posicion_nacional": 6
+    },
+    {
+      "comunidad_autonoma": "Murcia",
+      "tasa_litigiosidad": 45.16,
+      "diferencial_vs_nacional": 5.09,
+      "posicion_nacional": 7
+    },
+    {
+      "comunidad_autonoma": "Comunidad Valenciana",
+      "tasa_litigiosidad": 44.55,
+      "diferencial_vs_nacional": 4.48,
+      "posicion_nacional": 8
+    },
+    {
+      "comunidad_autonoma": "Castilla y León",
+      "tasa_litigiosidad": 42.88,
+      "diferencial_vs_nacional": 2.81,
+      "posicion_nacional": 9
+    },
+    {
+      "comunidad_autonoma": "Galicia",
+      "tasa_litigiosidad": 42.51,
+      "diferencial_vs_nacional": 2.44,
+      "posicion_nacional": 10
+    },
+    {
+      "comunidad_autonoma": "Cantabria",
+      "tasa_litigiosidad": 40.9,
+      "diferencial_vs_nacional": 0.83,
+      "posicion_nacional": 11
+    },
+    {
+      "comunidad_autonoma": "Castilla-La Mancha",
+      "tasa_litigiosidad": 40.15,
+      "diferencial_vs_nacional": 0.08,
+      "posicion_nacional": 12
+    },
+    {
+      "comunidad_autonoma": "Extremadura",
+      "tasa_litigiosidad": 39.57,
+      "diferencial_vs_nacional": -0.5,
+      "posicion_nacional": 13
+    },
+    {
+      "comunidad_autonoma": "La Rioja",
+      "tasa_litigiosidad": 39.13,
+      "diferencial_vs_nacional": -0.94,
+      "posicion_nacional": 14
+    },
+    {
+      "comunidad_autonoma": "Navarra",
+      "tasa_litigiosidad": 38.98,
+      "diferencial_vs_nacional": -1.09,
+      "posicion_nacional": 15
+    },
+    {
+      "comunidad_autonoma": "Aragón",
+      "tasa_litigiosidad": 37.19,
+      "diferencial_vs_nacional": -2.88,
+      "posicion_nacional": 16
+    }
+  ]
+}
