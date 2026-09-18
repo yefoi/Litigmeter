@@ -63,6 +63,8 @@ Detalles del provider que conviene tener presentes:
 `.github/workflows/ingest.yml` ejecuta la ingesta **todos los lunes a las 06:00 UTC** y
 commitea `data/` si hay cambios. Para que clasifique, añade el secreto
 `TYPESAFE_AI_API_KEY` en el repositorio de GitHub (es opcional: sin él solo recopila datos).
+Al lanzarlo a mano desde la pestaña Actions puedes marcar la casilla `todas` para clasificar
+también todo el histórico descubierto (`--todas --force`).
 
 No se usa Vercel Cron a propósito: el filesystem de Vercel es de solo lectura, así que un
 cron allí no puede persistir el JSON en el repositorio. Con la Action, el commit dispara el
