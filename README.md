@@ -10,7 +10,8 @@ notas de prensa del CGPJ, con tendencia, gravedad y noticiabilidad clasificadas 
   y su propia serie histórica usando los informes ya guardados.
 - **Clasificación**: una llamada a `experimental_evaluate` por CCAA y trimestre (~68 al año).
 - **Visualización**: web Next.js prerenderizada con línea de tendencia (Recharts), mapa de
-  calor por CCAA y tabla del último informe.
+  calor por CCAA, tabla del último informe, una página por comunidad (`/ccaa/[slug]`), feed
+  RSS (`/feed.xml`) y resumen editorial generado a partir de las clasificaciones de jev.
 
 ## Puesta en marcha
 
@@ -22,6 +23,7 @@ npm run dev            # web en http://localhost:3000
 npm run ingest         # descarga y guarda la última nota trimestral
 npm run backfill-anual # series anuales 2001-2025 del CGPJ (data/anual)
 npm run indicadores    # congestión, pendencia y resolución por TSJ (data/indicadores)
+npm run editorial      # resumen editorial del último trimestre (data/editorial)
 ```
 
 Opciones de ingesta:
@@ -66,7 +68,8 @@ Detalles del provider que conviene tener presentes:
 `.github/workflows/ingest.yml` ejecuta la ingesta **todos los lunes a las 06:00 UTC** y
 commitea `data/` si hay cambios. Para que clasifique, añade el secreto
 `TYPESAFE_AI_API_KEY` en el repositorio de GitHub (es opcional: sin él solo recopila datos).
-Tras la ingesta ejecuta `npm run indicadores` (congestión, pendencia y resolución).
+Tras la ingesta ejecuta `npm run indicadores` (congestión, pendencia y resolución) y
+`npm run editorial` (resumen del trimestre).
 Al lanzarlo a mano desde la pestaña Actions puedes marcar `todas` (clasificar todo el
 histórico descubierto) y `reclasificar` (volver a clasificar con los indicadores nuevos).
 
@@ -94,6 +97,9 @@ y `clasificacion`.
   Cuando existen, la ingesta los pasa a jev y `gravedad_congestion` deja de usar la
   litigiosidad como proxy; para aplicarlos a un trimestre ya clasificado:
   `npm run ingest -- --reclasificar` (o el input `reclasificar` del workflow).
+- `data/editorial/AAAA-Tn.json` guarda el resumen editorial: jev elige el foco entre los
+  candidatos que ordena el código (noticiables, gravedad) y el texto se compone con
+  plantillas, sin generación libre.
 - Hay huecos tal y como los publicó el CGPJ: 2025-T1 no trae la tasa de País Vasco y 2025-T2
   no trae la de La Rioja. Se registran en `comunidades_ausentes` al parsear y se muestran
   como celdas vacías.

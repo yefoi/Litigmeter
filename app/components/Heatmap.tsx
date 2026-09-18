@@ -1,8 +1,10 @@
+import Link from "next/link";
 import {
   colorHeatmap,
   etiquetaTrimestre,
   formatearTasa,
   nombresDeComunidades,
+  slugDeComunidad,
 } from "@/lib/litigiosidad/presentacion";
 import type { InformeTrimestral } from "@/lib/litigiosidad/tipos";
 
@@ -30,7 +32,9 @@ export default function Heatmap({ informes }: { informes: InformeTrimestral[] })
         <tbody>
           {nombres.map((nombre) => (
             <tr key={nombre}>
-              <th scope="row">{nombre}</th>
+              <th scope="row">
+                <Link href={`/ccaa/${slugDeComunidad(nombre)}`}>{nombre}</Link>
+              </th>
               {informes.map((informe) => {
                 const registro = informe.comunidades.find(
                   (comunidad) => comunidad.comunidad_autonoma === nombre,

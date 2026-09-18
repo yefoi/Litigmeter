@@ -1,8 +1,11 @@
 import path from "node:path";
+import Link from "next/link";
+import Editorial from "./components/Editorial";
 import Faq from "./components/Faq";
 import Heatmap from "./components/Heatmap";
 import TendenciaChart from "./components/TendenciaChart";
 import styles from "./page.module.css";
+import { leerEditorial } from "@/lib/editorial/ficheros";
 import { leerInformes } from "@/lib/litigiosidad/historico";
 import {
   CLAVE_NACIONAL,
@@ -13,6 +16,7 @@ import {
   nombresDeComunidades,
   serieNacional,
   seriePorComunidad,
+  slugDeComunidad,
   type PuntoSerie,
 } from "@/lib/litigiosidad/presentacion";
 import type { Tendencia } from "@/lib/litigiosidad/tipos";
@@ -30,7 +34,8 @@ function formatearFecha(fecha: string | undefined): string {
 }
 
 export default async function Home() {
-  const informes = await leerInformes(path.join(process.cwd(), "data", "litigiosidad"));
+  const dataBase = path.join(process.cwd(), "data");
+  const informes = await leerInformes(path.join(dataBase, "litigiosidad"));
 
   if (informes.length === 0) {
     return (
@@ -60,6 +65,7 @@ export default async function Home() {
   const noticiables = ultimo.comunidades.filter(
     (comunidad) => comunidad.clasificacion?.es_noticiable,
   );
+  const editorial = await leerEditorial(dataBase, ultimo.anio, ultimo.trimestre);
 
   return (
     <main className={styles.main}>
@@ -151,7 +157,11 @@ export default async function Home() {
               {ultimo.comunidades.map((comunidad) => (
                 <tr key={comunidad.comunidad_autonoma}>
                   <td className={styles.posicion}>{comunidad.posicion_nacional}</td>
-                  <td className={styles.comunidad}>{comunidad.comunidad_autonoma}</td>
+                  <td className={styles.comunidad}>
+                    <Link href={`/ccaa/${slugDeComunidad(comunidad.comunidad_autonoma)}`}>
+                      {comunidad.comunidad_autonoma}
+                    </Link>
+                  </td>
                   <td>{formatearTasa(comunidad.tasa_litigiosidad)}</td>
                   <td>{formatearPorcentaje(comunidad.diferencial_vs_nacional)}</td>
                   <td>{formatearPorcentaje(comunidad.variacion_interanual_pct)}</td>
@@ -185,6 +195,8 @@ export default async function Home() {
         </div>
       </section>
 
+      {editorial ? <Editorial resumen={editorial} /> : null}
+
       <footer className={styles.pie}>
         <p>
           Datos: notas de prensa trimestrales del CGPJ (difusión pública). Clasificación:
@@ -196,7 +208,7 @@ export default async function Home() {
           >
             informes por territorios
           </a>
-          .
+          . Suscríbete por <Link href="/feed.xml">RSS</Link>.
         </p>
       </footer>
 

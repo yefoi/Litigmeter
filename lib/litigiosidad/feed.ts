@@ -1,0 +1,55 @@
+import { etiquetaTrimestre, formatearPorcentaje, formatearTasa } from "./presentacion";
+import type { InformeTrimestral } from "./tipos";
+
+function escaparXml(texto: string): string {
+  return texto
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
+}
+
+export function construirRss(informes: InformeTrimestral[], sitio: string): string {
+  const items = [...informes]
+    .reverse()
+    .slice(0, 20)
+    .map((informe) => {
+      const top = [...informe.comunidades]
+        .sort((a, b) => b.tasa_litigiosidad - a.tasa_litigiosidad)
+        .slice(0, 3)
+        .map((c) => `${c.comunidad_autonoma} ${c.tasa_litigiosidad.toFixed(1).replace(".", ",")}`)
+        .join(" · ");
+      const titulo = `Litigiosidad ${etiquetaTrimestre(informe)}: ${formatearTasa(informe.nacional.tasa_litigiosidad)} asuntos por 1.000 habitantes`;
+      const descripcion =
+        `Tasas más altas: ${top}. ` +
+        `Variación interanual nacional: ${formatearPorcentaje(informe.nacional.variacion_interanual_pct)}.`;
+      const fecha = informe.fuente.fecha_publicacion ?? informe.generado_en.slice(0, 10);
+      const pubDate = new Date(`${fecha}T06:00:00Z`).toUTCString();
+
+      return [
+        "    <item>",
+        `      <title>${escaparXml(titulo)}</title>`,
+        `      <link>${escaparXml(informe.fuente.url)}</link>`,
+        `      <guid isPermaLink="true">${escaparXml(informe.fuente.url)}</guid>`,
+        `      <pubDate>${pubDate}</pubDate>`,
+        `      <description>${escaparXml(descripcion)}</description>`,
+        "    </item>",
+      ].join("\n");
+    })
+    .join("\n");
+
+  return [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<rss version="2.0">',
+    "  <channel>",
+    "    <title>Litigmeter · litigiosidad judicial por CCAA</title>",
+    `    <link>${escaparXml(sitio)}</link>`,
+    "    <description>Tasa de litigiosidad trimestral por comunidad autónoma a partir de las notas del CGPJ.</description>",
+    "    <language>es</language>",
+    items,
+    "  </channel>",
+    "</rss>",
+    "",
+  ].join("\n");
+}

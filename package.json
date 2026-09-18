@@ -11,7 +11,8 @@
     "typecheck": "tsc --noEmit",
     "ingest": "tsx scripts/ingest.ts",
     "backfill-anual": "tsx scripts/backfill-anual.ts",
-    "indicadores": "tsx scripts/indicadores.ts"
+    "indicadores": "tsx scripts/indicadores.ts",
+    "editorial": "tsx scripts/editorial.ts"
   },
   "dependencies": {
     "@ai-sdk/typesafe-ai": "^3.0.3",

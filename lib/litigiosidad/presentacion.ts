@@ -1,4 +1,18 @@
+import { COMUNIDADES } from "@/lib/litigiosidad/ccaa";
 import type { InformeTrimestral } from "@/lib/litigiosidad/tipos";
+
+export function slugDeComunidad(nombre: string): string {
+  return nombre
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+export function comunidadDeSlug(slug: string): string | undefined {
+  return COMUNIDADES.find((comunidad) => slugDeComunidad(comunidad.nombre) === slug)?.nombre;
+}
 
 export function etiquetaTrimestre(informe: Pick<InformeTrimestral, "anio" | "trimestre">): string {
   return `T${informe.trimestre} ${String(informe.anio).slice(2)}`;
