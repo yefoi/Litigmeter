@@ -62,7 +62,13 @@ export function claveMuestra(anio: number, trimestre: number, comunidad: string)
   return `${anio}-T${trimestre}|${comunidad}`;
 }
 
-function partirCsv(linea: string): string[] {
+function detectarDelimitador(cabecera: string): string {
+  if (cabecera.includes(";")) return ";";
+  if (cabecera.includes("\t")) return "\t";
+  return ",";
+}
+
+function partirCsv(linea: string, delimitador = ","): string[] {
   const campos: string[] = [];
   let actual = "";
   let entreComillas = false;
@@ -79,7 +85,7 @@ function partirCsv(linea: string): string[] {
       }
     } else if (caracter === '"') {
       entreComillas = true;
-    } else if (caracter === ",") {
+    } else if (caracter === delimitador) {
       campos.push(actual);
       actual = "";
     } else {
@@ -97,7 +103,9 @@ export function leerEtiquetasCsv(contenido: string): Map<string, boolean> {
   const lineas = contenido.split(/\r?\n/).filter((linea) => linea.trim().length > 0);
   if (lineas.length === 0) return etiquetas;
 
-  const cabecera = partirCsv(lineas[0]).map((campo) => campo.trim());
+  const cabeceraCruda = lineas[0];
+  const delimitador = detectarDelimitador(cabeceraCruda);
+  const cabecera = partirCsv(cabeceraCruda, delimitador).map((campo) => campo.trim());
   const idxEtiqueta = cabecera.indexOf("etiqueta_humana");
   const idxAnio = cabecera.indexOf("anio");
   const idxTrimestre = cabecera.indexOf("trimestre");
@@ -107,7 +115,7 @@ export function leerEtiquetasCsv(contenido: string): Map<string, boolean> {
   }
 
   for (const linea of lineas.slice(1)) {
-    const campos = partirCsv(linea);
+    const campos = partirCsv(linea, delimitador);
     const valor = (campos[idxEtiqueta] ?? "").trim().toLowerCase();
     if (!valor) continue;
     etiquetas.set(

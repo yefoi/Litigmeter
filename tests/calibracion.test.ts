@@ -64,4 +64,16 @@ describe("leerEtiquetasCsv", () => {
   test("sin cabecera válida devuelve vacío", () => {
     expect(leerEtiquetasCsv("a,b,c\n1,2,3")).toEqual(new Map());
   });
+
+  test("acepta ficheros guardados con punto y coma", () => {
+    const csv = [
+      "etiqueta_humana;anio;trimestre;comunidad_autonoma;probabilidad_noticiable",
+      "1;2026;1;Canarias;0.9",
+      "0;2025;3;Madrid;0.7",
+    ].join("\n");
+    const etiquetas = leerEtiquetasCsv(csv);
+
+    expect(etiquetas.get(claveMuestra(2026, 1, "Canarias"))).toBe(true);
+    expect(etiquetas.get(claveMuestra(2025, 3, "Madrid"))).toBe(false);
+  });
 });

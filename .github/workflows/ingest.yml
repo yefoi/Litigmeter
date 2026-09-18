@@ -42,6 +42,8 @@ jobs:
         run: npm run ingest ${{ github.event_name == 'workflow_dispatch' && inputs.todas && '-- --todas --force' || '' }} ${{ github.event_name == 'workflow_dispatch' && inputs.reclasificar && '--reclasificar' || '' }}
         env:
           TYPESAFE_AI_API_KEY: ${{ secrets.TYPESAFE_AI_API_KEY }}
+          # Opcional: variable de repositorio (Settings → Secrets and variables → Actions → Variables)
+          UMBRAL_NOTICIABLE: ${{ vars.UMBRAL_NOTICIABLE }}
 
       - name: Indicadores clave
         run: npm run indicadores
