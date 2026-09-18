@@ -36,6 +36,10 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const comunidad = comunidadDeSlug(slug);
   if (!comunidad) notFound();
 
+  const indice = COMUNIDADES.findIndex((c) => c.nombre === comunidad);
+  const anterior = COMUNIDADES[(indice - 1 + COMUNIDADES.length) % COMUNIDADES.length];
+  const siguiente = COMUNIDADES[(indice + 1) % COMUNIDADES.length];
+
   const dataDir = path.join(process.cwd(), "data", "litigiosidad");
   const baseDir = path.dirname(dataDir);
   const informes = await leerInformes(dataDir);
@@ -70,12 +74,21 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     [comunidad]: seriePorComunidad(informes, comunidad),
     [CLAVE_NACIONAL]: serieNacional(informes),
   };
+  const destacados = informes
+    .filter(
+      (informe) =>
+        informe.comunidades.find((c) => c.comunidad_autonoma === comunidad)?.clasificacion
+          ?.es_noticiable,
+    )
+    .map(etiquetaTrimestre);
 
   return (
     <main className={styles.main}>
-      <p className={styles.migas}>
-        <Link href="/">← Volver al panel</Link>
-      </p>
+      <nav className={styles.migas} aria-label="Migas de pan">
+        <Link href="/">Inicio</Link>
+        <span className={styles.migasSep}>/</span>
+        <span>{comunidad}</span>
+      </nav>
 
       <header className={styles.cabecera}>
         <div>
@@ -139,6 +152,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           series={series}
           opciones={[comunidad, CLAVE_NACIONAL]}
           opcionInicial={comunidad}
+          nacional={series[CLAVE_NACIONAL]}
+          destacados={destacados}
         />
       </section>
 
@@ -155,6 +170,11 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <h2>Histórico trimestral</h2>
         <TablaTrimestres informes={informes} comunidad={comunidad} />
       </section>
+
+      <nav className={styles.paginacion} aria-label="Otras comunidades">
+        <Link href={`/ccaa/${slugDeComunidad(anterior.nombre)}`}>← {anterior.nombre}</Link>
+        <Link href={`/ccaa/${slugDeComunidad(siguiente.nombre)}`}>{siguiente.nombre} →</Link>
+      </nav>
 
       <footer className={styles.pie}>
         <p>

@@ -18,27 +18,51 @@ interface Props {
   opciones: string[];
   opcionInicial: string;
   opcionesSecundarias?: string[];
+  nacional?: PuntoSerie[];
+  destacados?: string[];
 }
 
 const SIN_COMPARACION = "";
+const NOMBRE_NACIONAL = "Media nacional";
 
 export default function TendenciaChart({
   series,
   opciones,
   opcionInicial,
   opcionesSecundarias,
+  nacional,
+  destacados,
 }: Props) {
   const [seleccion, setSeleccion] = useState(opcionInicial);
   const [comparada, setComparada] = useState(SIN_COMPARACION);
 
   const principal = series[seleccion] ?? [];
   const secundaria = comparada ? series[comparada] ?? [] : [];
+  const conjuntoDestacados = new Set(destacados ?? []);
+  const mostrarNacional = seleccion !== NOMBRE_NACIONAL && (nacional?.length ?? 0) > 0;
+
   const datos = principal.map((punto, indice) => ({
     etiqueta: punto.etiqueta,
     principal: punto.tasa,
-    comparada: secundaria[indice]?.tasa ?? null,
+    comparada: comparada ? secundaria[indice]?.tasa ?? null : null,
+    nacional: mostrarNacional ? nacional?.[indice]?.tasa ?? null : null,
+    destacado: conjuntoDestacados.has(punto.etiqueta),
   }));
+
   const listaSecundaria = opcionesSecundarias ?? opciones;
+
+  const punto = (props: unknown) => {
+    const { cx, cy, payload } = props as {
+      cx?: number;
+      cy?: number;
+      payload?: { destacado?: boolean };
+    };
+    if (typeof cx !== "number" || typeof cy !== "number") return <g />;
+    if (payload?.destacado) {
+      return <circle cx={cx} cy={cy} r={6} fill="#b45309" stroke="#ffffff" strokeWidth={2} />;
+    }
+    return <circle cx={cx} cy={cy} r={3.5} fill="#1d6fb8" />;
+  };
 
   return (
     <div className="grafico">
@@ -74,7 +98,7 @@ export default function TendenciaChart({
       <div className="graficoLienzo">
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={datos} margin={{ top: 8, right: 16, bottom: 8, left: 0 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="var(--borde)" />
+            <CartesianGrid strokeDasharray="3 3" stroke="#cbd3dc" strokeOpacity={0.6} />
             <XAxis dataKey="etiqueta" tick={{ fontSize: 12 }} />
             <YAxis
               tick={{ fontSize: 12 }}
@@ -89,14 +113,14 @@ export default function TendenciaChart({
                   : [String(valor), String(nombre)]
               }
             />
-            {comparada ? <Legend /> : null}
+            <Legend />
             <Line
               type="monotone"
               dataKey="principal"
               name={seleccion}
               stroke="#1d6fb8"
               strokeWidth={2}
-              dot={{ r: 4 }}
+              dot={punto}
               activeDot={{ r: 6 }}
               connectNulls={false}
             />
@@ -110,6 +134,18 @@ export default function TendenciaChart({
                 strokeDasharray="6 4"
                 dot={{ r: 3 }}
                 connectNulls={false}
+              />
+            ) : null}
+            {mostrarNacional ? (
+              <Line
+                type="monotone"
+                dataKey="nacional"
+                name="Media nacional (referencia)"
+                stroke="#8a94a0"
+                strokeWidth={1.5}
+                strokeDasharray="4 4"
+                dot={false}
+                connectNulls
               />
             ) : null}
           </LineChart>

@@ -2,9 +2,25 @@
   --background: #f4f6f8;
   --foreground: #1c1f23;
   --superficie: #ffffff;
+  --superficie-suave: #f8fafc;
   --borde: #dde2e8;
   --texto-suave: #5b6470;
   --acento: #1d6fb8;
+  --acento-suave: #e3eef8;
+
+  --mejora: #17652c;
+  --mejora-fondo: #d8f1de;
+  --estable: #4a5058;
+  --estable-fondo: #e8eaee;
+  --empeora: #95291f;
+  --empeora-fondo: #fadbd7;
+  --aviso: #b45309;
+  --aviso-fondo: #fef3c7;
+
+  --radio: 16px;
+  --radio-pequeno: 8px;
+  --sombra: 0 1px 2px rgba(15, 23, 42, 0.06), 0 8px 24px rgba(15, 23, 42, 0.06);
+  --transicion: 140ms ease;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -12,9 +28,22 @@
     --background: #131519;
     --foreground: #e8eaed;
     --superficie: #1c1f24;
+    --superficie-suave: #232830;
     --borde: #2d323a;
     --texto-suave: #9aa4b2;
     --acento: #6cb2ea;
+    --acento-suave: #1b2a3a;
+
+    --mejora: #8fe0a8;
+    --mejora-fondo: #123a20;
+    --estable: #c3cad3;
+    --estable-fondo: #2a2f36;
+    --empeora: #f3a89e;
+    --empeora-fondo: #452019;
+    --aviso: #fbbf24;
+    --aviso-fondo: #3a2f14;
+
+    --sombra: none;
   }
 }
 
@@ -59,10 +88,85 @@ code {
   border-radius: 5px;
 }
 
+:focus-visible {
+  outline: 2px solid var(--acento);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.fuera {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+section[id],
+div[id] {
+  scroll-margin-top: 84px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
+}
+
+/* --- Marca --- */
+
+.marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.marcaTexto {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  font-size: 17px;
+  color: var(--foreground);
+}
+
+/* --- Navegación de secciones --- */
+
+.subnav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  padding: 10px 2px;
+  background: color-mix(in srgb, var(--background) 88%, transparent);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--borde);
+}
+
+.subnav a {
+  color: var(--texto-suave);
+  font-size: 13.5px;
+  text-decoration: none;
+  padding: 2px 0;
+  border-bottom: 2px solid transparent;
+  transition: color var(--transicion), border-color var(--transicion);
+}
+
+.subnav a:hover {
+  color: var(--acento);
+  border-bottom-color: var(--acento);
 }
 
 /* --- Gráfico de tendencia --- */
@@ -78,15 +182,20 @@ code {
   align-items: center;
   gap: 8px;
   justify-content: flex-end;
+  flex-wrap: wrap;
   font-size: 14px;
   color: var(--texto-suave);
+}
+
+.graficoCabecera label {
+  font-weight: 500;
 }
 
 .graficoCabecera select {
   background: var(--superficie);
   color: var(--foreground);
   border: 1px solid var(--borde);
-  border-radius: 8px;
+  border-radius: var(--radio-pequeno);
   padding: 6px 10px;
   font: inherit;
 }
@@ -100,6 +209,62 @@ code {
 
 .heatmapContenedor {
   overflow-x: auto;
+}
+
+.heatmapBarra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.selectorModo {
+  display: inline-flex;
+  border: 1px solid var(--borde);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.selectorModo button {
+  background: var(--superficie);
+  color: var(--texto-suave);
+  border: 0;
+  padding: 6px 14px;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background var(--transicion), color var(--transicion);
+}
+
+.selectorModo button[aria-pressed="true"] {
+  background: var(--acento-suave);
+  color: var(--acento);
+  font-weight: 600;
+}
+
+.leyenda {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--texto-suave);
+}
+
+.leyendaBarra {
+  height: 10px;
+  width: 150px;
+  border-radius: 999px;
+  border: 1px solid var(--borde);
+}
+
+.leyendaBarra.nivel {
+  background: linear-gradient(90deg, hsl(130 60% 92%), hsl(65 60% 80%), hsl(0 60% 66%));
+}
+
+.leyendaBarra.cambio {
+  background: linear-gradient(90deg, hsl(130 60% 78%), hsl(210 15% 94%), hsl(0 60% 78%));
 }
 
 .heatmap {
@@ -117,19 +282,39 @@ code {
 }
 
 .heatmap tbody th {
+  position: sticky;
+  left: 0;
+  z-index: 1;
   text-align: left;
   font-weight: 500;
   color: var(--foreground);
   white-space: nowrap;
   padding-right: 10px;
+  background: var(--background);
 }
 
 .heatmap td {
-  min-width: 52px;
+  min-width: 56px;
   padding: 7px 8px;
   border-radius: 6px;
   text-align: center;
-  color: #ffffff;
+  color: var(--foreground);
   font-variant-numeric: tabular-nums;
-  background: color-mix(in srgb, var(--foreground) 12%, transparent);
+  background: var(--superficie-suave);
+  border: 1px solid var(--borde);
+}
+
+.heatmap td.vacio {
+  color: var(--texto-suave);
+  border-style: dashed;
+  background: transparent;
+}
+
+.heatmap td:hover {
+  outline: 2px solid var(--acento);
+  outline-offset: -1px;
+}
+
+.heatmap tbody tr:hover th {
+  color: var(--acento);
 }

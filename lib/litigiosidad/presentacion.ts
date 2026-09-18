@@ -75,10 +75,19 @@ export function nombresDeComunidades(informes: InformeTrimestral[]): string[] {
 }
 
 export function colorHeatmap(valor: number, minimo: number, maximo: number): string {
-  if (!Number.isFinite(valor) || maximo === minimo) return "hsl(210 15% 45%)";
+  if (!Number.isFinite(valor) || maximo === minimo) return "hsl(210 15% 94%)";
   const proporcion = Math.min(1, Math.max(0, (valor - minimo) / (maximo - minimo)));
   const tono = 130 - 130 * proporcion;
-  return `hsl(${tono.toFixed(0)} 62% 42%)`;
+  return `hsl(${tono.toFixed(0)} 60% ${(92 - 26 * proporcion).toFixed(0)}%)`;
+}
+
+/** Escala divergente para cambios: verde negativo, gris neutro, rojo positivo. */
+export function colorDivergente(valor: number, maxAbsoluto: number): string {
+  if (!Number.isFinite(valor) || maxAbsoluto <= 0) return "hsl(210 15% 94%)";
+  const proporcion = Math.min(1, Math.abs(valor) / maxAbsoluto);
+  if (proporcion < 0.06) return "hsl(210 15% 94%)";
+  const tono = valor < 0 ? 130 : 0;
+  return `hsl(${tono} 60% ${(92 - 26 * proporcion).toFixed(0)}%)`;
 }
 
 export function formatearTasa(valor: number | null | undefined): string {

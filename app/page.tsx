@@ -3,16 +3,15 @@ import Link from "next/link";
 import Editorial from "./components/Editorial";
 import Faq from "./components/Faq";
 import Heatmap from "./components/Heatmap";
+import Logo from "./components/Logo";
+import TablaUltimoTrimestre from "./components/TablaUltimoTrimestre";
 import TendenciaChart from "./components/TendenciaChart";
 import styles from "./page.module.css";
 import { leerEditorial } from "@/lib/editorial/ficheros";
 import { leerInformes } from "@/lib/litigiosidad/historico";
 import {
   CLAVE_NACIONAL,
-  confianzaMinima,
-  etiquetaGravedad,
   etiquetaTrimestre,
-  formatearConfianza,
   formatearPorcentaje,
   formatearTasa,
   nombresDeComunidades,
@@ -21,13 +20,6 @@ import {
   slugDeComunidad,
   type PuntoSerie,
 } from "@/lib/litigiosidad/presentacion";
-import type { Tendencia } from "@/lib/litigiosidad/tipos";
-
-const CLASE_TENDENCIA: Record<Tendencia, string> = {
-  mejora: "tendenciaMejora",
-  estable: "tendenciaEstable",
-  empeora: "tendenciaEmpeora",
-};
 
 function formatearFecha(fecha: string | undefined): string {
   if (!fecha) return "—";
@@ -73,7 +65,10 @@ export default async function Home() {
     <main className={styles.main}>
       <header className={styles.cabecera}>
         <div>
-          <p className={styles.kicker}>Litigmeter · Estadística Judicial del CGPJ</p>
+          <p className={styles.marcaCabecera}>
+            <Logo />
+          </p>
+          <p className={styles.kicker}>Estadística Judicial del CGPJ</p>
           <h1>Litigiosidad judicial por comunidad autónoma</h1>
           <p className={styles.subtitulo}>
             {nombres.length} comunidades · {informes.length} trimestres · último informe{" "}
@@ -93,7 +88,25 @@ export default async function Home() {
         </div>
       </header>
 
-      <section className={styles.resumenNacional}>
+      <nav className="subnav" aria-label="Secciones de la página">
+        <a href="#resumen">Resumen</a>
+        <a href="#evolucion">Evolución</a>
+        <a href="#mapa">Mapa</a>
+        <a href="#tabla">Tabla</a>
+        {editorial ? <a href="#editorial">Editorial</a> : null}
+        <a href="#faq">FAQ</a>
+        <a href="/feed.xml">RSS</a>
+      </nav>
+
+      <nav className={styles.saltoCcaa} aria-label="Ir a una comunidad autónoma">
+        {nombres.map((nombre) => (
+          <Link key={nombre} href={`/ccaa/${slugDeComunidad(nombre)}`}>
+            {nombre}
+          </Link>
+        ))}
+      </nav>
+
+      <section id="resumen" className={styles.resumenNacional}>
         <article className={styles.dato}>
           <span className={styles.datoTitulo}>Tasa de litigiosidad nacional</span>
           <strong className={styles.datoValor}>{formatearTasa(ultimo.nacional.tasa_litigiosidad)}</strong>
@@ -115,21 +128,22 @@ export default async function Home() {
         </article>
       </section>
 
-      <section className={styles.bloque}>
+      <section id="evolucion" className={styles.bloque}>
         <h2>Evolución trimestral</h2>
         <TendenciaChart series={series} opciones={opciones} opcionInicial={CLAVE_NACIONAL} />
       </section>
 
-      <section className={styles.bloque}>
+      <section id="mapa" className={styles.bloque}>
         <h2>Mapa de calor por comunidad</h2>
         <p className={styles.nota}>
           Tasa de litigiosidad (asuntos ingresados por cada 1.000 habitantes). Verde: menor
-          carga relativa del periodo; rojo: mayor.
+          carga relativa del periodo; rojo: mayor. Cambia a variación interanual para ver la
+          evolución.
         </p>
         <Heatmap informes={informes} />
       </section>
 
-      <section className={styles.bloque}>
+      <section id="tabla" className={styles.bloque}>
         <h2>
           Último trimestre · {etiquetaTrimestre(ultimo)}
           {hayClasificacion ? "" : " (sin clasificar)"}
@@ -141,73 +155,17 @@ export default async function Home() {
             noticiabilidad con jev.
           </p>
         )}
-        <div className={styles.tablaContenedor}>
-          <table className={styles.tabla}>
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Comunidad</th>
-                <th scope="col">Tasa</th>
-                <th scope="col">vs media</th>
-                <th scope="col">Interanual</th>
-                <th scope="col">Tendencia</th>
-                <th scope="col">Gravedad</th>
-                <th scope="col">Confianza</th>
-                <th scope="col">Noticiable</th>
-              </tr>
-            </thead>
-            <tbody>
-              {ultimo.comunidades.map((comunidad) => (
-                <tr key={comunidad.comunidad_autonoma}>
-                  <td className={styles.posicion}>{comunidad.posicion_nacional}</td>
-                  <td className={styles.comunidad}>
-                    <Link href={`/ccaa/${slugDeComunidad(comunidad.comunidad_autonoma)}`}>
-                      {comunidad.comunidad_autonoma}
-                    </Link>
-                  </td>
-                  <td>{formatearTasa(comunidad.tasa_litigiosidad)}</td>
-                  <td>{formatearPorcentaje(comunidad.diferencial_vs_nacional)}</td>
-                  <td>{formatearPorcentaje(comunidad.variacion_interanual_pct)}</td>
-                  <td>
-                    {comunidad.clasificacion ? (
-                      <span
-                        className={`${styles.insignia} ${styles[CLASE_TENDENCIA[comunidad.clasificacion.tendencia]]}`}
-                      >
-                        {comunidad.clasificacion.tendencia}
-                      </span>
-                    ) : (
-                      "—"
-                    )}
-                  </td>
-                  <td>
-                    {comunidad.clasificacion
-                      ? etiquetaGravedad(comunidad.clasificacion.gravedad_congestion)
-                      : "—"}
-                  </td>
-                  <td
-                    className={
-                      (confianzaMinima(comunidad.clasificacion) ?? 1) < 0.5
-                        ? styles.confianzaBaja
-                        : undefined
-                    }
-                  >
-                    {formatearConfianza(confianzaMinima(comunidad.clasificacion))}
-                  </td>
-                  <td>
-                    {comunidad.clasificacion
-                      ? comunidad.clasificacion.es_noticiable
-                        ? `sí (${Math.round(comunidad.clasificacion.probabilidad_noticiable * 100)} %)`
-                        : "no"
-                      : "—"}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <TablaUltimoTrimestre
+          comunidades={ultimo.comunidades}
+          etiqueta={etiquetaTrimestre(ultimo)}
+        />
       </section>
 
-      {editorial ? <Editorial resumen={editorial} /> : null}
+      {editorial ? (
+        <div id="editorial">
+          <Editorial resumen={editorial} />
+        </div>
+      ) : null}
 
       <footer className={styles.pie}>
         <p>
@@ -224,7 +182,9 @@ export default async function Home() {
         </p>
       </footer>
 
-      <Faq />
+      <div id="faq">
+        <Faq />
+      </div>
     </main>
   );
 }
