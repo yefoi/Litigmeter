@@ -90,6 +90,8 @@ export interface InformeTrimestral {
   anio: number;
   trimestre: number;
   generado_en: string;
+  /** Procedencia del informe: nota de prensa (por defecto), indicadores o serie histórica. */
+  origen?: "nota_prensa" | "indicadores" | "serie_historica";
   fuente: FuenteNota;
   resumen_nota: string;
   nacional: ResumenNacional;

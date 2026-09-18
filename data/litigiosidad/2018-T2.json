@@ -1,0 +1,103 @@
+{
+  "version_esquema": 1,
+  "anio": 2018,
+  "trimestre": 2,
+  "generado_en": "2026-09-18T23:46:10.282Z",
+  "origen": "indicadores",
+  "fuente": {
+    "url": "https://www.poderjudicial.es/cgpj/es/Temas/Estadistica-Judicial/Estudios-e-Informes/Indicadores-Clave/Indicadores-clave-del-conjunto-de-las-jurisdicciones----Segundo-Trimestre-2018",
+    "titulo": "Indicadores clave 2018-T2 (CGPJ)"
+  },
+  "resumen_nota": "",
+  "nacional": {
+    "tasa_litigiosidad": 33.9,
+    "tasa_litigiosidad_anio_anterior": 32.5
+  },
+  "comunidades": [
+    {
+      "comunidad_autonoma": "Canarias",
+      "tasa_litigiosidad": 43.85,
+      "posicion_nacional": 1
+    },
+    {
+      "comunidad_autonoma": "Andalucía",
+      "tasa_litigiosidad": 38.62,
+      "posicion_nacional": 2
+    },
+    {
+      "comunidad_autonoma": "Asturias",
+      "tasa_litigiosidad": 37.12,
+      "posicion_nacional": 3
+    },
+    {
+      "comunidad_autonoma": "Murcia",
+      "tasa_litigiosidad": 35.45,
+      "posicion_nacional": 4
+    },
+    {
+      "comunidad_autonoma": "Baleares",
+      "tasa_litigiosidad": 35.04,
+      "posicion_nacional": 5
+    },
+    {
+      "comunidad_autonoma": "Comunidad Valenciana",
+      "tasa_litigiosidad": 34.75,
+      "posicion_nacional": 6
+    },
+    {
+      "comunidad_autonoma": "Cantabria",
+      "tasa_litigiosidad": 34.73,
+      "posicion_nacional": 7
+    },
+    {
+      "comunidad_autonoma": "Madrid",
+      "tasa_litigiosidad": 33.35,
+      "posicion_nacional": 8
+    },
+    {
+      "comunidad_autonoma": "Cataluña",
+      "tasa_litigiosidad": 31.82,
+      "posicion_nacional": 9
+    },
+    {
+      "comunidad_autonoma": "Galicia",
+      "tasa_litigiosidad": 31.44,
+      "posicion_nacional": 10
+    },
+    {
+      "comunidad_autonoma": "Castilla y León",
+      "tasa_litigiosidad": 30.13,
+      "posicion_nacional": 11
+    },
+    {
+      "comunidad_autonoma": "Aragón",
+      "tasa_litigiosidad": 30.01,
+      "posicion_nacional": 12
+    },
+    {
+      "comunidad_autonoma": "Castilla-La Mancha",
+      "tasa_litigiosidad": 27.58,
+      "posicion_nacional": 13
+    },
+    {
+      "comunidad_autonoma": "Extremadura",
+      "tasa_litigiosidad": 26.74,
+      "posicion_nacional": 14
+    },
+    {
+      "comunidad_autonoma": "País Vasco",
+      "tasa_litigiosidad": 25.08,
+      "posicion_nacional": 15
+    },
+    {
+      "comunidad_autonoma": "Navarra",
+      "tasa_litigiosidad": 24.38,
+      "posicion_nacional": 16
+    },
+    {
+      "comunidad_autonoma": "La Rioja",
+      "tasa_litigiosidad": 22.56,
+      "posicion_nacional": 17
+    }
+  ]
+}

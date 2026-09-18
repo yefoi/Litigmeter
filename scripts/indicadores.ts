@@ -2,6 +2,7 @@ import * as cheerio from "cheerio";
 import path from "node:path";
 import { PDFParse } from "pdf-parse";
 import { escribirIndicadores, leerIndicadores } from "../lib/indicadores/ficheros";
+import { documentosDeInforme, periodoDeTitulo } from "../lib/indicadores/pagina";
 import { parsearIndicadoresPdf } from "../lib/indicadores/parser";
 import type { FicheroIndicadores, TasasIndicadores } from "../lib/indicadores/tipos";
 import { normalizarComunidad } from "../lib/litigiosidad/ccaa";
@@ -10,15 +11,6 @@ const BASE = "https://www.poderjudicial.es";
 const FEED_ESTUDIOS = `${BASE}/cgpj/es/Temas/Estadistica-Judicial/ch.Estudios-e-Informes.formato1/`;
 const USER_AGENT = "litigmeter/0.1 (indicadores clave del CGPJ)";
 const PAUSA_MS = 350;
-
-const ORDINALES: Record<string, number> = {
-  primer: 1,
-  primero: 1,
-  segundo: 2,
-  tercer: 3,
-  tercero: 3,
-  cuarto: 4,
-};
 
 interface InformeDetectado {
   url: string;
@@ -41,12 +33,8 @@ async function descargar(url: string): Promise<Response> {
   return respuesta;
 }
 
-function periodoDeTitulo(titulo: string): { anio: number; trimestre: number } | undefined {
-  const coincidencia = titulo.match(
-    /(primer|primero|segundo|tercer|tercero|cuarto)\s+trimestre\s+(?:de\s+)?(\d{4})/i,
-  );
-  if (!coincidencia) return undefined;
-  return { anio: Number(coincidencia[2]), trimestre: ORDINALES[coincidencia[1].toLowerCase()] };
+function periodoDeTituloLocal(titulo: string): { anio: number; trimestre: number } | undefined {
+  return periodoDeTitulo(titulo);
 }
 
 async function descubrirInforme(): Promise<InformeDetectado | undefined> {
@@ -57,7 +45,7 @@ async function descubrirInforme(): Promise<InformeDetectado | undefined> {
     if (encontrado) return;
     const titulo = $(el).find("title").text().replace(/\s+/g, " ").trim();
     if (!/indicadores clave/i.test(titulo)) return;
-    const periodo = periodoDeTitulo(titulo);
+    const periodo = periodoDeTituloLocal(titulo);
     if (!periodo) return;
     encontrado = {
       url: $(el).find("link").text().trim().replace(/^http:/, "https:"),
@@ -66,12 +54,6 @@ async function descubrirInforme(): Promise<InformeDetectado | undefined> {
     };
   });
   return encontrado;
-}
-
-function entidadDeFichero(href: string): string | undefined {
-  const fichero = decodeURIComponent(href.split("/").pop() ?? "");
-  const coincidencia = fichero.match(/^Indicadores\s+(?:TSJ\s+)?(.+?)\s+-\s+/i);
-  return coincidencia?.[1]?.trim();
 }
 
 async function tasasDePdf(url: string): Promise<TasasIndicadores> {
@@ -97,7 +79,7 @@ async function main(): Promise<void> {
     const html = await (await descargar(urlDirecta)).text();
     const $ = cheerio.load(html);
     const titulo = $("h1").first().text().replace(/\s+/g, " ").trim() || $("title").text().trim();
-    const periodo = periodoDeTitulo(titulo);
+    const periodo = periodoDeTituloLocal(titulo);
     if (!periodo) throw new Error(`No se pudo determinar el periodo en "${titulo}"`);
     informe = { url: urlDirecta, titulo, ...periodo };
   } else {
@@ -116,19 +98,7 @@ async function main(): Promise<void> {
   }
 
   const html = await (await descargar(url)).text();
-  const $ = cheerio.load(html);
-  const documentos: Array<{ entidad: string; url: string }> = [];
-  const vistas = new Set<string>();
-  $("a").each((_, el) => {
-    const href = $(el).attr("href") ?? "";
-    if (!/\.pdf$/i.test(href) || !/Indicadores\s/i.test(href)) return;
-    const entidad = entidadDeFichero(href);
-    if (!entidad) return;
-    const absoluta = new URL(href, BASE).href;
-    if (vistas.has(absoluta)) return;
-    vistas.add(absoluta);
-    documentos.push({ entidad, url: absoluta });
-  });
+  const documentos = documentosDeInforme(html);
   if (documentos.length === 0) {
     throw new Error(`El informe ${url} no contiene PDFs de indicadores`);
   }
@@ -138,7 +108,7 @@ async function main(): Promise<void> {
   let fallos = 0;
 
   for (const documento of documentos) {
-    const esNacional = /nivel nacional/i.test(documento.entidad);
+    const esNacional = documento.esNacional;
     const comunidad = esNacional ? undefined : normalizarComunidad(documento.entidad);
     if (!esNacional && !comunidad) {
       console.warn(`  [aviso] entidad no reconocida: "${documento.entidad}"`);

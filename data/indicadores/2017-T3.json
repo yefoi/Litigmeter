@@ -1,0 +1,191 @@
+{
+  "version_esquema": 1,
+  "anio": 2017,
+  "trimestre": 3,
+  "fuente": {
+    "url": "https://www.poderjudicial.es/cgpj/es/Temas/Estadistica-Judicial/Estudios-e-Informes/Indicadores-Clave/Indicadores-clave-del-conjunto-de-las-jurisdicciones----Tercer-Trimestre-2017",
+    "titulo": "Indicadores clave 2017-T3 (CGPJ)"
+  },
+  "nacional": {
+    "resolucion_anio_anterior": 0.96,
+    "resolucion": 0.89,
+    "litigiosidad_anio_anterior": 27.8,
+    "litigiosidad": 28.5,
+    "pendencia_anio_anterior": 1.82,
+    "pendencia": 1.98,
+    "congestion_anio_anterior": 2.81,
+    "congestion": 2.98
+  },
+  "comunidades": {
+    "Andalucía": {
+      "resolucion_anio_anterior": 0.96,
+      "resolucion": 0.91,
+      "litigiosidad_anio_anterior": 32.55,
+      "litigiosidad": 32.9,
+      "pendencia_anio_anterior": 1.85,
+      "pendencia": 2,
+      "congestion_anio_anterior": 2.84,
+      "congestion": 3
+    },
+    "Aragón": {
+      "resolucion_anio_anterior": 0.95,
+      "resolucion": 0.89,
+      "litigiosidad_anio_anterior": 24.99,
+      "litigiosidad": 26.26,
+      "pendencia_anio_anterior": 1.29,
+      "pendencia": 1.44,
+      "congestion_anio_anterior": 2.27,
+      "congestion": 2.44
+    },
+    "Canarias": {
+      "resolucion_anio_anterior": 0.95,
+      "resolucion": 0.91,
+      "litigiosidad_anio_anterior": 37.37,
+      "litigiosidad": 38.27,
+      "pendencia_anio_anterior": 1.36,
+      "pendencia": 1.51,
+      "congestion_anio_anterior": 2.36,
+      "congestion": 2.5
+    },
+    "Cantabria": {
+      "resolucion_anio_anterior": 0.99,
+      "resolucion": 0.87,
+      "litigiosidad_anio_anterior": 26.82,
+      "litigiosidad": 29.65,
+      "pendencia_anio_anterior": 1.39,
+      "pendencia": 1.5,
+      "congestion_anio_anterior": 2.37,
+      "congestion": 2.53
+    },
+    "Castilla-La Mancha": {
+      "resolucion_anio_anterior": 0.94,
+      "resolucion": 0.87,
+      "litigiosidad_anio_anterior": 22.47,
+      "litigiosidad": 23.65,
+      "pendencia_anio_anterior": 2.42,
+      "pendencia": 2.6,
+      "congestion_anio_anterior": 3.42,
+      "congestion": 3.63
+    },
+    "Castilla y León": {
+      "resolucion_anio_anterior": 0.97,
+      "resolucion": 0.85,
+      "litigiosidad_anio_anterior": 24.73,
+      "litigiosidad": 25.49,
+      "pendencia_anio_anterior": 1.46,
+      "pendencia": 1.73,
+      "congestion_anio_anterior": 2.44,
+      "congestion": 2.75
+    },
+    "Cataluña": {
+      "resolucion_anio_anterior": 0.92,
+      "resolucion": 0.87,
+      "litigiosidad_anio_anterior": 26.82,
+      "litigiosidad": 27.68,
+      "pendencia_anio_anterior": 1.89,
+      "pendencia": 2.07,
+      "congestion_anio_anterior": 2.87,
+      "congestion": 3.06
+    },
+    "Madrid": {
+      "resolucion_anio_anterior": 0.98,
+      "resolucion": 0.91,
+      "litigiosidad_anio_anterior": 26.47,
+      "litigiosidad": 27.74,
+      "pendencia_anio_anterior": 1.85,
+      "pendencia": 1.87,
+      "congestion_anio_anterior": 2.83,
+      "congestion": 2.86
+    },
+    "Comunidad Valenciana": {
+      "resolucion_anio_anterior": 0.99,
+      "resolucion": 0.88,
+      "litigiosidad_anio_anterior": 28.01,
+      "litigiosidad": 28.19,
+      "pendencia_anio_anterior": 1.97,
+      "pendencia": 2.14,
+      "congestion_anio_anterior": 2.97,
+      "congestion": 3.14
+    },
+    "Extremadura": {
+      "resolucion_anio_anterior": 0.97,
+      "resolucion": 0.87,
+      "litigiosidad_anio_anterior": 22.19,
+      "litigiosidad": 22.38,
+      "pendencia_anio_anterior": 1.42,
+      "pendencia": 1.73,
+      "congestion_anio_anterior": 2.42,
+      "congestion": 2.74
+    },
+    "Galicia": {
+      "resolucion_anio_anterior": 0.95,
+      "resolucion": 0.87,
+      "litigiosidad_anio_anterior": 27.26,
+      "litigiosidad": 26.12,
+      "pendencia_anio_anterior": 1.79,
+      "pendencia": 2.06,
+      "congestion_anio_anterior": 2.79,
+      "congestion": 3.07
+    },
+    "Baleares": {
+      "resolucion_anio_anterior": 0.92,
+      "resolucion": 0.89,
+      "litigiosidad_anio_anterior": 34.64,
+      "litigiosidad": 34.32,
+      "pendencia_anio_anterior": 1.56,
+      "pendencia": 1.7,
+      "congestion_anio_anterior": 2.56,
+      "congestion": 2.73
+    },
+    "La Rioja": {
+      "resolucion_anio_anterior": 0.97,
+      "resolucion": 0.86,
+      "litigiosidad_anio_anterior": 17.87,
+      "litigiosidad": 18.24,
+      "pendencia_anio_anterior": 2.08,
+      "pendencia": 2.27,
+      "congestion_anio_anterior": 3.12,
+      "congestion": 3.28
+    },
+    "Navarra": {
+      "resolucion_anio_anterior": 0.98,
+      "resolucion": 0.9,
+      "litigiosidad_anio_anterior": 20.7,
+      "litigiosidad": 21.98,
+      "pendencia_anio_anterior": 1.23,
+      "pendencia": 1.3,
+      "congestion_anio_anterior": 2.21,
+      "congestion": 2.3
+    },
+    "País Vasco": {
+      "resolucion_anio_anterior": 0.93,
+      "resolucion": 0.87,
+      "litigiosidad_anio_anterior": 18.18,
+      "litigiosidad": 19.52,
+      "pendencia_anio_anterior": 1.78,
+      "pendencia": 2,
+      "congestion_anio_anterior": 2.77,
+      "congestion": 2.99
+    },
+    "Asturias": {
+      "resolucion_anio_anterior": 0.95,
+      "resolucion": 0.88,
+      "litigiosidad_anio_anterior": 26.67,
+      "litigiosidad": 27.8,
+      "pendencia_anio_anterior": 1.36,
+      "pendencia": 1.49,
+      "congestion_anio_anterior": 2.35,
+      "congestion": 2.51
+    },
+    "Murcia": {
+      "resolucion_anio_anterior": 0.98,
+      "resolucion": 0.88,
+      "litigiosidad_anio_anterior": 27.45,
+      "litigiosidad": 28.84,
+      "pendencia_anio_anterior": 2.39,
+      "pendencia": 2.49,
+      "congestion_anio_anterior": 3.38,
+      "congestion": 3.51
+    }
+  }
+}

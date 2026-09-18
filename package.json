@@ -12,6 +12,7 @@
     "ingest": "tsx scripts/ingest.ts",
     "backfill-anual": "tsx scripts/backfill-anual.ts",
     "indicadores": "tsx scripts/indicadores.ts",
+    "backfill-trimestral": "tsx scripts/backfill-trimestral.ts",
     "editorial": "tsx scripts/editorial.ts",
     "edictos": "tsx scripts/edictos.ts",
     "prevision": "tsx scripts/prevision.ts",

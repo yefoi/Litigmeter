@@ -24,6 +24,7 @@ npm run dev            # web en http://localhost:3000
 npm run ingest         # descarga y guarda la última nota trimestral
 npm run backfill-anual # series anuales 2001-2025 del CGPJ (data/anual)
 npm run indicadores    # congestión, pendencia y resolución por TSJ (data/indicadores)
+npm run backfill-trimestral # histórico trimestral 2017-2025 desde los PDFs de indicadores
 npm run editorial      # resumen editorial del último trimestre (data/editorial)
 npm run edictos        # evidencia real de edictos TEJU (data/edictos, requiere API key)
 npm run calibrar       # distribución de probabilidades + CSV para etiquetar
@@ -110,6 +111,11 @@ y `clasificacion`.
   Cuando existen, la ingesta los pasa a jev y `gravedad_congestion` deja de usar la
   litigiosidad como proxy; para aplicarlos a un trimestre ya clasificado:
   `npm run ingest -- --reclasificar` (o el input `reclasificar` del workflow).
+- `npm run backfill-trimestral` reconstruye el histórico trimestral (2017-T1 → 2025-T1, según
+  las páginas disponibles) desde los PDFs "Indicadores clave" del CGPJ: escribe el fichero de
+  indicadores y un informe mínimo en `data/litigiosidad/` marcado con `origen: "indicadores"`
+  para que el heatmap, las series y las fichas por CCAA tengan historia completa. Es
+  idempotente: los trimestres ya guardados se saltan (usa `--force` para rehacerlos).
 - `data/editorial/AAAA-Tn.json` guarda el resumen editorial: jev elige el foco entre los
   candidatos que ordena el código (noticiables, gravedad) y el texto se compone con
   plantillas, sin generación libre.

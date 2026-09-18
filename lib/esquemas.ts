@@ -30,6 +30,7 @@ export const informeSchema = z.object({
   anio: z.number().int().min(2001),
   trimestre: z.number().int().min(1).max(4),
   generado_en: z.string(),
+  origen: z.enum(["nota_prensa", "indicadores", "serie_historica"]).optional(),
   fuente: z.object({
     url: z.string().min(1),
     titulo: z.string(),
