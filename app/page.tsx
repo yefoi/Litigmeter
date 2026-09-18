@@ -229,7 +229,8 @@ export default async function Home() {
           >
             informes por territorios
           </a>
-          . Suscríbete por <Link href="/feed.xml">RSS</Link>.
+          . Suscríbete por <Link href="/feed.xml">RSS</Link> o{" "}
+          <Link href="/contraste">contrasta una afirmación</Link>.
         </p>
       </footer>
 

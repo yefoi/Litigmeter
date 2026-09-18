@@ -142,6 +142,19 @@ envía un email solo con las alertas altas nuevas (sin repetir en cada ejecució
 
 Además, cada comunidad tiene su propio RSS en `/ccaa/<slug>/feed.xml`, enlazado desde su
 página, para seguirla por separado.
+
+## Contraste de afirmaciones
+
+`npm run contrastar -- --afirmacion="..."` comprueba una frase contra los últimos datos con
+jev (veredicto `respaldada` / `contradicha` / `matizable` / `sin_datos`, ámbito, confianza y
+evidencia numérica). En la web, el mismo flujo está en`/contraste` mediante
+`POST /api/contraste`.
+
+Para que funcione en Vercel hace falta `TYPESAFE_AI_API_KEY` en las variables de entorno del
+proyecto (la clasificación de la Action usa el secreto de GitHub; son independientes). El
+endpoint limita a 10 peticiones por hora y por IP, valida la longitud de la afirmación y
+devuelve 503 si no hay clave configurada. Los datos se incluyen en el bundle de esa ruta con
+`outputFileTracingIncludes` en `next.config.ts`.
 - Hay huecos tal y como los publicó el CGPJ: 2025-T1 no trae la tasa de País Vasco y 2025-T2
   no trae la de La Rioja. Se registran en `comunidades_ausentes` al parsear y se muestran
   como celdas vacías.

@@ -63,6 +63,16 @@ const PREGUNTAS: Pregunta[] = [
     ),
   },
   {
+    pregunta: "¿Puedo comprobar una afirmación concreta?",
+    respuesta: (
+      <p>
+        Sí: en <a href="/contraste">Contraste de afirmaciones</a> puedes pegar una frase (de
+        una noticia, un informe o una red social) y jev la compara con los últimos datos
+        publicados, devolviendo veredicto, ámbito, confianza y la evidencia numérica.
+      </p>
+    ),
+  },
+  {
     pregunta: "¿Qué es el índice Litigmeter?",
     respuesta: (
       <p>
