@@ -2,7 +2,7 @@
   "version_esquema": 1,
   "anio": 2025,
   "trimestre": 3,
-  "generado_en": "2026-09-18T19:28:00.589Z",
+  "generado_en": "2026-09-18T19:51:40.589Z",
   "fuente": {
     "url": "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Consejo-General-del-Poder-Judicial/Oficina-de-Comunicacion/Archivo-de-notas-de-prensa/Los-organos-judiciales-de-toda-Espana-registraron-un-total-de-1-519-584-nuevos-asuntos-en-el-tercer-trimestre-de-2025--un-12-5---menos-que-hace-un-ano",
     "titulo": "Los órganos judiciales de toda España registraron un total de 1.519.584 nuevos asuntos en el tercer trimestre de 2025, un 12,5 % menos que hace un año",
@@ -22,7 +22,16 @@
       "tasa_litigiosidad_trimestre_anterior": 54.07,
       "variacion_trimestral_pct": -23.91,
       "diferencial_vs_nacional": 9.89,
-      "posicion_nacional": 1
+      "posicion_nacional": 1,
+      "clasificacion": {
+        "tendencia": "mejora",
+        "gravedad_congestion": 2.82,
+        "es_noticiable": true,
+        "probabilidad_noticiable": 0.74,
+        "confianza_tendencia": 0.95,
+        "confianza_gravedad": 0.85,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "Baleares",
@@ -30,7 +39,16 @@
       "tasa_litigiosidad_trimestre_anterior": 40.61,
       "variacion_trimestral_pct": -13.12,
       "diferencial_vs_nacional": 4.03,
-      "posicion_nacional": 2
+      "posicion_nacional": 2,
+      "clasificacion": {
+        "tendencia": "mejora",
+        "gravedad_congestion": 2.86,
+        "es_noticiable": false,
+        "probabilidad_noticiable": 0.19,
+        "confianza_tendencia": 0.98,
+        "confianza_gravedad": 0.88,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "Cataluña",
@@ -38,7 +56,16 @@
       "tasa_litigiosidad_trimestre_anterior": 40.64,
       "variacion_trimestral_pct": -16.34,
       "diferencial_vs_nacional": 2.75,
-      "posicion_nacional": 3
+      "posicion_nacional": 3,
+      "clasificacion": {
+        "tendencia": "mejora",
+        "gravedad_congestion": 2.74,
+        "es_noticiable": true,
+        "probabilidad_noticiable": 0.65,
+        "confianza_tendencia": 1,
+        "confianza_gravedad": 0.78,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "Asturias",
@@ -46,7 +73,16 @@
       "tasa_litigiosidad_trimestre_anterior": 39.34,
       "variacion_trimestral_pct": -16.65,
       "diferencial_vs_nacional": 1.54,
-      "posicion_nacional": 4
+      "posicion_nacional": 4,
+      "clasificacion": {
+        "tendencia": "mejora",
+        "gravedad_congestion": 2.73,
+        "es_noticiable": true,
+        "probabilidad_noticiable": 0.72,
+        "confianza_tendencia": 1,
+        "confianza_gravedad": 0.77,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "Murcia",
@@ -54,7 +90,16 @@
       "tasa_litigiosidad_trimestre_anterior": 44.02,
       "variacion_trimestral_pct": -27.1,
       "diferencial_vs_nacional": 0.84,
-      "posicion_nacional": 5
+      "posicion_nacional": 5,
+      "clasificacion": {
+        "tendencia": "mejora",
+        "gravedad_congestion": 2.38,
+        "es_noticiable": true,
+        "probabilidad_noticiable": 0.72,
+        "confianza_tendencia": 1,
+        "confianza_gravedad": 0.48,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "Andalucía",
@@ -62,7 +107,16 @@
       "tasa_litigiosidad_trimestre_anterior": 39.9,
       "variacion_trimestral_pct": -19.72,
       "diferencial_vs_nacional": 0.78,
-      "posicion_nacional": 6
+      "posicion_nacional": 6,
+      "clasificacion": {
+        "tendencia": "mejora",
+        "gravedad_congestion": 2.5,
+        "es_noticiable": true,
+        "probabilidad_noticiable": 0.75,
+        "confianza_tendencia": 1,
+        "confianza_gravedad": 0.59,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "Madrid",
@@ -70,7 +124,16 @@
       "tasa_litigiosidad_trimestre_anterior": 44.54,
       "variacion_trimestral_pct": -28.65,
       "diferencial_vs_nacional": 0.53,
-      "posicion_nacional": 7
+      "posicion_nacional": 7,
+      "clasificacion": {
+        "tendencia": "mejora",
+        "gravedad_congestion": 2.24,
+        "es_noticiable": true,
+        "probabilidad_noticiable": 0.72,
+        "confianza_tendencia": 1,
+        "confianza_gravedad": 0.52,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "Comunidad Valenciana",
@@ -78,7 +141,16 @@
       "tasa_litigiosidad_trimestre_anterior": 37.98,
       "variacion_trimestral_pct": -22.2,
       "diferencial_vs_nacional": -1.7,
-      "posicion_nacional": 8
+      "posicion_nacional": 8,
+      "clasificacion": {
+        "tendencia": "mejora",
+        "gravedad_congestion": 0.72,
+        "es_noticiable": true,
+        "probabilidad_noticiable": 0.7,
+        "confianza_tendencia": 1,
+        "confianza_gravedad": 0.69,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "Aragón",
@@ -86,7 +158,16 @@
       "tasa_litigiosidad_trimestre_anterior": 35.67,
       "variacion_trimestral_pct": -17.58,
       "diferencial_vs_nacional": -1.85,
-      "posicion_nacional": 9
+      "posicion_nacional": 9,
+      "clasificacion": {
+        "tendencia": "mejora",
+        "gravedad_congestion": 0.58,
+        "es_noticiable": true,
+        "probabilidad_noticiable": 0.73,
+        "confianza_tendencia": 1,
+        "confianza_gravedad": 0.62,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "Cantabria",
@@ -94,7 +175,16 @@
       "tasa_litigiosidad_trimestre_anterior": 34.91,
       "variacion_trimestral_pct": -17.44,
       "diferencial_vs_nacional": -2.43,
-      "posicion_nacional": 10
+      "posicion_nacional": 10,
+      "clasificacion": {
+        "tendencia": "mejora",
+        "gravedad_congestion": 0.38,
+        "es_noticiable": true,
+        "probabilidad_noticiable": 0.76,
+        "confianza_tendencia": 1,
+        "confianza_gravedad": 0.69,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "Castilla y León",
@@ -102,7 +192,16 @@
       "tasa_litigiosidad_trimestre_anterior": 35.79,
       "variacion_trimestral_pct": -21.46,
       "diferencial_vs_nacional": -3.14,
-      "posicion_nacional": 11
+      "posicion_nacional": 11,
+      "clasificacion": {
+        "tendencia": "mejora",
+        "gravedad_congestion": 0.42,
+        "es_noticiable": true,
+        "probabilidad_noticiable": 0.72,
+        "confianza_tendencia": 1,
+        "confianza_gravedad": 0.65,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "Galicia",
@@ -110,7 +209,16 @@
       "tasa_litigiosidad_trimestre_anterior": 36.21,
       "variacion_trimestral_pct": -26.26,
       "diferencial_vs_nacional": -4.55,
-      "posicion_nacional": 12
+      "posicion_nacional": 12,
+      "clasificacion": {
+        "tendencia": "mejora",
+        "gravedad_congestion": 0.13,
+        "es_noticiable": true,
+        "probabilidad_noticiable": 0.74,
+        "confianza_tendencia": 1,
+        "confianza_gravedad": 0.89,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "Castilla-La Mancha",
@@ -118,7 +226,16 @@
       "tasa_litigiosidad_trimestre_anterior": 34.12,
       "variacion_trimestral_pct": -23.12,
       "diferencial_vs_nacional": -5.02,
-      "posicion_nacional": 13
+      "posicion_nacional": 13,
+      "clasificacion": {
+        "tendencia": "mejora",
+        "gravedad_congestion": 0.09,
+        "es_noticiable": true,
+        "probabilidad_noticiable": 0.82,
+        "confianza_tendencia": 1,
+        "confianza_gravedad": 0.93,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "Navarra",
@@ -126,7 +243,16 @@
       "tasa_litigiosidad_trimestre_anterior": 31.79,
       "variacion_trimestral_pct": -18.02,
       "diferencial_vs_nacional": -5.19,
-      "posicion_nacional": 14
+      "posicion_nacional": 14,
+      "clasificacion": {
+        "tendencia": "mejora",
+        "gravedad_congestion": 0.23,
+        "es_noticiable": true,
+        "probabilidad_noticiable": 0.75,
+        "confianza_tendencia": 1,
+        "confianza_gravedad": 0.8,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "Extremadura",
@@ -134,7 +260,16 @@
       "tasa_litigiosidad_trimestre_anterior": 30.73,
       "variacion_trimestral_pct": -18.06,
       "diferencial_vs_nacional": -6.07,
-      "posicion_nacional": 15
+      "posicion_nacional": 15,
+      "clasificacion": {
+        "tendencia": "mejora",
+        "gravedad_congestion": 0.09,
+        "es_noticiable": true,
+        "probabilidad_noticiable": 0.82,
+        "confianza_tendencia": 1,
+        "confianza_gravedad": 0.93,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "País Vasco",
@@ -142,13 +277,31 @@
       "tasa_litigiosidad_trimestre_anterior": 27.85,
       "variacion_trimestral_pct": -18.78,
       "diferencial_vs_nacional": -8.63,
-      "posicion_nacional": 16
+      "posicion_nacional": 16,
+      "clasificacion": {
+        "tendencia": "mejora",
+        "gravedad_congestion": 0.1,
+        "es_noticiable": true,
+        "probabilidad_noticiable": 0.77,
+        "confianza_tendencia": 1,
+        "confianza_gravedad": 0.91,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "La Rioja",
       "tasa_litigiosidad": 21.75,
       "diferencial_vs_nacional": -9.5,
-      "posicion_nacional": 17
+      "posicion_nacional": 17,
+      "clasificacion": {
+        "tendencia": "mejora",
+        "gravedad_congestion": 0.06,
+        "es_noticiable": true,
+        "probabilidad_noticiable": 0.69,
+        "confianza_tendencia": 0.99,
+        "confianza_gravedad": 0.95,
+        "modelo": "jev-1.13.0"
+      }
     }
   ]
 }

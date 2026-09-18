@@ -2,7 +2,7 @@
   "version_esquema": 1,
   "anio": 2025,
   "trimestre": 1,
-  "generado_en": "2026-09-18T19:28:00.555Z",
+  "generado_en": "2026-09-18T19:51:39.132Z",
   "fuente": {
     "url": "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Consejo-General-del-Poder-Judicial/Oficina-de-Comunicacion/Archivo-de-notas-de-prensa/El-ingreso-de-nuevos-asuntos-en-los-organos-judiciales-mantiene-su-tendencia-al-alza-al-aumentar-un-15-6---en-el-primer-trimestre-de-2025-",
     "titulo": "El ingreso de nuevos asuntos en los órganos judiciales mantiene su tendencia al alza al aumentar un 15,6 % en el primer trimestre de 2025",
@@ -20,97 +20,241 @@
       "comunidad_autonoma": "Canarias",
       "tasa_litigiosidad": 63.91,
       "diferencial_vs_nacional": 23.84,
-      "posicion_nacional": 1
+      "posicion_nacional": 1,
+      "clasificacion": {
+        "tendencia": "empeora",
+        "gravedad_congestion": 3.42,
+        "es_noticiable": true,
+        "probabilidad_noticiable": 0.89,
+        "confianza_tendencia": 0.79,
+        "confianza_gravedad": 0.65,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "Madrid",
       "tasa_litigiosidad": 50.99,
       "diferencial_vs_nacional": 10.92,
-      "posicion_nacional": 2
+      "posicion_nacional": 2,
+      "clasificacion": {
+        "tendencia": "empeora",
+        "gravedad_congestion": 3.02,
+        "es_noticiable": true,
+        "probabilidad_noticiable": 0.61,
+        "confianza_tendencia": 0.91,
+        "confianza_gravedad": 0.98,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "Asturias",
       "tasa_litigiosidad": 50.98,
       "diferencial_vs_nacional": 10.91,
-      "posicion_nacional": 3
+      "posicion_nacional": 3,
+      "clasificacion": {
+        "tendencia": "empeora",
+        "gravedad_congestion": 3.03,
+        "es_noticiable": false,
+        "probabilidad_noticiable": 0.55,
+        "confianza_tendencia": 0.88,
+        "confianza_gravedad": 0.98,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "Andalucía",
       "tasa_litigiosidad": 49.8,
       "diferencial_vs_nacional": 9.73,
-      "posicion_nacional": 4
+      "posicion_nacional": 4,
+      "clasificacion": {
+        "tendencia": "empeora",
+        "gravedad_congestion": 3.02,
+        "es_noticiable": false,
+        "probabilidad_noticiable": 0.58,
+        "confianza_tendencia": 0.93,
+        "confianza_gravedad": 0.98,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "Cataluña",
       "tasa_litigiosidad": 48.06,
       "diferencial_vs_nacional": 7.99,
-      "posicion_nacional": 5
+      "posicion_nacional": 5,
+      "clasificacion": {
+        "tendencia": "empeora",
+        "gravedad_congestion": 3.01,
+        "es_noticiable": true,
+        "probabilidad_noticiable": 0.64,
+        "confianza_tendencia": 0.94,
+        "confianza_gravedad": 0.99,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "Baleares",
       "tasa_litigiosidad": 46.97,
       "diferencial_vs_nacional": 6.9,
-      "posicion_nacional": 6
+      "posicion_nacional": 6,
+      "clasificacion": {
+        "tendencia": "empeora",
+        "gravedad_congestion": 3,
+        "es_noticiable": false,
+        "probabilidad_noticiable": 0.5,
+        "confianza_tendencia": 0.88,
+        "confianza_gravedad": 0.99,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "Murcia",
       "tasa_litigiosidad": 45.16,
       "diferencial_vs_nacional": 5.09,
-      "posicion_nacional": 7
+      "posicion_nacional": 7,
+      "clasificacion": {
+        "tendencia": "empeora",
+        "gravedad_congestion": 2.99,
+        "es_noticiable": false,
+        "probabilidad_noticiable": 0.18,
+        "confianza_tendencia": 0.9,
+        "confianza_gravedad": 0.99,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "Comunidad Valenciana",
       "tasa_litigiosidad": 44.55,
       "diferencial_vs_nacional": 4.48,
-      "posicion_nacional": 8
+      "posicion_nacional": 8,
+      "clasificacion": {
+        "tendencia": "empeora",
+        "gravedad_congestion": 2.99,
+        "es_noticiable": false,
+        "probabilidad_noticiable": 0.16,
+        "confianza_tendencia": 0.89,
+        "confianza_gravedad": 0.99,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "Castilla y León",
       "tasa_litigiosidad": 42.88,
       "diferencial_vs_nacional": 2.81,
-      "posicion_nacional": 9
+      "posicion_nacional": 9,
+      "clasificacion": {
+        "tendencia": "empeora",
+        "gravedad_congestion": 2.97,
+        "es_noticiable": false,
+        "probabilidad_noticiable": 0.14,
+        "confianza_tendencia": 0.8,
+        "confianza_gravedad": 0.98,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "Galicia",
       "tasa_litigiosidad": 42.51,
       "diferencial_vs_nacional": 2.44,
-      "posicion_nacional": 10
+      "posicion_nacional": 10,
+      "clasificacion": {
+        "tendencia": "empeora",
+        "gravedad_congestion": 2.94,
+        "es_noticiable": false,
+        "probabilidad_noticiable": 0.11,
+        "confianza_tendencia": 0.73,
+        "confianza_gravedad": 0.95,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "Cantabria",
       "tasa_litigiosidad": 40.9,
       "diferencial_vs_nacional": 0.83,
-      "posicion_nacional": 11
+      "posicion_nacional": 11,
+      "clasificacion": {
+        "tendencia": "empeora",
+        "gravedad_congestion": 2.92,
+        "es_noticiable": false,
+        "probabilidad_noticiable": 0.08,
+        "confianza_tendencia": 0.43,
+        "confianza_gravedad": 0.93,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "Castilla-La Mancha",
       "tasa_litigiosidad": 40.15,
       "diferencial_vs_nacional": 0.08,
-      "posicion_nacional": 12
+      "posicion_nacional": 12,
+      "clasificacion": {
+        "tendencia": "estable",
+        "gravedad_congestion": 2.73,
+        "es_noticiable": false,
+        "probabilidad_noticiable": 0.05,
+        "confianza_tendencia": 0.52,
+        "confianza_gravedad": 0.78,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "Extremadura",
       "tasa_litigiosidad": 39.57,
       "diferencial_vs_nacional": -0.5,
-      "posicion_nacional": 13
+      "posicion_nacional": 13,
+      "clasificacion": {
+        "tendencia": "mejora",
+        "gravedad_congestion": 1.18,
+        "es_noticiable": false,
+        "probabilidad_noticiable": 0.05,
+        "confianza_tendencia": 0.37,
+        "confianza_gravedad": 0.85,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "La Rioja",
       "tasa_litigiosidad": 39.13,
       "diferencial_vs_nacional": -0.94,
-      "posicion_nacional": 14
+      "posicion_nacional": 14,
+      "clasificacion": {
+        "tendencia": "mejora",
+        "gravedad_congestion": 1.12,
+        "es_noticiable": false,
+        "probabilidad_noticiable": 0.05,
+        "confianza_tendencia": 0.43,
+        "confianza_gravedad": 0.89,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "Navarra",
       "tasa_litigiosidad": 38.98,
       "diferencial_vs_nacional": -1.09,
-      "posicion_nacional": 15
+      "posicion_nacional": 15,
+      "clasificacion": {
+        "tendencia": "mejora",
+        "gravedad_congestion": 1.06,
+        "es_noticiable": false,
+        "probabilidad_noticiable": 0.06,
+        "confianza_tendencia": 0.62,
+        "confianza_gravedad": 0.94,
+        "modelo": "jev-1.13.0"
+      }
     },
     {
       "comunidad_autonoma": "Aragón",
       "tasa_litigiosidad": 37.19,
       "diferencial_vs_nacional": -2.88,
-      "posicion_nacional": 16
+      "posicion_nacional": 16,
+      "clasificacion": {
+        "tendencia": "mejora",
+        "gravedad_congestion": 1,
+        "es_noticiable": false,
+        "probabilidad_noticiable": 0.13,
+        "confianza_tendencia": 0.9,
+        "confianza_gravedad": 0.99,
+        "modelo": "jev-1.13.0"
+      }
     }
   ]
 }
