@@ -2,7 +2,7 @@
   "version_esquema": 1,
   "anio": 2026,
   "trimestre": 1,
-  "generado_en": "2026-09-18T21:01:27.723Z",
+  "generado_en": "2026-09-18T21:27:34.801Z",
   "fuente": {
     "url": "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Consejo-General-del-Poder-Judicial/Oficina-de-Comunicacion/Archivo-de-notas-de-prensa/El-ingreso-de-nuevos-asuntos-en-los-organos-judiciales-baja-un-20-6---en-el-primer-trimestre-del-ano-tras-el-descenso-del-35-8---en-el-orden-civil-",
     "titulo": "El ingreso de nuevos asuntos en los órganos judiciales baja un 20,6 % en el primer trimestre del año tras el descenso del 35,8 % en el orden civil",
@@ -24,11 +24,11 @@
       "posicion_nacional": 1,
       "clasificacion": {
         "tendencia": "mejora",
-        "gravedad_congestion": 2.95,
+        "gravedad_congestion": 2.87,
         "es_noticiable": true,
-        "probabilidad_noticiable": 0.91,
-        "confianza_tendencia": 0.61,
-        "confianza_gravedad": 0.95,
+        "probabilidad_noticiable": 0.93,
+        "confianza_tendencia": 0.68,
+        "confianza_gravedad": 0.84,
         "modelo": "jev-1.13.0"
       }
     },
@@ -39,12 +39,12 @@
       "diferencial_vs_nacional": 4.58,
       "posicion_nacional": 2,
       "clasificacion": {
-        "tendencia": "empeora",
-        "gravedad_congestion": 2.96,
+        "tendencia": "mejora",
+        "gravedad_congestion": 0.48,
         "es_noticiable": true,
-        "probabilidad_noticiable": 0.89,
-        "confianza_tendencia": 0.25,
-        "confianza_gravedad": 0.96,
+        "probabilidad_noticiable": 0.85,
+        "confianza_tendencia": 0.28,
+        "confianza_gravedad": 0.6,
         "modelo": "jev-1.13.0"
       }
     },
@@ -56,11 +56,11 @@
       "posicion_nacional": 3,
       "clasificacion": {
         "tendencia": "mejora",
-        "gravedad_congestion": 2.91,
+        "gravedad_congestion": 2.93,
         "es_noticiable": true,
-        "probabilidad_noticiable": 0.89,
-        "confianza_tendencia": 0.8,
-        "confianza_gravedad": 0.92,
+        "probabilidad_noticiable": 0.9,
+        "confianza_tendencia": 0.66,
+        "confianza_gravedad": 0.87,
         "modelo": "jev-1.13.0"
       }
     },
@@ -72,11 +72,11 @@
       "posicion_nacional": 4,
       "clasificacion": {
         "tendencia": "mejora",
-        "gravedad_congestion": 2.79,
+        "gravedad_congestion": 1.37,
         "es_noticiable": true,
-        "probabilidad_noticiable": 0.9,
-        "confianza_tendencia": 0.77,
-        "confianza_gravedad": 0.82,
+        "probabilidad_noticiable": 0.87,
+        "confianza_tendencia": 0.91,
+        "confianza_gravedad": 0.61,
         "modelo": "jev-1.13.0"
       }
     },
@@ -88,11 +88,11 @@
       "posicion_nacional": 5,
       "clasificacion": {
         "tendencia": "mejora",
-        "gravedad_congestion": 2.5,
+        "gravedad_congestion": 1.63,
         "es_noticiable": true,
-        "probabilidad_noticiable": 0.9,
-        "confianza_tendencia": 0.67,
-        "confianza_gravedad": 0.58,
+        "probabilidad_noticiable": 0.91,
+        "confianza_tendencia": 0.79,
+        "confianza_gravedad": 0.61,
         "modelo": "jev-1.13.0"
       }
     },
@@ -104,11 +104,11 @@
       "posicion_nacional": 6,
       "clasificacion": {
         "tendencia": "mejora",
-        "gravedad_congestion": 2.5,
+        "gravedad_congestion": 3.14,
         "es_noticiable": true,
-        "probabilidad_noticiable": 0.88,
-        "confianza_tendencia": 0.88,
-        "confianza_gravedad": 0.59,
+        "probabilidad_noticiable": 0.89,
+        "confianza_tendencia": 0.83,
+        "confianza_gravedad": 0.8,
         "modelo": "jev-1.13.0"
       }
     },
@@ -120,11 +120,11 @@
       "posicion_nacional": 7,
       "clasificacion": {
         "tendencia": "mejora",
-        "gravedad_congestion": 1.06,
+        "gravedad_congestion": 3.06,
         "es_noticiable": true,
-        "probabilidad_noticiable": 0.9,
-        "confianza_tendencia": 0.77,
-        "confianza_gravedad": 0.7,
+        "probabilidad_noticiable": 0.89,
+        "confianza_tendencia": 0.75,
+        "confianza_gravedad": 0.8,
         "modelo": "jev-1.13.0"
       }
     },
@@ -136,11 +136,11 @@
       "posicion_nacional": 8,
       "clasificacion": {
         "tendencia": "mejora",
-        "gravedad_congestion": 0.52,
+        "gravedad_congestion": 0.96,
         "es_noticiable": true,
         "probabilidad_noticiable": 0.9,
-        "confianza_tendencia": 0.94,
-        "confianza_gravedad": 0.57,
+        "confianza_tendencia": 0.95,
+        "confianza_gravedad": 0.67,
         "modelo": "jev-1.13.0"
       }
     },
@@ -152,11 +152,11 @@
       "posicion_nacional": 9,
       "clasificacion": {
         "tendencia": "mejora",
-        "gravedad_congestion": 0.59,
+        "gravedad_congestion": 0.39,
         "es_noticiable": false,
-        "probabilidad_noticiable": 0.21,
-        "confianza_tendencia": 0.72,
-        "confianza_gravedad": 0.58,
+        "probabilidad_noticiable": 0.53,
+        "confianza_tendencia": 0.59,
+        "confianza_gravedad": 0.67,
         "modelo": "jev-1.13.0"
       }
     },
@@ -168,11 +168,11 @@
       "posicion_nacional": 10,
       "clasificacion": {
         "tendencia": "mejora",
-        "gravedad_congestion": 0.38,
+        "gravedad_congestion": 0.86,
         "es_noticiable": true,
         "probabilidad_noticiable": 0.9,
-        "confianza_tendencia": 0.94,
-        "confianza_gravedad": 0.68,
+        "confianza_tendencia": 0.88,
+        "confianza_gravedad": 0.74,
         "modelo": "jev-1.13.0"
       }
     },
@@ -184,11 +184,11 @@
       "posicion_nacional": 11,
       "clasificacion": {
         "tendencia": "mejora",
-        "gravedad_congestion": 0.24,
+        "gravedad_congestion": 0.78,
         "es_noticiable": false,
-        "probabilidad_noticiable": 0.23,
-        "confianza_tendencia": 0.97,
-        "confianza_gravedad": 0.8,
+        "probabilidad_noticiable": 0.51,
+        "confianza_tendencia": 0.86,
+        "confianza_gravedad": 0.67,
         "modelo": "jev-1.13.0"
       }
     },
@@ -200,11 +200,11 @@
       "posicion_nacional": 12,
       "clasificacion": {
         "tendencia": "mejora",
-        "gravedad_congestion": 0.34,
+        "gravedad_congestion": 0.97,
         "es_noticiable": true,
         "probabilidad_noticiable": 0.89,
-        "confianza_tendencia": 0.99,
-        "confianza_gravedad": 0.72,
+        "confianza_tendencia": 0.97,
+        "confianza_gravedad": 0.73,
         "modelo": "jev-1.13.0"
       }
     },
@@ -216,11 +216,11 @@
       "posicion_nacional": 13,
       "clasificacion": {
         "tendencia": "mejora",
-        "gravedad_congestion": 0.23,
+        "gravedad_congestion": 1.09,
         "es_noticiable": true,
-        "probabilidad_noticiable": 0.91,
-        "confianza_tendencia": 0.93,
-        "confianza_gravedad": 0.81,
+        "probabilidad_noticiable": 0.89,
+        "confianza_tendencia": 0.85,
+        "confianza_gravedad": 0.67,
         "modelo": "jev-1.13.0"
       }
     },
@@ -232,11 +232,11 @@
       "posicion_nacional": 14,
       "clasificacion": {
         "tendencia": "mejora",
-        "gravedad_congestion": 0.33,
+        "gravedad_congestion": 2.99,
         "es_noticiable": true,
-        "probabilidad_noticiable": 0.93,
-        "confianza_tendencia": 0.93,
-        "confianza_gravedad": 0.73,
+        "probabilidad_noticiable": 0.9,
+        "confianza_tendencia": 0.89,
+        "confianza_gravedad": 0.72,
         "modelo": "jev-1.13.0"
       }
     },
@@ -248,10 +248,10 @@
       "posicion_nacional": 15,
       "clasificacion": {
         "tendencia": "mejora",
-        "gravedad_congestion": 0.6,
+        "gravedad_congestion": 0.59,
         "es_noticiable": true,
-        "probabilidad_noticiable": 0.92,
-        "confianza_tendencia": 0.43,
+        "probabilidad_noticiable": 0.9,
+        "confianza_tendencia": 0.48,
         "confianza_gravedad": 0.61,
         "modelo": "jev-1.13.0"
       }
@@ -264,11 +264,11 @@
       "posicion_nacional": 16,
       "clasificacion": {
         "tendencia": "mejora",
-        "gravedad_congestion": 0.31,
+        "gravedad_congestion": 0.57,
         "es_noticiable": true,
-        "probabilidad_noticiable": 0.92,
-        "confianza_tendencia": 0.9,
-        "confianza_gravedad": 0.75,
+        "probabilidad_noticiable": 0.93,
+        "confianza_tendencia": 0.92,
+        "confianza_gravedad": 0.56,
         "modelo": "jev-1.13.0"
       }
     },
@@ -278,12 +278,12 @@
       "diferencial_vs_nacional": -9.13,
       "posicion_nacional": 17,
       "clasificacion": {
-        "tendencia": "empeora",
-        "gravedad_congestion": 1.02,
+        "tendencia": "mejora",
+        "gravedad_congestion": 0.96,
         "es_noticiable": true,
-        "probabilidad_noticiable": 0.63,
-        "confianza_tendencia": 0.41,
-        "confianza_gravedad": 0.67,
+        "probabilidad_noticiable": 0.83,
+        "confianza_tendencia": 0.08,
+        "confianza_gravedad": 0.71,
         "modelo": "jev-1.13.0"
       }
     }
