@@ -13,6 +13,17 @@ export interface DatoTrimestral {
   tasa_litigiosidad_media_nacional: number;
   variacion_interanual_pct?: number;
   serie_historica: PuntoSerie[];
+  /** Serie anual 2001–2025 del CGPJ (últimos 10 años) como contexto histórico. */
+  serie_anual?: PuntoAnual[];
+  /** Indicadores clave del CGPJ (medidas directas de congestión, pendencia y resolución). */
+  tasa_resolucion?: number;
+  tasa_resolucion_anio_anterior?: number;
+  tasa_pendencia?: number;
+  tasa_pendencia_anio_anterior?: number;
+  tasa_congestion?: number;
+  tasa_congestion_anio_anterior?: number;
+  media_nacional_congestion?: number;
+  media_nacional_pendencia?: number;
   /** Casos concretos saneados (sin datos personales) para sustentar la clasificación. */
   edictos_representativos?: EvidenciaEdicto[];
   resumen_nota_prensa?: string;
@@ -22,6 +33,20 @@ export interface PuntoSerie {
   anio: number;
   trimestre: number;
   tasa_litigiosidad: number;
+}
+
+export interface PuntoAnual {
+  anio: number;
+  tasa_litigiosidad: number;
+}
+
+/** Serie anual por TSJ (2001–2025) descargada de las series estadísticas del CGPJ. */
+export interface SerieAnual {
+  version_esquema: 1;
+  fuente: { url: string; titulo: string };
+  anios: number[];
+  nacional: (number | null)[];
+  comunidades: { comunidad_autonoma: string; valores: (number | null)[] }[];
 }
 
 export interface ClasificacionLitigiosidad {

@@ -20,6 +20,8 @@ Requisitos: Node.js 22 o superior y npm.
 npm install
 npm run dev            # web en http://localhost:3000
 npm run ingest         # descarga y guarda la última nota trimestral
+npm run backfill-anual # series anuales 2001-2025 del CGPJ (data/anual)
+npm run indicadores    # congestión, pendencia y resolución por TSJ (data/indicadores)
 ```
 
 Opciones de ingesta:
@@ -64,8 +66,9 @@ Detalles del provider que conviene tener presentes:
 `.github/workflows/ingest.yml` ejecuta la ingesta **todos los lunes a las 06:00 UTC** y
 commitea `data/` si hay cambios. Para que clasifique, añade el secreto
 `TYPESAFE_AI_API_KEY` en el repositorio de GitHub (es opcional: sin él solo recopila datos).
-Al lanzarlo a mano desde la pestaña Actions puedes marcar la casilla `todas` para clasificar
-también todo el histórico descubierto (`--todas --force`).
+Tras la ingesta ejecuta `npm run indicadores` (congestión, pendencia y resolución).
+Al lanzarlo a mano desde la pestaña Actions puedes marcar `todas` (clasificar todo el
+histórico descubierto) y `reclasificar` (volver a clasificar con los indicadores nuevos).
 
 No se usa Vercel Cron a propósito: el filesystem de Vercel es de solo lectura, así que un
 cron allí no puede persistir el JSON en el repositorio. Con la Action, el commit dispara el
@@ -83,6 +86,14 @@ y `clasificacion`.
 
 - `tasa_litigiosidad_trimestre_anterior` y `variacion_interanual_pct` se derivan de los JSON
   guardados: si aún no hay histórico, quedan vacíos.
+- `data/anual/litigiosidad-anual.json` guarda la serie anual 2001–2025 por TSJ del CGPJ
+  (`npm run backfill-anual`). La ingesta añade `serie_anual` (últimos 10 años) al `state` de
+  jev como contexto histórico.
+- `data/indicadores/AAAA-Tn.json` guarda congestión, pendencia y resolución reales por CCAA,
+  con el mismo periodo del año anterior y el nacional (`npm run indicadores`, idempotente).
+  Cuando existen, la ingesta los pasa a jev y `gravedad_congestion` deja de usar la
+  litigiosidad como proxy; para aplicarlos a un trimestre ya clasificado:
+  `npm run ingest -- --reclasificar` (o el input `reclasificar` del workflow).
 - Hay huecos tal y como los publicó el CGPJ: 2025-T1 no trae la tasa de País Vasco y 2025-T2
   no trae la de La Rioja. Se registran en `comunidades_ausentes` al parsear y se muestran
   como celdas vacías.

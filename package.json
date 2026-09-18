@@ -9,7 +9,9 @@
     "lint": "eslint",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "ingest": "tsx scripts/ingest.ts"
+    "ingest": "tsx scripts/ingest.ts",
+    "backfill-anual": "tsx scripts/backfill-anual.ts",
+    "indicadores": "tsx scripts/indicadores.ts"
   },
   "dependencies": {
     "@ai-sdk/typesafe-ai": "^3.0.3",
@@ -26,6 +28,8 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.3.5",
+    "exceljs": "^4.4.0",
+    "pdf-parse": "^2.4.5",
     "tsx": "^4.23.13",
     "typescript": "^5",
     "vitest": "^5.0.1"

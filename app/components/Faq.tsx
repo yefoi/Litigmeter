@@ -66,9 +66,9 @@ const PREGUNTAS: Pregunta[] = [
     pregunta: "¿Gravedad es lo mismo que congestión judicial?",
     respuesta: (
       <p>
-        No. La congestión real relaciona asuntos resueltos y pendientes, y estas notas no la
-        publican de forma comparable por comunidad. La gravedad aquí usa la litigiosidad como
-        indicador de presión de carga.
+        Ahora la gravedad se apoya en la congestión, la pendencia y la resolución reales que
+        publica el CGPJ en sus indicadores clave del trimestre. Solo cuando esos indicadores
+        no están disponibles se usa la litigiosidad como indicador de presión de carga.
       </p>
     ),
   },

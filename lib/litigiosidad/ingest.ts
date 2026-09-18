@@ -1,6 +1,7 @@
 import * as cheerio from "cheerio";
 import path from "node:path";
 import { leerEvidencias } from "../edictos/evidencias";
+import { leerIndicadores } from "../indicadores/ficheros";
 import { clasificarTrimestre } from "./classify";
 import {
   buscarRegistro,
@@ -12,6 +13,7 @@ import {
   redondear,
 } from "./historico";
 import { parseNotaLitigiosidad } from "./parser";
+import { leerSerieAnual, serieAnualDeComunidad } from "./series";
 import type { DatoTrimestral, InformeTrimestral, RegistroComunidad } from "./tipos";
 
 const BASE = "https://www.poderjudicial.es";
@@ -177,6 +179,16 @@ export async function ingerirNota(
     );
   }
 
+  const serieAnual = await leerSerieAnual(path.dirname(dataDir));
+  if (serieAnual) {
+    console.log(`Serie anual ${serieAnual.anios[0]}–${serieAnual.anios.at(-1)} disponible.`);
+  }
+
+  const indicadores = await leerIndicadores(path.dirname(dataDir), nota.anio, nota.trimestre);
+  if (indicadores) {
+    console.log(`Indicadores clave: ${Object.keys(indicadores.comunidades).length} CCAA.`);
+  }
+
   const historicos = (await leerInformes(dataDir)).filter(
     (i) => !(i.anio === nota.anio && i.trimestre === nota.trimestre),
   );
@@ -193,6 +205,11 @@ export async function ingerirNota(
       resumenNota: nota.resumen,
       historicos,
       edictosRepresentativos: evidencias?.comunidades[comunidad.nombre],
+      serieAnual: serieAnual
+        ? serieAnualDeComunidad(serieAnual, comunidad.nombre, nota.anio)
+        : undefined,
+      indicadores: indicadores?.comunidades[comunidad.nombre],
+      indicadoresNacional: indicadores?.nacional,
     }),
   );
 

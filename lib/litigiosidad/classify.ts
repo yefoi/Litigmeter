@@ -31,10 +31,10 @@ export async function clasificarTrimestre(
           "Clasifica la tendencia de la carga judicial de esta comunidad autónoma " +
           "en el trimestre. Compara `tasa_litigiosidad_actual` con " +
           "`tasa_litigiosidad_trimestre_anterior` (si está disponible), con " +
-          "`tasa_litigiosidad_media_nacional` y con `serie_historica` (si está " +
-          "disponible). Usa `resumen_nota_prensa` para matizar la lectura y, si " +
-          "`edictos_representativos` está presente, úsalo como evidencia " +
-          "cualitativa de los asuntos que se están tramitando.",
+          "`tasa_litigiosidad_media_nacional` y con `serie_historica` y " +
+          "`serie_anual` (si están disponibles). Usa `resumen_nota_prensa` para " +
+          "matizar la lectura y, si `edictos_representativos` está presente, " +
+          "úsalo como evidencia cualitativa de los asuntos que se están tramitando.",
         criteria: {
           mejora:
             "La tasa baja respecto al trimestre anterior, o se sitúa claramente por " +
@@ -50,10 +50,13 @@ export async function clasificarTrimestre(
       gravedad_congestion: {
         type: "score",
         instructions:
-          "Evalúa la presión de carga judicial de esta comunidad autónoma. No hay " +
-          "medidas directas de congestión: usa la tasa de litigiosidad actual, su " +
-          "distancia a la media nacional (`tasa_litigiosidad_media_nacional`) y su " +
-          "posición en `serie_historica` como indicadores de carga.",
+          "Evalúa la presión de carga judicial de esta comunidad autónoma. Si " +
+          "`tasa_congestion`, `tasa_pendencia` o `tasa_resolucion` están disponibles, " +
+          "úsalas como medida directa, comparándolas con su valor del año anterior y " +
+          "con `media_nacional_congestion` y `media_nacional_pendencia` si están. Si " +
+          "no, usa la tasa de litigiosidad (`tasa_litigiosidad_actual`), su distancia " +
+          "a `tasa_litigiosidad_media_nacional` y `serie_historica`/`serie_anual` como " +
+          "indicadores de carga.",
         criteria: [
           "Tasa claramente por debajo de la media nacional y de su serie histórica; sin presión de carga.",
           "Tasa por debajo de la media nacional, o en la parte baja de su serie histórica.",
@@ -66,12 +69,13 @@ export async function clasificarTrimestre(
         type: "boolean",
         instructions:
           "¿Este dato es lo bastante inusual como para destacarlo en un resumen " +
-          "editorial? Considera un máximo o mínimo de la serie histórica " +
-          "disponible, una variación interanual brusca (más de un 15 % en valor " +
-          "absoluto) o un diferencial frente a la media nacional superior al 15 %. " +
-          "Si se aportan `edictos_representativos`, valora si alguno de esos casos " +
-          "concretos hace más destacable el dato. Responde sí solo si hay algo " +
-          "realmente destacable.",
+          "editorial? Considera un máximo o mínimo de `serie_anual` o " +
+          "`serie_historica` (si están disponibles), una variación interanual " +
+          "brusca (más de un 15 % en valor absoluto) o un diferencial frente a la " +
+          "media nacional superior al 15 %. Si se aportan " +
+          "`edictos_representativos`, valora si alguno de esos casos concretos " +
+          "hace más destacable el dato. Responde sí solo si hay algo realmente " +
+          "destacable.",
       },
     },
   });

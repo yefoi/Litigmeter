@@ -1,9 +1,11 @@
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import type { EvidenciaEdicto } from "../edictos/tipos";
+import type { TasasIndicadores } from "../indicadores/tipos";
 import type {
   DatoTrimestral,
   InformeTrimestral,
+  PuntoAnual,
   PuntoSerie,
   RegistroComunidad,
 } from "./tipos";
@@ -76,6 +78,9 @@ interface ParametrosDato {
   resumenNota: string;
   historicos: InformeTrimestral[];
   edictosRepresentativos?: EvidenciaEdicto[];
+  serieAnual?: PuntoAnual[];
+  indicadores?: TasasIndicadores;
+  indicadoresNacional?: TasasIndicadores;
 }
 
 export function construirDatoTrimestral({
@@ -87,6 +92,9 @@ export function construirDatoTrimestral({
   resumenNota,
   historicos,
   edictosRepresentativos,
+  serieAnual,
+  indicadores,
+  indicadoresNacional,
 }: ParametrosDato): DatoTrimestral {
   const anterior = trimestreAnterior(anio, trimestre);
   const informeAnterior = historicos.find(
@@ -127,6 +135,15 @@ export function construirDatoTrimestral({
         ? redondear(((tasaActual - registroInteranual.tasa_litigiosidad) / registroInteranual.tasa_litigiosidad) * 100)
         : undefined,
     serie_historica: serie,
+    serie_anual: serieAnual?.length ? serieAnual : undefined,
+    tasa_resolucion: indicadores?.resolucion,
+    tasa_resolucion_anio_anterior: indicadores?.resolucion_anio_anterior,
+    tasa_pendencia: indicadores?.pendencia,
+    tasa_pendencia_anio_anterior: indicadores?.pendencia_anio_anterior,
+    tasa_congestion: indicadores?.congestion,
+    tasa_congestion_anio_anterior: indicadores?.congestion_anio_anterior,
+    media_nacional_congestion: indicadoresNacional?.congestion,
+    media_nacional_pendencia: indicadoresNacional?.pendencia,
     edictos_representativos: edictosRepresentativos?.length ? edictosRepresentativos : undefined,
     resumen_nota_prensa: resumenNota || undefined,
   };

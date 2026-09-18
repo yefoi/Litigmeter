@@ -10,6 +10,10 @@ on:
         description: "Clasificar todo el histórico descubierto (--todas --force)"
         type: boolean
         default: false
+      reclasificar:
+        description: "Volver a clasificar aunque ya existan clasificaciones (usa indicadores clave / evidencia nuevos)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -35,9 +39,12 @@ jobs:
         run: npm ci
 
       - name: Ingesta y clasificación
-        run: npm run ingest ${{ github.event_name == 'workflow_dispatch' && inputs.todas && '-- --todas --force' || '' }}
+        run: npm run ingest ${{ github.event_name == 'workflow_dispatch' && inputs.todas && '-- --todas --force' || '' }} ${{ github.event_name == 'workflow_dispatch' && inputs.reclasificar && '--reclasificar' || '' }}
         env:
           TYPESAFE_AI_API_KEY: ${{ secrets.TYPESAFE_AI_API_KEY }}
+
+      - name: Indicadores clave
+        run: npm run indicadores
 
       - name: Commit de datos
         run: |
