@@ -1,7 +1,9 @@
 import styles from "../page.module.css";
 import {
+  confianzaMinima,
   etiquetaGravedad,
   etiquetaTrimestre,
+  formatearConfianza,
   formatearPorcentaje,
   formatearTasa,
 } from "@/lib/litigiosidad/presentacion";
@@ -35,6 +37,7 @@ export default function TablaTrimestres({
             <th scope="col">Interanual</th>
             <th scope="col">Tendencia</th>
             <th scope="col">Gravedad</th>
+            <th scope="col">Confianza</th>
             <th scope="col">Noticiable</th>
           </tr>
         </thead>
@@ -59,6 +62,15 @@ export default function TablaTrimestres({
                 {registro?.clasificacion
                   ? etiquetaGravedad(registro.clasificacion.gravedad_congestion)
                   : "—"}
+              </td>
+              <td
+                className={
+                  (confianzaMinima(registro?.clasificacion) ?? 1) < 0.5
+                    ? styles.confianzaBaja
+                    : undefined
+                }
+              >
+                {formatearConfianza(confianzaMinima(registro?.clasificacion))}
               </td>
               <td>
                 {registro?.clasificacion

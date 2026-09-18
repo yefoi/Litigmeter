@@ -157,6 +157,17 @@
   color: var(--texto-suave);
 }
 
+.confianzaBaja {
+  color: #b45309;
+  font-weight: 600;
+}
+
+@media (prefers-color-scheme: dark) {
+  .confianzaBaja {
+    color: #fbbf24;
+  }
+}
+
 .insignia {
   display: inline-block;
   padding: 3px 10px;

@@ -1,0 +1,47 @@
+name: Watchdog litigiosidad
+
+on:
+  schedule:
+    # Lunes a las 07:00 UTC, una hora después de la ingesta.
+    - cron: "0 7 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  comprobar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Configurar Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Comprobar el último informe esperado
+        id: comprobar
+        run: npm run watchdog
+        continue-on-error: true
+
+      - name: Abrir issue si falta el informe
+        if: steps.comprobar.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          titulo="Retraso en la nota trimestral de litigiosidad"
+          existente=$(gh issue list --state open --search "$titulo" --json title --jq '.[].title')
+          if echo "$existente" | grep -qF "$titulo"; then
+            echo "Ya hay un issue abierto: $titulo"
+          else
+            gh issue create \
+              --title "$titulo" \
+              --body "El watchdog no encuentra el informe trimestral esperado. Revisa las notas del CGPJ y lanza la ingesta manualmente (Actions → Ingesta Litigmeter → Run workflow)."
+          fi

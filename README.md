@@ -9,9 +9,10 @@ notas de prensa del CGPJ, con tendencia, gravedad y noticiabilidad clasificadas 
 - **Enriquecimiento**: compara con el trimestre anterior, el mismo trimestre del año anterior
   y su propia serie histórica usando los informes ya guardados.
 - **Clasificación**: una llamada a `experimental_evaluate` por CCAA y trimestre (~68 al año).
-- **Visualización**: web Next.js prerenderizada con línea de tendencia (Recharts), mapa de
-  calor por CCAA, tabla del último informe, una página por comunidad (`/ccaa/[slug]`), feed
-  RSS (`/feed.xml`) y resumen editorial generado a partir de las clasificaciones de jev.
+- **Visualización**: web Next.js prerenderizada con línea de tendencia (Recharts) y
+  comparador de dos series, mapa de calor por CCAA, tabla del último informe, una página por
+  comunidad (`/ccaa/[slug]`, con OpenGraph propio), feed RSS (`/feed.xml`) y resumen
+  editorial generado a partir de las clasificaciones de jev.
 
 ## Puesta en marcha
 
@@ -24,6 +25,9 @@ npm run ingest         # descarga y guarda la última nota trimestral
 npm run backfill-anual # series anuales 2001-2025 del CGPJ (data/anual)
 npm run indicadores    # congestión, pendencia y resolución por TSJ (data/indicadores)
 npm run editorial      # resumen editorial del último trimestre (data/editorial)
+npm run calibrar       # distribución de probabilidades + CSV para etiquetar
+npm run validar        # valida todos los JSON de data/ con Zod
+npm run watchdog       # comprueba que el informe trimestral esperado está publicado
 ```
 
 Opciones de ingesta:
@@ -53,7 +57,12 @@ El esquema de preguntas vive en `lib/litigiosidad/classify.ts`:
 | --- | --- | --- |
 | `tendencia` | `choice` | `mejora` / `estable` / `empeora` |
 | `gravedad_congestion` | `score` | posición fraccionaria 0–4 (la UI la muestra como 1–5) |
-| `es_noticiable` | `boolean` | `probability` = P(true); el umbral 0.6 es ajustable |
+| `es_noticiable` | `boolean` | `probability` = P(true); umbral configurable con `UMBRAL_NOTICIABLE` (0.75 por defecto) |
+
+`npm run calibrar` imprime cuántas CCAA quedarían noticiables con cada umbral y deja
+`data/calibracion/noticiabilidad.csv` con una columna `etiqueta_humana` para etiquetar a
+mano y elegir el umbral con datos. La confianza de jev (tendencia y gravedad) se muestra en
+las tablas y se resalta cuando baja del 50 %.
 
 Detalles del provider que conviene tener presentes:
 
@@ -68,10 +77,13 @@ Detalles del provider que conviene tener presentes:
 `.github/workflows/ingest.yml` ejecuta la ingesta **todos los lunes a las 06:00 UTC** y
 commitea `data/` si hay cambios. Para que clasifique, añade el secreto
 `TYPESAFE_AI_API_KEY` en el repositorio de GitHub (es opcional: sin él solo recopila datos).
-Tras la ingesta ejecuta `npm run indicadores` (congestión, pendencia y resolución) y
-`npm run editorial` (resumen del trimestre).
+Tras la ingesta ejecuta `npm run indicadores` (congestión, pendencia y resolución),
+`npm run editorial` (resumen del trimestre) y `npm run validar` (esquemas Zod).
 Al lanzarlo a mano desde la pestaña Actions puedes marcar `todas` (clasificar todo el
 histórico descubierto) y `reclasificar` (volver a clasificar con los indicadores nuevos).
+
+`.github/workflows/watchdog.yml` comprueba cada lunes si el informe trimestral esperado ya
+está publicado y abre un issue si falta, para que un retraso del CGPJ no pase inadvertido.
 
 No se usa Vercel Cron a propósito: el filesystem de Vercel es de solo lectura, así que un
 cron allí no puede persistir el JSON en el repositorio. Con la Action, el commit dispara el
@@ -127,7 +139,7 @@ jev recibe el texto redactado y el dashboard no muestra edictos.
 ## Verificación
 
 ```bash
-npm test          # parser (3 plantillas reales) y enriquecimiento
+npm test          # 40+ tests: parser, enriquecimiento, series, indicadores, edictos, editorial, watchdog y datos
 npm run typecheck
 npm run lint
 npm run build

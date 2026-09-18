@@ -9,8 +9,10 @@ import { leerEditorial } from "@/lib/editorial/ficheros";
 import { leerInformes } from "@/lib/litigiosidad/historico";
 import {
   CLAVE_NACIONAL,
+  confianzaMinima,
   etiquetaGravedad,
   etiquetaTrimestre,
+  formatearConfianza,
   formatearPorcentaje,
   formatearTasa,
   nombresDeComunidades,
@@ -150,6 +152,7 @@ export default async function Home() {
                 <th scope="col">Interanual</th>
                 <th scope="col">Tendencia</th>
                 <th scope="col">Gravedad</th>
+                <th scope="col">Confianza</th>
                 <th scope="col">Noticiable</th>
               </tr>
             </thead>
@@ -180,6 +183,15 @@ export default async function Home() {
                     {comunidad.clasificacion
                       ? etiquetaGravedad(comunidad.clasificacion.gravedad_congestion)
                       : "—"}
+                  </td>
+                  <td
+                    className={
+                      (confianzaMinima(comunidad.clasificacion) ?? 1) < 0.5
+                        ? styles.confianzaBaja
+                        : undefined
+                    }
+                  >
+                    {formatearConfianza(confianzaMinima(comunidad.clasificacion))}
                   </td>
                   <td>
                     {comunidad.clasificacion

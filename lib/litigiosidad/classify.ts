@@ -1,5 +1,6 @@
 import { typeSafeAi } from "@ai-sdk/typesafe-ai";
 import { experimental_evaluate } from "ai";
+import { esNoticiable } from "./noticiabilidad";
 import type { ClasificacionLitigiosidad, DatoTrimestral } from "./tipos";
 
 type EstadoEvaluacion = Parameters<typeof experimental_evaluate>[0]["state"];
@@ -87,7 +88,7 @@ export async function clasificarTrimestre(
   return {
     tendencia: result.answers.tendencia.choice,
     gravedad_congestion: result.answers.gravedad_congestion.score,
-    es_noticiable: result.answers.es_noticiable.probability > 0.6,
+    es_noticiable: esNoticiable(result.answers.es_noticiable.probability),
     probabilidad_noticiable: result.answers.es_noticiable.probability,
     confianza_tendencia: metadata?.typesafe?.confidence?.tendencia,
     confianza_gravedad: metadata?.typesafe?.confidence?.gravedad_congestion,

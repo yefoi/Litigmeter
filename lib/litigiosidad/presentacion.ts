@@ -1,5 +1,22 @@
 import { COMUNIDADES } from "@/lib/litigiosidad/ccaa";
-import type { InformeTrimestral } from "@/lib/litigiosidad/tipos";
+import type { ClasificacionLitigiosidad, InformeTrimestral } from "@/lib/litigiosidad/tipos";
+
+/** Menor confianza de tendencia y gravedad; undefined si jev no la devolvió. */
+export function confianzaMinima(
+  clasificacion: ClasificacionLitigiosidad | undefined,
+): number | undefined {
+  if (!clasificacion) return undefined;
+  const valores = [clasificacion.confianza_tendencia, clasificacion.confianza_gravedad].filter(
+    (valor): valor is number => typeof valor === "number",
+  );
+  if (valores.length === 0) return undefined;
+  return Math.min(...valores);
+}
+
+export function formatearConfianza(valor: number | undefined): string {
+  if (valor === undefined) return "—";
+  return `${Math.round(valor * 100)} %`;
+}
 
 export function slugDeComunidad(nombre: string): string {
   return nombre

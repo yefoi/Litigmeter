@@ -12,7 +12,10 @@
     "ingest": "tsx scripts/ingest.ts",
     "backfill-anual": "tsx scripts/backfill-anual.ts",
     "indicadores": "tsx scripts/indicadores.ts",
-    "editorial": "tsx scripts/editorial.ts"
+    "editorial": "tsx scripts/editorial.ts",
+    "calibrar": "tsx scripts/calibrar.ts",
+    "validar": "tsx scripts/validar.ts",
+    "watchdog": "tsx scripts/watchdog.ts"
   },
   "dependencies": {
     "@ai-sdk/typesafe-ai": "^3.0.3",
@@ -21,7 +24,8 @@
     "next": "16.3.5",
     "react": "19.2.8",
     "react-dom": "19.2.8",
-    "recharts": "^3.10.1"
+    "recharts": "^3.10.1",
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "@types/node": "^24.13.5",

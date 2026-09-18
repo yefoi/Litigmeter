@@ -3,6 +3,7 @@
 import { useState } from "react";
 import {
   CartesianGrid,
+  Legend,
   Line,
   LineChart,
   ResponsiveContainer,
@@ -16,11 +17,28 @@ interface Props {
   series: Record<string, PuntoSerie[]>;
   opciones: string[];
   opcionInicial: string;
+  opcionesSecundarias?: string[];
 }
 
-export default function TendenciaChart({ series, opciones, opcionInicial }: Props) {
+const SIN_COMPARACION = "";
+
+export default function TendenciaChart({
+  series,
+  opciones,
+  opcionInicial,
+  opcionesSecundarias,
+}: Props) {
   const [seleccion, setSeleccion] = useState(opcionInicial);
-  const datos = series[seleccion] ?? [];
+  const [comparada, setComparada] = useState(SIN_COMPARACION);
+
+  const principal = series[seleccion] ?? [];
+  const secundaria = comparada ? series[comparada] ?? [] : [];
+  const datos = principal.map((punto, indice) => ({
+    etiqueta: punto.etiqueta,
+    principal: punto.tasa,
+    comparada: secundaria[indice]?.tasa ?? null,
+  }));
+  const listaSecundaria = opcionesSecundarias ?? opciones;
 
   return (
     <div className="grafico">
@@ -37,6 +55,21 @@ export default function TendenciaChart({ series, opciones, opcionInicial }: Prop
             </option>
           ))}
         </select>
+        <label htmlFor="selector-comparada">Comparar con</label>
+        <select
+          id="selector-comparada"
+          value={comparada}
+          onChange={(evento) => setComparada(evento.target.value)}
+        >
+          <option value={SIN_COMPARACION}>—</option>
+          {listaSecundaria
+            .filter((opcion) => opcion !== seleccion)
+            .map((opcion) => (
+              <option key={opcion} value={opcion}>
+                {opcion}
+              </option>
+            ))}
+        </select>
       </div>
       <div className="graficoLienzo">
         <ResponsiveContainer width="100%" height={300}>
@@ -50,22 +83,35 @@ export default function TendenciaChart({ series, opciones, opcionInicial }: Prop
               tickFormatter={(valor: number) => valor.toFixed(0)}
             />
             <Tooltip
-              formatter={(valor) =>
+              formatter={(valor, nombre) =>
                 typeof valor === "number"
-                  ? [`${valor.toFixed(2).replace(".", ",")} asuntos/1.000 hab.`, seleccion]
-                  : [String(valor), seleccion]
+                  ? [`${valor.toFixed(2).replace(".", ",")} asuntos/1.000 hab.`, String(nombre)]
+                  : [String(valor), String(nombre)]
               }
             />
+            {comparada ? <Legend /> : null}
             <Line
               type="monotone"
-              dataKey="tasa"
+              dataKey="principal"
+              name={seleccion}
               stroke="#1d6fb8"
               strokeWidth={2}
               dot={{ r: 4 }}
               activeDot={{ r: 6 }}
               connectNulls={false}
-              name={seleccion}
             />
+            {comparada ? (
+              <Line
+                type="monotone"
+                dataKey="comparada"
+                name={comparada}
+                stroke="#d97706"
+                strokeWidth={2}
+                strokeDasharray="6 4"
+                dot={{ r: 3 }}
+                connectNulls={false}
+              />
+            ) : null}
           </LineChart>
         </ResponsiveContainer>
       </div>
