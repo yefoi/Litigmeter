@@ -1,5 +1,6 @@
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
+import type { EvidenciaEdicto } from "../edictos/tipos";
 import type {
   DatoTrimestral,
   InformeTrimestral,
@@ -74,6 +75,7 @@ interface ParametrosDato {
   tasaNacional: number;
   resumenNota: string;
   historicos: InformeTrimestral[];
+  edictosRepresentativos?: EvidenciaEdicto[];
 }
 
 export function construirDatoTrimestral({
@@ -84,6 +86,7 @@ export function construirDatoTrimestral({
   tasaNacional,
   resumenNota,
   historicos,
+  edictosRepresentativos,
 }: ParametrosDato): DatoTrimestral {
   const anterior = trimestreAnterior(anio, trimestre);
   const informeAnterior = historicos.find(
@@ -124,6 +127,7 @@ export function construirDatoTrimestral({
         ? redondear(((tasaActual - registroInteranual.tasa_litigiosidad) / registroInteranual.tasa_litigiosidad) * 100)
         : undefined,
     serie_historica: serie,
+    edictos_representativos: edictosRepresentativos?.length ? edictosRepresentativos : undefined,
     resumen_nota_prensa: resumenNota || undefined,
   };
 }

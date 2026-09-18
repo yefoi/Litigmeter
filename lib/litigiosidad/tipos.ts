@@ -1,3 +1,5 @@
+import type { EvidenciaEdicto } from "../edictos/tipos";
+
 export type Tendencia = "mejora" | "estable" | "empeora";
 
 /** Estado que se envía al modelo jev para una CCAA y trimestre. */
@@ -11,6 +13,8 @@ export interface DatoTrimestral {
   tasa_litigiosidad_media_nacional: number;
   variacion_interanual_pct?: number;
   serie_historica: PuntoSerie[];
+  /** Casos concretos saneados (sin datos personales) para sustentar la clasificación. */
+  edictos_representativos?: EvidenciaEdicto[];
   resumen_nota_prensa?: string;
 }
 

@@ -69,5 +69,21 @@ describe("construirDatoTrimestral", () => {
     expect(dato.tasa_litigiosidad_trimestre_anterior).toBeUndefined();
     expect(dato.variacion_interanual_pct).toBeUndefined();
     expect(dato.serie_historica).toEqual([]);
+    expect(dato.edictos_representativos).toBeUndefined();
+  });
+
+  test("adjunta la evidencia de edictos al dato trimestral", () => {
+    const dato = construirDatoTrimestral({
+      anio: 2026,
+      trimestre: 1,
+      comunidad: "Canarias",
+      tasaActual: 45.01,
+      tasaNacional: 37.15,
+      resumenNota: "",
+      historicos: [],
+      edictosRepresentativos: [{ tipo_procedimiento: "civil", resumen: "Juzgado de…" }],
+    });
+
+    expect(dato.edictos_representativos).toHaveLength(1);
   });
 });

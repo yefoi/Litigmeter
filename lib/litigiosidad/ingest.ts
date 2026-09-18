@@ -1,5 +1,6 @@
 import * as cheerio from "cheerio";
 import path from "node:path";
+import { leerEvidencias } from "../edictos/evidencias";
 import { clasificarTrimestre } from "./classify";
 import {
   buscarRegistro,
@@ -37,10 +38,14 @@ export interface OpcionesIngesta {
   url?: string;
   /** Directorio de datos; por defecto data/litigiosidad. */
   dataDir?: string;
+  /** Directorio de evidencia de edictos; por defecto data/edictos. */
+  edictosDir?: string;
   /** Omite la clasificación con jev aunque haya API key. */
   sinClasificar?: boolean;
   /** Reescribe el fichero aunque ya exista completo. */
   force?: boolean;
+  /** Vuelve a clasificar aunque ya existan clasificaciones (p. ej. tras añadir evidencia). */
+  reclasificar?: boolean;
   fetchImpl?: typeof fetch;
 }
 
@@ -158,10 +163,18 @@ export async function ingerirNota(
   opciones: OpcionesIngesta = {},
 ): Promise<ResultadoIngesta> {
   const dataDir = opciones.dataDir ?? path.join(process.cwd(), "data", "litigiosidad");
+  const edictosDir = opciones.edictosDir ?? path.join(process.cwd(), "data", "edictos");
   const nota = parseNotaLitigiosidad(html, url);
   console.log(`Informe detectado: ${nota.anio}-T${nota.trimestre} "${nota.titulo}"`);
   if (nota.comunidades_ausentes.length > 0) {
     console.warn(`  aviso: sin tasa publicada para ${nota.comunidades_ausentes.join(", ")}`);
+  }
+
+  const evidencias = await leerEvidencias(edictosDir, nota.anio, nota.trimestre);
+  if (evidencias) {
+    console.log(
+      `Evidencia de edictos: ${Object.keys(evidencias.comunidades).length} comunidades.`,
+    );
   }
 
   const historicos = (await leerInformes(dataDir)).filter(
@@ -179,6 +192,7 @@ export async function ingerirNota(
       tasaNacional: nota.nacional.tasa_litigiosidad,
       resumenNota: nota.resumen,
       historicos,
+      edictosRepresentativos: evidencias?.comunidades[comunidad.nombre],
     }),
   );
 
@@ -194,8 +208,8 @@ export async function ingerirNota(
         dato.tasa_litigiosidad_actual - dato.tasa_litigiosidad_media_nacional,
       ),
       posicion_nacional: indice + 1,
-      clasificacion: previo?.clasificacion,
-      error_clasificacion: previo?.error_clasificacion,
+      clasificacion: opciones.reclasificar ? undefined : previo?.clasificacion,
+      error_clasificacion: opciones.reclasificar ? undefined : previo?.error_clasificacion,
     };
   });
 
@@ -204,7 +218,7 @@ export async function ingerirNota(
   const fichero = path.join(dataDir, `${claveInforme(nota.anio, nota.trimestre)}.json`);
   const completas = registros.every((registro) => registro.clasificacion);
 
-  if (existente && !opciones.force && (completas || !debeClasificar)) {
+  if (existente && !opciones.force && !opciones.reclasificar && (completas || !debeClasificar)) {
     return {
       estado: "sin_cambios",
       fichero,

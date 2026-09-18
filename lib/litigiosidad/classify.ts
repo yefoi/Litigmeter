@@ -32,7 +32,9 @@ export async function clasificarTrimestre(
           "en el trimestre. Compara `tasa_litigiosidad_actual` con " +
           "`tasa_litigiosidad_trimestre_anterior` (si está disponible), con " +
           "`tasa_litigiosidad_media_nacional` y con `serie_historica` (si está " +
-          "disponible). Usa `resumen_nota_prensa` para matizar la lectura.",
+          "disponible). Usa `resumen_nota_prensa` para matizar la lectura y, si " +
+          "`edictos_representativos` está presente, úsalo como evidencia " +
+          "cualitativa de los asuntos que se están tramitando.",
         criteria: {
           mejora:
             "La tasa baja respecto al trimestre anterior, o se sitúa claramente por " +
@@ -67,7 +69,9 @@ export async function clasificarTrimestre(
           "editorial? Considera un máximo o mínimo de la serie histórica " +
           "disponible, una variación interanual brusca (más de un 15 % en valor " +
           "absoluto) o un diferencial frente a la media nacional superior al 15 %. " +
-          "Responde sí solo si hay algo realmente destacable.",
+          "Si se aportan `edictos_representativos`, valora si alguno de esos casos " +
+          "concretos hace más destacable el dato. Responde sí solo si hay algo " +
+          "realmente destacable.",
       },
     },
   });

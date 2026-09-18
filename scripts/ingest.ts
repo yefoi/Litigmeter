@@ -21,6 +21,7 @@ async function main(): Promise<void> {
     dataDir: opcion("data"),
     sinClasificar: process.argv.includes("--sin-clasificar"),
     force: process.argv.includes("--force"),
+    reclasificar: process.argv.includes("--reclasificar"),
   };
 
   if (process.argv.includes("--todas")) {

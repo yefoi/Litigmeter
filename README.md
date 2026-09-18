@@ -29,6 +29,7 @@ npm run ingest -- --todas              # backfill: todas las notas del feed, en 
 npm run ingest -- --url=https://...    # una nota concreta
 npm run ingest -- --sin-clasificar     # solo datos, sin llamar a jev
 npm run ingest -- --force              # reescribe el JSON aunque ya exista
+npm run ingest -- --reclasificar       # vuelve a clasificar (p. ej. tras añadir evidencia)
 ```
 
 ## Clasificación con jev
@@ -85,6 +86,26 @@ y `clasificacion`.
 - Hay huecos tal y como los publicó el CGPJ: 2025-T1 no trae la tasa de País Vasco y 2025-T2
   no trae la de La Rioja. Se registran en `comunidades_ausentes` al parsear y se muestran
   como celdas vacías.
+
+### Edictos como evidencia (opcional)
+
+`lib/edictos/` clasifica edictos judiciales individuales (TEJU) y destila hasta tres casos
+representativos por CCAA para sustentar la clasificación trimestral:
+
+- `clasificarEdicto(edicto)` — tipo de procedimiento (choice), relevancia editorial (score
+  0–4) y `es_representativo` (boolean).
+- `seleccionarRepresentativos(edictos, limite)` — ordena por relevancia, no repite tipo de
+  procedimiento y devuelve solo `{ tipo_procedimiento, resumen }`, con DNI/NIE/CIF/IBAN y
+  nombres redactados.
+
+La ingesta lee `data/edictos/AAAA-Tn.json` si existe y añade `edictos_representativos` al
+`state` de `clasificarTrimestre`. El texto íntegro de un edicto no se guarda ni se envía:
+jev recibe el texto redactado y el dashboard no muestra edictos.
+
+> El TEJU (`boe.es/buscar/edictos_judiciales.php`) solo es de acceso libre durante 4 meses
+> desde la publicación y no tiene API de datos abiertos, así que el scraper queda pendiente.
+> De momento la evidencia se aporta a mano o se genera con `clasificarEdicto` +
+> `seleccionarRepresentativos` + `escribirEvidencias`.
 
 ## Verificación
 
