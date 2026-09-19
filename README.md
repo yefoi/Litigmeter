@@ -31,6 +31,7 @@ npm run indicadores    # congestión, pendencia y resolución por TSJ (data/indi
 npm run backfill-trimestral # histórico trimestral 2017-2025 desde los PDFs de indicadores
 npm run editorial      # resumen editorial del último trimestre (data/editorial)
 npm run edictos        # evidencia real de edictos TEJU (data/edictos, requiere API key)
+npm run violencia      # violencia de género: denuncias, tasas y órdenes por CCAA (data/violencia)
 npm run calibrar       # distribución de probabilidades + CSV para etiquetar
 npm run validar        # valida todos los JSON de data/ con Zod
 npm run watchdog       # comprueba que el informe trimestral esperado está publicado
@@ -196,10 +197,20 @@ jev recibe el texto redactado y el dashboard no muestra edictos.
 > El paso está en el workflow con `continue-on-error` para que un fallo del TEJU no tumbe
 > la ingesta.
 
+## Violencia de género
+
+`npm run violencia` descarga la última nota del Observatorio contra la Violencia Doméstica y
+de Género (CGPJ), la parsea (`lib/violencia/parser.ts`) y guarda `data/violencia/AAAA-Tn.json`:
+denuncias y mujeres denunciantes con su variación interanual, tasa de víctimas por 10.000
+mujeres (nacional y por comunidad), renuncias a declarar, órdenes de protección y sentencias
+condenatorias, además de los datos de violencia sexual. La página `/violencia` muestra las
+tarjetas nacionales, la evolución de la tasa y el ranking por comunidad frente a la media.
+El paso va en el workflow y `npm run validar` valida el JSON con Zod.
+
 ## Verificación
 
 ```bash
-npm test          # 40+ tests: parser, enriquecimiento, series, indicadores, edictos, editorial, watchdog y datos
+npm test          # 80 tests: parser, enriquecimiento, series, indicadores, edictos, violencia, editorial, watchdog y datos
 npm run typecheck
 npm run lint
 npm run build
@@ -209,8 +220,8 @@ npm run build
 
 - Órdenes jurisdiccionales (civil, penal, social, contencioso) por CCAA: requiere un parser
   PC-AXIS (`.px`) para la base de datos del CGPJ desde 1995.
-- Nuevas temáticas con el mismo pipeline: violencia de género, desahucios y ejecuciones
-  hipotecarias, concursos o divorcios.
+- Nuevas temáticas con el mismo pipeline: desahucios y ejecuciones hipotecarias, concursos o
+  divorcios.
 - Calibrar los umbrales de `es_noticiable` y la gravedad con casos etiquetados.
 
 ## Atribución

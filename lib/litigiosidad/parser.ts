@@ -26,10 +26,13 @@ const ORDINALES: Record<string, number> = {
   cuarto: 4,
 };
 
-function aNumero(valor: string): number {
+export function aNumero(valor: string): number {
   const limpio = valor.trim();
   if (limpio.includes(",")) {
     return Number.parseFloat(limpio.replace(/\./g, "").replace(",", "."));
+  }
+  if (/^\d{1,3}(\.\d{3})+$/.test(limpio)) {
+    return Number.parseFloat(limpio.replace(/\./g, ""));
   }
   return Number.parseFloat(limpio);
 }
@@ -41,7 +44,7 @@ function escaparRegex(texto: string): string {
 /** Por debajo de este número de comunidades la nota no es la nacional. */
 const MINIMO_COMUNIDADES = 15;
 
-function extraerFecha(texto: string): string | undefined {
+export function extraerFecha(texto: string): string | undefined {
   const m = texto.match(
     /(\d{1,2})\s+de\s+(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)\s+de\s+(\d{4})/i,
   );
@@ -50,7 +53,7 @@ function extraerFecha(texto: string): string | undefined {
   return `${m[3]}-${String(mes).padStart(2, "0")}-${String(m[1]).padStart(2, "0")}`;
 }
 
-function inferirPeriodo(
+export function inferirPeriodo(
   titulo: string,
   cuerpo: string,
   fechaPublicacion: string | undefined,

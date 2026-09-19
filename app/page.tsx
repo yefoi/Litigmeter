@@ -127,6 +127,7 @@ export default async function Home() {
         {editorial ? <a href="#editorial">Editorial</a> : null}
         <a href="#faq">FAQ</a>
         <a href="/provincias">Provincias</a>
+        <a href="/violencia">Violencia de género</a>
         <a href="/metodologia">Metodología</a>
         <a href="/feed.xml">RSS</a>
       </nav>

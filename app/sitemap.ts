@@ -14,6 +14,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const paginas: MetadataRoute.Sitemap = [
     { url: sitio, lastModified: ultimaFecha, changeFrequency: "weekly", priority: 1 },
     { url: `${sitio}/provincias`, lastModified: ultimaFecha, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${sitio}/violencia`, lastModified: ultimaFecha, changeFrequency: "monthly", priority: 0.7 },
     { url: `${sitio}/contraste`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${sitio}/metodologia`, changeFrequency: "monthly", priority: 0.6 },
   ];

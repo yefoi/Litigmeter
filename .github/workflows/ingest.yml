@@ -62,6 +62,9 @@ jobs:
       - name: Previsión y aciertos
         run: npm run prevision
 
+      - name: Violencia de género
+        run: npm run violencia
+
       - name: Alertas
         run: npm run alertas
         env:

@@ -154,6 +154,46 @@ export const reconciliacionSchema = z.object({
   fuentes: z.object({ informes: z.number(), indicadores: z.number() }),
 });
 
+export const violenciaSchema = z.object({
+  version_esquema: z.literal(1),
+  anio: z.number().int(),
+  trimestre: z.number().int().min(1).max(4),
+  generado_en: z.string(),
+  origen: z.literal("nota_prensa"),
+  fuente: z.object({
+    url: z.string().min(1),
+    titulo: z.string(),
+    fecha_publicacion: z.string().optional(),
+    pdf_url: z.string().optional(),
+  }),
+  nacional: z.object({
+    denuncias: z.number(),
+    denuncias_variacion_interanual_pct: z.number().optional(),
+    mujeres_denunciantes: z.number().optional(),
+    mujeres_variacion_interanual_pct: z.number().optional(),
+    tasa_victimas_por_10000: z.number(),
+    tasa_delta_puntos: z.number().optional(),
+    renuncias: z.number().optional(),
+    renuncias_pct: z.number().optional(),
+    renuncias_variacion_interanual_pct: z.number().optional(),
+    ordenes_solicitadas: z.number().optional(),
+    ordenes_solicitadas_variacion_pct: z.number().optional(),
+    ordenes_acordadas: z.number().optional(),
+    ordenes_acordadas_variacion_pct: z.number().optional(),
+    sentencias: z.number().optional(),
+    sentencias_condenatorias_pct: z.number().optional(),
+    violencia_sexual_denuncias: z.number().optional(),
+    violencia_sexual_ordenes_solicitadas: z.number().optional(),
+    violencia_sexual_ordenes_acordadas: z.number().optional(),
+  }),
+  comunidades: z.array(
+    z.object({
+      comunidad_autonoma: z.string(),
+      tasa_victimas_por_10000: z.number(),
+    }),
+  ),
+});
+
 export const alertasSchema = z.object({
   version_esquema: z.literal(1),
   anio: z.number().int(),
@@ -253,6 +293,9 @@ export async function validarDatos(dataBaseDir: string): Promise<ErrorValidacion
   }
   for (const fichero of await ficherosJson(path.join(dataBaseDir, "editorial"))) {
     await comprobar(path.join(dataBaseDir, "editorial", fichero), editorialSchema);
+  }
+  for (const fichero of await ficherosJson(path.join(dataBaseDir, "violencia"))) {
+    await comprobar(path.join(dataBaseDir, "violencia", fichero), violenciaSchema);
   }
   const anual = path.join(dataBaseDir, "anual", "litigiosidad-anual.json");
   if (existsSync(anual)) await comprobar(anual, serieAnualSchema);
