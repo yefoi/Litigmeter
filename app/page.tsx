@@ -191,6 +191,10 @@ export default async function Home() {
             noticiabilidad con IA.
           </p>
         )}
+        <p className={styles.nota}>
+          ¿Primera vez por aquí? Cada columna está explicada en el <a href="#faq">FAQ</a>;
+          también puedes pasar el ratón por el encabezado.
+        </p>
         <TablaUltimoTrimestre
           comunidades={ultimo.comunidades}
           etiqueta={etiquetaTrimestre(ultimo)}

@@ -86,6 +86,44 @@ const PREGUNTAS: Pregunta[] = [
     ),
   },
   {
+    pregunta: "¿Qué significa cada columna de la tabla?",
+    respuesta: (
+      <ul>
+        <li>
+          <strong>Tasa</strong>: asuntos nuevos que entran en los juzgados por cada 1.000
+          habitantes. Cuanto más alta, más carga reciben.
+        </li>
+        <li>
+          <strong>vs media</strong>: diferencia en puntos con la media nacional. Positivo
+          significa que está por encima.
+        </li>
+        <li>
+          <strong>Interanual</strong>: cuánto ha subido o bajado respecto al mismo trimestre del
+          año anterior.
+        </li>
+        <li>
+          <strong>Índice</strong>: nota propia de 0 a 100 que combina nivel, tendencia,
+          congestión y pendencia. Más alto = más presión.
+        </li>
+        <li>
+          <strong>Tendencia</strong>: mejora / estable / empeora respecto al trimestre anterior.
+        </li>
+        <li>
+          <strong>Gravedad</strong>: de 1 (sin problema) a 5 (crítica), comparando con España y
+          con su propia historia.
+        </li>
+        <li>
+          <strong>Confianza</strong>: cómo de segura está la IA de su respuesta. Por debajo del
+          50 %, tómalo con cautela.
+        </li>
+        <li>
+          <strong>Noticiable</strong>: si el dato es lo bastante inusual como para destacarlo,
+          con la probabilidad que le da la IA.
+        </li>
+      </ul>
+    ),
+  },
+  {
     pregunta: "¿Gravedad es lo mismo que congestión judicial?",
     respuesta: (
       <p>

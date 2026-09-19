@@ -135,8 +135,12 @@ export default function TablaUltimoTrimestre({
     URL.revokeObjectURL(url);
   };
 
-  const encabezado = (campo: Campo, texto: string) => (
-    <th scope="col" aria-sort={orden.campo === campo ? (orden.direccion === "asc" ? "ascending" : "descending") : "none"}>
+  const encabezado = (campo: Campo, texto: string, ayuda?: string) => (
+    <th
+      scope="col"
+      title={ayuda}
+      aria-sort={orden.campo === campo ? (orden.direccion === "asc" ? "ascending" : "descending") : "none"}
+    >
       <button type="button" className={styles.ordenBoton} onClick={() => alternarOrden(campo)}>
         {texto}
         <span aria-hidden="true" className={styles.ordenFlecha}>
@@ -180,16 +184,22 @@ export default function TablaUltimoTrimestre({
           <caption className="fuera">Último trimestre por comunidad autónoma</caption>
           <thead>
             <tr>
-              {encabezado("posicion_nacional", "#")}
-              {encabezado("comunidad_autonoma", "Comunidad")}
-              {encabezado("tasa_litigiosidad", "Tasa")}
-              {encabezado("diferencial_vs_nacional", "vs media")}
-              {encabezado("variacion_interanual_pct", "Interanual")}
-              {encabezado("indice", "Índice")}
-              <th scope="col">Tendencia</th>
-              {encabezado("gravedad", "Gravedad")}
-              <th scope="col">Confianza</th>
-              <th scope="col">Noticiable</th>
+              {encabezado("posicion_nacional", "#", "Puesto en el ranking del trimestre (1 = más litigiosidad)")}
+              {encabezado("comunidad_autonoma", "Comunidad", "Comunidad autónoma")}
+              {encabezado("tasa_litigiosidad", "Tasa", "Asuntos nuevos por cada 1.000 habitantes. Cuanto más alta, más carga")}
+              {encabezado("diferencial_vs_nacional", "vs media", "Diferencia en puntos con la media nacional. Positivo = por encima")}
+              {encabezado("variacion_interanual_pct", "Interanual", "Subida o bajada respecto al mismo trimestre del año anterior")}
+              {encabezado("indice", "Índice", "Índice Litigmeter (0-100): combina nivel, tendencia, congestión y pendencia")}
+              <th scope="col" title="Mejora / estable / empeora respecto al trimestre anterior">
+                Tendencia
+              </th>
+              {encabezado("gravedad", "Gravedad", "De 1 (sin problema) a 5 (crítica), comparando con España y su historia")}
+              <th scope="col" title="Cómo de segura está la IA de su respuesta; por debajo del 50 %, tómalo con cautela">
+                Confianza
+              </th>
+              <th scope="col" title="Si el dato es lo bastante inusual como para destacarlo (con la probabilidad que le da la IA)">
+                Noticiable
+              </th>
             </tr>
           </thead>
           <tbody>
