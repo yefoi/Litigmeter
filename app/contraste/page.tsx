@@ -7,7 +7,7 @@ import styles from "../page.module.css";
 export const metadata: Metadata = {
   title: "Contraste de afirmaciones · Litigmeter",
   description:
-    "Comprueba una afirmación sobre litigiosidad judicial contra los últimos datos del CGPJ con jev (TypeSafe AI).",
+    "Comprueba una afirmación sobre litigiosidad judicial contra los últimos datos del CGPJ con IA.",
 };
 
 export default function Page() {
@@ -27,7 +27,7 @@ export default function Page() {
           <h1>Contraste de afirmaciones</h1>
           <p className={styles.subtitulo}>
             Pega una frase sobre litigiosidad —de una noticia, un informe o una red social— y
-            jev la contrasta con los últimos datos del CGPJ.
+            la IA la contrasta con los últimos datos del CGPJ.
           </p>
         </div>
       </header>
@@ -38,7 +38,7 @@ export default function Page() {
 
       <footer className={styles.pie}>
         <p>
-          El veredicto lo decide el modelo a partir de los datos cargados; se muestran la
+          El veredicto lo decide la IA a partir de los datos cargados; se muestran la
           evidencia y la confianza para que puedas juzgar. <Link href="/">Volver al panel</Link>.
         </p>
       </footer>

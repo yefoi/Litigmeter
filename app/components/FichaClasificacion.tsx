@@ -64,9 +64,9 @@ export default function FichaClasificacion({
 
   return (
     <section className={styles.bloque}>
-      <h2>Cómo lo clasifica jev</h2>
+      <h2>Cómo lo clasifica la IA</h2>
       <p className={styles.nota}>
-        Estado que recibe el modelo, criterios de cada pregunta y respuesta. Confianza
+        Estado que recibe la IA, criterios de cada pregunta y respuesta. Confianza
         mínima: {formatearConfianza(confianzaMinima(clasificacion))}.
       </p>
 
@@ -120,7 +120,7 @@ export default function FichaClasificacion({
       </div>
 
       <div className={styles.fichaDatos}>
-        <h3>Datos que vio el modelo</h3>
+        <h3>Datos que vio la IA</h3>
         <dl>
           {datos.map(([etiqueta, valor]) => (
             <div key={etiqueta}>

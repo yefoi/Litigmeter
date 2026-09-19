@@ -151,7 +151,7 @@ export default async function Home() {
           <span className={styles.datoDetalle}>de {ultimo.comunidades.length} con dato</span>
         </article>
         <article className={styles.dato}>
-          <span className={styles.datoTitulo}>Casos señalados por jev</span>
+          <span className={styles.datoTitulo}>Casos señalados por IA</span>
           <strong className={styles.datoValor}>{noticiables.length}</strong>
           <span className={styles.datoDetalle}>
             {hayClasificacion ? "marcados como noticiables" : "clasificación pendiente"}
@@ -188,7 +188,7 @@ export default async function Home() {
           <p className={styles.aviso}>
             Define <code>TYPESAFE_AI_API_KEY</code> y ejecuta{" "}
             <code>npm run ingest -- --todas</code> para añadir tendencia, gravedad y
-            noticiabilidad con jev.
+            noticiabilidad con IA.
           </p>
         )}
         <TablaUltimoTrimestre
@@ -221,7 +221,7 @@ export default async function Home() {
       <footer className={styles.pie}>
         <p>
           Datos: notas de prensa trimestrales del CGPJ (difusión pública). Clasificación:
-          modelo jev de TypeSafe AI con el AI SDK. Serie histórica completa:{" "}
+          IA (TypeSafe AI) con el AI SDK. Serie histórica completa:{" "}
           <a
             href="https://www.poderjudicial.es/cgpj/es/Temas/Estadistica-Judicial/Estudios-e-Informes/Informes-por-territorios-sobre-la-actividad-de-los-organos-judiciales"
             target="_blank"

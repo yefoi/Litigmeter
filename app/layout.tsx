@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(sitioPublico()),
   title: "Litigmeter · Litigiosidad judicial por CCAA",
   description:
-    "Litigmeter: tasa de litigiosidad trimestral por comunidad autónoma a partir de las notas de prensa del CGPJ, con tendencia, gravedad y noticiabilidad clasificadas por jev (TypeSafe AI).",
+    "Litigmeter: tasa de litigiosidad trimestral por comunidad autónoma a partir de las notas de prensa del CGPJ, con tendencia, gravedad y noticiabilidad clasificadas con IA.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

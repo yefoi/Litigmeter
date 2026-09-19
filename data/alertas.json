@@ -2,19 +2,19 @@
   "version_esquema": 1,
   "anio": 2026,
   "trimestre": 1,
-  "generado_en": "2026-09-18T23:11:02.083Z",
+  "generado_en": "2026-09-19T00:27:04.771Z",
   "alertas": [
     {
       "comunidad_autonoma": "Andalucía",
       "tipo": "noticiable",
       "severidad": "alta",
-      "detalle": "jev la marca como noticiable (P(true) = 91 %, umbral 0.75)"
+      "detalle": "la IA la marca como noticiable (P(true) = 91 %, umbral 0.75)"
     },
     {
       "comunidad_autonoma": "Canarias",
       "tipo": "noticiable",
       "severidad": "alta",
-      "detalle": "jev la marca como noticiable (P(true) = 93 %, umbral 0.75)"
+      "detalle": "la IA la marca como noticiable (P(true) = 93 %, umbral 0.75)"
     },
     {
       "comunidad_autonoma": "Canarias",
@@ -26,31 +26,31 @@
       "comunidad_autonoma": "Castilla y León",
       "tipo": "noticiable",
       "severidad": "alta",
-      "detalle": "jev la marca como noticiable (P(true) = 90 %, umbral 0.75)"
+      "detalle": "la IA la marca como noticiable (P(true) = 90 %, umbral 0.75)"
     },
     {
       "comunidad_autonoma": "Castilla-La Mancha",
       "tipo": "noticiable",
       "severidad": "alta",
-      "detalle": "jev la marca como noticiable (P(true) = 90 %, umbral 0.75)"
+      "detalle": "la IA la marca como noticiable (P(true) = 90 %, umbral 0.75)"
     },
     {
       "comunidad_autonoma": "Comunidad Valenciana",
       "tipo": "noticiable",
       "severidad": "alta",
-      "detalle": "jev la marca como noticiable (P(true) = 90 %, umbral 0.75)"
+      "detalle": "la IA la marca como noticiable (P(true) = 90 %, umbral 0.75)"
     },
     {
       "comunidad_autonoma": "Extremadura",
       "tipo": "noticiable",
       "severidad": "alta",
-      "detalle": "jev la marca como noticiable (P(true) = 90 %, umbral 0.75)"
+      "detalle": "la IA la marca como noticiable (P(true) = 90 %, umbral 0.75)"
     },
     {
       "comunidad_autonoma": "La Rioja",
       "tipo": "noticiable",
       "severidad": "alta",
-      "detalle": "jev la marca como noticiable (P(true) = 93 %, umbral 0.75)"
+      "detalle": "la IA la marca como noticiable (P(true) = 93 %, umbral 0.75)"
     },
     {
       "comunidad_autonoma": "La Rioja",
@@ -62,7 +62,7 @@
       "comunidad_autonoma": "Madrid",
       "tipo": "noticiable",
       "severidad": "alta",
-      "detalle": "jev la marca como noticiable (P(true) = 90 %, umbral 0.75)"
+      "detalle": "la IA la marca como noticiable (P(true) = 90 %, umbral 0.75)"
     },
     {
       "comunidad_autonoma": "Andalucía",
@@ -74,7 +74,7 @@
       "comunidad_autonoma": "Asturias",
       "tipo": "noticiable",
       "severidad": "media",
-      "detalle": "jev la marca como noticiable (P(true) = 85 %, umbral 0.75)"
+      "detalle": "la IA la marca como noticiable (P(true) = 85 %, umbral 0.75)"
     },
     {
       "comunidad_autonoma": "Asturias",
@@ -86,7 +86,7 @@
       "comunidad_autonoma": "Baleares",
       "tipo": "noticiable",
       "severidad": "media",
-      "detalle": "jev la marca como noticiable (P(true) = 89 %, umbral 0.75)"
+      "detalle": "la IA la marca como noticiable (P(true) = 89 %, umbral 0.75)"
     },
     {
       "comunidad_autonoma": "Baleares",
@@ -98,7 +98,7 @@
       "comunidad_autonoma": "Cantabria",
       "tipo": "noticiable",
       "severidad": "media",
-      "detalle": "jev la marca como noticiable (P(true) = 89 %, umbral 0.75)"
+      "detalle": "la IA la marca como noticiable (P(true) = 89 %, umbral 0.75)"
     },
     {
       "comunidad_autonoma": "Cantabria",
@@ -122,7 +122,7 @@
       "comunidad_autonoma": "Cataluña",
       "tipo": "noticiable",
       "severidad": "media",
-      "detalle": "jev la marca como noticiable (P(true) = 87 %, umbral 0.75)"
+      "detalle": "la IA la marca como noticiable (P(true) = 87 %, umbral 0.75)"
     },
     {
       "comunidad_autonoma": "Cataluña",
@@ -146,7 +146,7 @@
       "comunidad_autonoma": "Galicia",
       "tipo": "noticiable",
       "severidad": "media",
-      "detalle": "jev la marca como noticiable (P(true) = 89 %, umbral 0.75)"
+      "detalle": "la IA la marca como noticiable (P(true) = 89 %, umbral 0.75)"
     },
     {
       "comunidad_autonoma": "Galicia",
@@ -170,7 +170,7 @@
       "comunidad_autonoma": "Murcia",
       "tipo": "noticiable",
       "severidad": "media",
-      "detalle": "jev la marca como noticiable (P(true) = 89 %, umbral 0.75)"
+      "detalle": "la IA la marca como noticiable (P(true) = 89 %, umbral 0.75)"
     },
     {
       "comunidad_autonoma": "Murcia",
@@ -182,7 +182,7 @@
       "comunidad_autonoma": "País Vasco",
       "tipo": "noticiable",
       "severidad": "media",
-      "detalle": "jev la marca como noticiable (P(true) = 83 %, umbral 0.75)"
+      "detalle": "la IA la marca como noticiable (P(true) = 83 %, umbral 0.75)"
     },
     {
       "comunidad_autonoma": "País Vasco",

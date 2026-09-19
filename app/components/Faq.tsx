@@ -54,7 +54,7 @@ const PREGUNTAS: Pregunta[] = [
     pregunta: "¿Qué significan las columnas Tendencia, Gravedad y Noticiable?",
     respuesta: (
       <p>
-        Las estima el modelo jev de TypeSafe AI a partir de la tasa, su histórico y el texto
+        Las estima una IA a partir de la tasa, su histórico y el texto
         de la nota: tendencia (mejora / estable / empeora), gravedad de la carga en 5 niveles
         (sin problema → crítica) y si el dato es lo bastante inusual como para destacarlo
         (probabilidad mayor que 0,6). Son indicadores orientativos: no sustituyen al dato
@@ -67,7 +67,7 @@ const PREGUNTAS: Pregunta[] = [
     respuesta: (
       <p>
         Sí: en <a href="/contraste">Contraste de afirmaciones</a> puedes pegar una frase (de
-        una noticia, un informe o una red social) y jev la compara con los últimos datos
+        una noticia, un informe o una red social) y la IA la compara con los últimos datos
         publicados, devolviendo veredicto, ámbito, confianza y la evidencia numérica.
       </p>
     ),

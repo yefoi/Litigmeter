@@ -52,7 +52,7 @@ export function calcularAlertas(
         tipo: "noticiable",
         severidad: clasificacion.probabilidad_noticiable >= 0.9 ? "alta" : "media",
         detalle:
-          `jev la marca como noticiable (P(true) = ` +
+          `la IA la marca como noticiable (P(true) = ` +
           `${(clasificacion.probabilidad_noticiable * 100).toFixed(0)} %, umbral ${umbral})`,
       });
     }

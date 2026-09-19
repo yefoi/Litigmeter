@@ -22,7 +22,7 @@ export default function Editorial({ resumen }: { resumen: ResumenEditorial }) {
         ))}
       </ul>
       <p className={styles.nota}>
-        El foco lo elige jev entre los candidatos que ordena el código; el texto se compone con
+        El foco lo elige la IA entre los candidatos que ordena el código; el texto se compone con
         plantillas y los datos del último informe.
       </p>
     </section>
