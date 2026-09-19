@@ -24,7 +24,9 @@ describe("parsearNotaViolencia", () => {
     expect(informe.nacional.renuncias).toBe(5337);
     expect(informe.nacional.renuncias_pct).toBeCloseTo(11.8);
     expect(informe.nacional.ordenes_solicitadas).toBe(10853);
+    expect(informe.nacional.ordenes_solicitadas_variacion_pct).toBeCloseTo(-2.5);
     expect(informe.nacional.ordenes_acordadas).toBe(7417);
+    expect(informe.nacional.ordenes_acordadas_variacion_pct).toBeCloseTo(-1.8);
     expect(informe.nacional.sentencias).toBe(15474);
     expect(informe.nacional.sentencias_condenatorias_pct).toBeCloseTo(81.78);
 

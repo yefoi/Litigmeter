@@ -65,6 +65,12 @@ jobs:
       - name: Violencia de género
         run: npm run violencia
 
+      - name: Crisis y vivienda
+        run: npm run crisis
+
+      - name: Disolución matrimonial
+        run: npm run divorcios
+
       - name: Alertas
         run: npm run alertas
         env:

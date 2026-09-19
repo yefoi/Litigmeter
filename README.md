@@ -32,6 +32,8 @@ npm run backfill-trimestral # histórico trimestral 2017-2025 desde los PDFs de 
 npm run editorial      # resumen editorial del último trimestre (data/editorial)
 npm run edictos        # evidencia real de edictos TEJU (data/edictos, requiere API key)
 npm run violencia      # violencia de género: denuncias, tasas y órdenes por CCAA (data/violencia)
+npm run crisis         # desahucios, ejecuciones hipotecarias, concursos y despidos (data/crisis)
+npm run divorcios      # divorcios, separaciones y nulidades por CCAA (data/divorcios)
 npm run calibrar       # distribución de probabilidades + CSV para etiquetar
 npm run validar        # valida todos los JSON de data/ con Zod
 npm run watchdog       # comprueba que el informe trimestral esperado está publicado
@@ -207,10 +209,30 @@ condenatorias, además de los datos de violencia sexual. La página `/violencia`
 tarjetas nacionales, la evolución de la tasa y el ranking por comunidad frente a la media.
 El paso va en el workflow y `npm run validar` valida el JSON con Zod.
 
+## Crisis y vivienda
+
+`npm run crisis` descarga la última nota nacional del informe "Efectos de la crisis económica
+en los órganos judiciales" (CGPJ) y guarda `data/crisis/AAAA-Tn.json`: lanzamientos
+practicados (con desglose LAU, hipotecarios y otras causas) y solicitados, ejecuciones
+hipotecarias, concursos (por tipo de persona, declarados, fases y ERE del art. 169 TRLC),
+despidos, reclamaciones de cantidad, monitorios y verbales por ocupación ilegal. La nota solo
+publica los cuatro primeros territorios de cada indicador; se guardan en `rankings` y la
+página `/crisis` los muestra por indicador junto a las tarjetas nacionales. El parser soporta
+también la plantilla anterior del informe (el feed aún conserva 2025-T3), así que
+`npm run crisis -- --todas` recupera el histórico disponible.
+
+## Divorcios, separaciones y nulidades
+
+`npm run divorcios` descarga la última nota trimestral de demandas de disolución matrimonial
+(CGPJ) y guarda `data/divorcios/AAAA-Tn.json`: total, divorcios y separaciones (consensuados y
+no consensuados), nulidades, modificación de medidas y guarda/custodia, además de la tasa por
+100.000 habitantes de las 17 comunidades. La página `/divorcios` incluye el ranking completo
+frente a la media nacional.
+
 ## Verificación
 
 ```bash
-npm test          # 80 tests: parser, enriquecimiento, series, indicadores, edictos, violencia, editorial, watchdog y datos
+npm test          # 83 tests: parser, enriquecimiento, series, indicadores, edictos, violencia, crisis, divorcios, editorial, watchdog y datos
 npm run typecheck
 npm run lint
 npm run build
@@ -220,8 +242,6 @@ npm run build
 
 - Órdenes jurisdiccionales (civil, penal, social, contencioso) por CCAA: requiere un parser
   PC-AXIS (`.px`) para la base de datos del CGPJ desde 1995.
-- Nuevas temáticas con el mismo pipeline: desahucios y ejecuciones hipotecarias, concursos o
-  divorcios.
 - Calibrar los umbrales de `es_noticiable` y la gravedad con casos etiquetados.
 
 ## Atribución

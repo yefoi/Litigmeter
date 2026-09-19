@@ -1,0 +1,294 @@
+{
+  "version_esquema": 1,
+  "anio": 2026,
+  "trimestre": 1,
+  "generado_en": "2026-09-19T10:22:43.408Z",
+  "origen": "nota_prensa",
+  "fuente": {
+    "url": "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Consejo-General-del-Poder-Judicial/Oficina-de-Comunicacion/Archivo-de-notas-de-prensa/Todos-los-tipos-de-lanzamientos--tanto-los-derivados-del-impago-del-alquiler-como-de-la-hipoteca--disminuyeron-en-el-primer-trimestre-de-2026",
+    "titulo": "Todos los tipos de lanzamientos, tanto los derivados del impago del alquiler como de la hipoteca, disminuyeron en el primer trimestre de 2026",
+    "fecha_publicacion": "2026-06-22"
+  },
+  "nacional": {
+    "lanzamientos": {
+      "total": 4005,
+      "variacion_interanual_pct": -45.4,
+      "lau": 2600,
+      "lau_pct_del_total": 64.9,
+      "lau_variacion_interanual_pct": -53.9,
+      "hipotecarios_pct_del_total": 24.24,
+      "hipotecarios_variacion_interanual_pct": -18.3,
+      "otras": 434,
+      "otras_variacion_interanual_pct": -13.4,
+      "solicitados": 16167,
+      "solicitados_variacion_interanual_pct": 19.2,
+      "solicitados_cumplimiento_positivo": 7696,
+      "solicitados_cumplimiento_variacion_pct": 16.6
+    },
+    "ejecuciones_hipotecarias": {
+      "total": 7194,
+      "variacion_interanual_pct": 17.5
+    },
+    "concursos": {
+      "total": 19100,
+      "variacion_interanual_pct": 6,
+      "personas_juridicas": 1395,
+      "personas_juridicas_variacion_interanual_pct": -4.1,
+      "naturales_empresarios": 706,
+      "naturales_empresarios_variacion_interanual_pct": -3.2,
+      "naturales_no_empresarios": 16999,
+      "naturales_no_empresarios_variacion_interanual_pct": 7.4,
+      "declarados": 15316,
+      "declarados_variacion_interanual_pct": 3.1,
+      "fase_convenio": 36,
+      "fase_convenio_variacion_pct": -33.3,
+      "fase_liquidacion": 1041,
+      "fase_liquidacion_variacion_pct": 26.5,
+      "ere_art169": 86,
+      "ere_art169_variacion_pct": -19.6
+    },
+    "despidos": {
+      "total": 42572,
+      "variacion_interanual_pct": 3.5
+    },
+    "reclamaciones_cantidad": {
+      "total": 32208,
+      "variacion_interanual_pct": -10.9
+    },
+    "monitorios": {
+      "total": 199678,
+      "variacion_interanual_pct": -59.1
+    },
+    "ocupacion_ilegal": {
+      "total": 460,
+      "variacion_interanual_pct": -22.3
+    }
+  },
+  "rankings": [
+    {
+      "indicador": "lanzamientos",
+      "comunidad_autonoma": "Cataluña",
+      "valor": 921
+    },
+    {
+      "indicador": "lanzamientos",
+      "comunidad_autonoma": "Comunidad Valenciana",
+      "valor": 741
+    },
+    {
+      "indicador": "lanzamientos",
+      "comunidad_autonoma": "Andalucía",
+      "valor": 616
+    },
+    {
+      "indicador": "lanzamientos",
+      "comunidad_autonoma": "Madrid",
+      "valor": 582
+    },
+    {
+      "indicador": "lanzamientos_lau",
+      "comunidad_autonoma": "Comunidad Valenciana",
+      "valor": 513
+    },
+    {
+      "indicador": "lanzamientos_lau",
+      "comunidad_autonoma": "Cataluña",
+      "valor": 489
+    },
+    {
+      "indicador": "lanzamientos_lau",
+      "comunidad_autonoma": "Madrid",
+      "valor": 454
+    },
+    {
+      "indicador": "lanzamientos_lau",
+      "comunidad_autonoma": "Andalucía",
+      "valor": 355
+    },
+    {
+      "indicador": "lanzamientos_hipotecarios",
+      "comunidad_autonoma": "Cataluña",
+      "valor": 217
+    },
+    {
+      "indicador": "lanzamientos_hipotecarios",
+      "comunidad_autonoma": "Andalucía",
+      "valor": 208
+    },
+    {
+      "indicador": "lanzamientos_hipotecarios",
+      "comunidad_autonoma": "Comunidad Valenciana",
+      "valor": 158
+    },
+    {
+      "indicador": "ejecuciones_hipotecarias",
+      "comunidad_autonoma": "Cataluña",
+      "valor": 2616
+    },
+    {
+      "indicador": "ejecuciones_hipotecarias",
+      "comunidad_autonoma": "Andalucía",
+      "valor": 1293
+    },
+    {
+      "indicador": "ejecuciones_hipotecarias",
+      "comunidad_autonoma": "Comunidad Valenciana",
+      "valor": 841
+    },
+    {
+      "indicador": "ejecuciones_hipotecarias",
+      "comunidad_autonoma": "Madrid",
+      "valor": 564
+    },
+    {
+      "indicador": "concursos",
+      "comunidad_autonoma": "Cataluña",
+      "valor": 4488
+    },
+    {
+      "indicador": "concursos",
+      "comunidad_autonoma": "Andalucía",
+      "valor": 3117
+    },
+    {
+      "indicador": "concursos",
+      "comunidad_autonoma": "Madrid",
+      "valor": 3036
+    },
+    {
+      "indicador": "concursos",
+      "comunidad_autonoma": "Comunidad Valenciana",
+      "valor": 2323
+    },
+    {
+      "indicador": "concursos_personas_juridicas",
+      "comunidad_autonoma": "Cataluña",
+      "valor": 482
+    },
+    {
+      "indicador": "concursos_personas_juridicas",
+      "comunidad_autonoma": "Madrid",
+      "valor": 203
+    },
+    {
+      "indicador": "concursos_personas_juridicas",
+      "comunidad_autonoma": "Andalucía",
+      "valor": 184
+    },
+    {
+      "indicador": "concursos_personas_juridicas",
+      "comunidad_autonoma": "Comunidad Valenciana",
+      "valor": 157
+    },
+    {
+      "indicador": "concursos_naturales_empresarios",
+      "comunidad_autonoma": "Cataluña",
+      "valor": 387
+    },
+    {
+      "indicador": "concursos_naturales_empresarios",
+      "comunidad_autonoma": "Comunidad Valenciana",
+      "valor": 109
+    },
+    {
+      "indicador": "concursos_naturales_empresarios",
+      "comunidad_autonoma": "Madrid",
+      "valor": 51
+    },
+    {
+      "indicador": "concursos_naturales_no_empresarios",
+      "comunidad_autonoma": "Cataluña",
+      "valor": 3619
+    },
+    {
+      "indicador": "concursos_naturales_no_empresarios",
+      "comunidad_autonoma": "Andalucía",
+      "valor": 2910
+    },
+    {
+      "indicador": "concursos_naturales_no_empresarios",
+      "comunidad_autonoma": "Madrid",
+      "valor": 2782
+    },
+    {
+      "indicador": "concursos_naturales_no_empresarios",
+      "comunidad_autonoma": "Comunidad Valenciana",
+      "valor": 2057
+    },
+    {
+      "indicador": "despidos",
+      "comunidad_autonoma": "Cataluña",
+      "valor": 8886
+    },
+    {
+      "indicador": "despidos",
+      "comunidad_autonoma": "Andalucía",
+      "valor": 7195
+    },
+    {
+      "indicador": "despidos",
+      "comunidad_autonoma": "Madrid",
+      "valor": 7138
+    },
+    {
+      "indicador": "despidos",
+      "comunidad_autonoma": "Comunidad Valenciana",
+      "valor": 5676
+    },
+    {
+      "indicador": "monitorios",
+      "comunidad_autonoma": "Andalucía",
+      "valor": 37439
+    },
+    {
+      "indicador": "monitorios",
+      "comunidad_autonoma": "Madrid",
+      "valor": 35534
+    },
+    {
+      "indicador": "monitorios",
+      "comunidad_autonoma": "Cataluña",
+      "valor": 27483
+    },
+    {
+      "indicador": "monitorios",
+      "comunidad_autonoma": "Comunidad Valenciana",
+      "valor": 22869
+    },
+    {
+      "indicador": "ocupacion_ilegal",
+      "comunidad_autonoma": "Andalucía",
+      "valor": 94
+    },
+    {
+      "indicador": "ocupacion_ilegal",
+      "comunidad_autonoma": "Cataluña",
+      "valor": 88
+    },
+    {
+      "indicador": "ocupacion_ilegal",
+      "comunidad_autonoma": "Comunidad Valenciana",
+      "valor": 64
+    },
+    {
+      "indicador": "reclamaciones_cantidad",
+      "comunidad_autonoma": "Andalucía",
+      "valor": 6323
+    },
+    {
+      "indicador": "reclamaciones_cantidad",
+      "comunidad_autonoma": "Madrid",
+      "valor": 5161
+    },
+    {
+      "indicador": "reclamaciones_cantidad",
+      "comunidad_autonoma": "Cataluña",
+      "valor": 4027
+    },
+    {
+      "indicador": "reclamaciones_cantidad",
+      "comunidad_autonoma": "Comunidad Valenciana",
+      "valor": 2939
+    }
+  ]
+}

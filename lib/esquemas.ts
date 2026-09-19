@@ -194,6 +194,134 @@ export const violenciaSchema = z.object({
   ),
 });
 
+export const crisisSchema = z.object({
+  version_esquema: z.literal(1),
+  anio: z.number().int(),
+  trimestre: z.number().int().min(1).max(4),
+  generado_en: z.string(),
+  origen: z.literal("nota_prensa"),
+  fuente: z.object({
+    url: z.string().min(1),
+    titulo: z.string(),
+    fecha_publicacion: z.string().optional(),
+    pdf_url: z.string().optional(),
+  }),
+  nacional: z.object({
+    lanzamientos: z.object({
+      total: z.number(),
+      variacion_interanual_pct: z.number().optional(),
+      lau: z.number(),
+      lau_pct_del_total: z.number().optional(),
+      lau_variacion_interanual_pct: z.number().optional(),
+      hipotecarios_pct_del_total: z.number().optional(),
+      hipotecarios_variacion_interanual_pct: z.number().optional(),
+      otras: z.number().optional(),
+      otras_variacion_interanual_pct: z.number().optional(),
+      solicitados: z.number().optional(),
+      solicitados_variacion_interanual_pct: z.number().optional(),
+      solicitados_cumplimiento_positivo: z.number().optional(),
+      solicitados_cumplimiento_variacion_pct: z.number().optional(),
+    }),
+    ejecuciones_hipotecarias: z.object({
+      total: z.number(),
+      variacion_interanual_pct: z.number().optional(),
+    }),
+    concursos: z.object({
+      total: z.number(),
+      variacion_interanual_pct: z.number().optional(),
+      personas_juridicas: z.number().optional(),
+      personas_juridicas_variacion_interanual_pct: z.number().optional(),
+      naturales_empresarios: z.number().optional(),
+      naturales_empresarios_variacion_interanual_pct: z.number().optional(),
+      naturales_no_empresarios: z.number().optional(),
+      naturales_no_empresarios_variacion_interanual_pct: z.number().optional(),
+      declarados: z.number().optional(),
+      declarados_variacion_interanual_pct: z.number().optional(),
+      fase_convenio: z.number().optional(),
+      fase_convenio_variacion_pct: z.number().optional(),
+      fase_liquidacion: z.number().optional(),
+      fase_liquidacion_variacion_pct: z.number().optional(),
+      ere_art169: z.number().optional(),
+      ere_art169_variacion_pct: z.number().optional(),
+    }),
+    despidos: z.object({
+      total: z.number(),
+      variacion_interanual_pct: z.number().optional(),
+    }),
+    reclamaciones_cantidad: z.object({
+      total: z.number(),
+      variacion_interanual_pct: z.number().optional(),
+    }),
+    monitorios: z.object({
+      total: z.number(),
+      variacion_interanual_pct: z.number().optional(),
+    }),
+    ocupacion_ilegal: z.object({
+      total: z.number(),
+      variacion_interanual_pct: z.number().optional(),
+    }),
+  }),
+  rankings: z.array(
+    z.object({
+      indicador: z.enum([
+        "lanzamientos",
+        "lanzamientos_lau",
+        "lanzamientos_hipotecarios",
+        "ejecuciones_hipotecarias",
+        "concursos",
+        "concursos_personas_juridicas",
+        "concursos_naturales_empresarios",
+        "concursos_naturales_no_empresarios",
+        "despidos",
+        "reclamaciones_cantidad",
+        "monitorios",
+        "ocupacion_ilegal",
+      ]),
+      comunidad_autonoma: z.string(),
+      valor: z.number(),
+    }),
+  ),
+});
+
+const datoDivorcioSchema = z.object({
+  total: z.number(),
+  variacion_interanual_pct: z.number().optional(),
+});
+
+export const divorciosSchema = z.object({
+  version_esquema: z.literal(1),
+  anio: z.number().int(),
+  trimestre: z.number().int().min(1).max(4),
+  generado_en: z.string(),
+  origen: z.literal("nota_prensa"),
+  fuente: z.object({
+    url: z.string().min(1),
+    titulo: z.string(),
+    fecha_publicacion: z.string().optional(),
+    pdf_url: z.string().optional(),
+  }),
+  nacional: z.object({
+    total: z.number(),
+    variacion_interanual_pct: z.number().optional(),
+    tasa_media_por_100000: z.number().optional(),
+    divorcios_consensuados: datoDivorcioSchema.optional(),
+    divorcios_no_consensuados: datoDivorcioSchema.optional(),
+    separaciones_consensuadas: datoDivorcioSchema.optional(),
+    separaciones_no_consensuadas: datoDivorcioSchema.optional(),
+    nulidades: datoDivorcioSchema.optional(),
+    modificacion_medidas_consensuadas: datoDivorcioSchema.optional(),
+    modificacion_medidas_no_consensuadas: datoDivorcioSchema.optional(),
+    guarda_custodia_consensuadas: datoDivorcioSchema.optional(),
+    guarda_custodia_no_consensuadas: datoDivorcioSchema.optional(),
+  }),
+  comunidades: z.array(
+    z.object({
+      comunidad_autonoma: z.string(),
+      tasa_por_100000: z.number(),
+    }),
+  ),
+});
+
 export const alertasSchema = z.object({
   version_esquema: z.literal(1),
   anio: z.number().int(),
@@ -296,6 +424,12 @@ export async function validarDatos(dataBaseDir: string): Promise<ErrorValidacion
   }
   for (const fichero of await ficherosJson(path.join(dataBaseDir, "violencia"))) {
     await comprobar(path.join(dataBaseDir, "violencia", fichero), violenciaSchema);
+  }
+  for (const fichero of await ficherosJson(path.join(dataBaseDir, "crisis"))) {
+    await comprobar(path.join(dataBaseDir, "crisis", fichero), crisisSchema);
+  }
+  for (const fichero of await ficherosJson(path.join(dataBaseDir, "divorcios"))) {
+    await comprobar(path.join(dataBaseDir, "divorcios", fichero), divorciosSchema);
   }
   const anual = path.join(dataBaseDir, "anual", "litigiosidad-anual.json");
   if (existsSync(anual)) await comprobar(anual, serieAnualSchema);

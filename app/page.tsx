@@ -128,6 +128,8 @@ export default async function Home() {
         <a href="#faq">FAQ</a>
         <a href="/provincias">Provincias</a>
         <a href="/violencia">Violencia de género</a>
+        <a href="/crisis">Desahucios y concursos</a>
+        <a href="/divorcios">Divorcios</a>
         <a href="/metodologia">Metodología</a>
         <a href="/feed.xml">RSS</a>
       </nav>

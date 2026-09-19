@@ -1,34 +1,25 @@
 import * as cheerio from "cheerio";
 import { COMUNIDADES } from "../litigiosidad/ccaa";
-import { aNumero, extraerFecha, inferirPeriodo } from "../litigiosidad/parser";
+import {
+  aNumero,
+  capturar,
+  elegirTitulo,
+  extraerFecha,
+  inferirPeriodo,
+  numeroDeGrupo,
+} from "../litigiosidad/parser";
 import type { DatosViolenciaNacional, InformeViolencia } from "./tipos";
-
-function elegirTitulo($: cheerio.CheerioAPI): string {
-  const preferido =
-    $("header.cabeceraInterior h1").first().text() ||
-    $('meta[property="og:title"]').attr("content") ||
-    "";
-  const limpio = preferido.replace(/\s+/g, " ").trim();
-  if (limpio) return limpio;
-  const h1s = $("h1")
-    .map((_, el) => $(el).text().replace(/\s+/g, " ").trim())
-    .get()
-    .filter((texto) => texto.length > 0 && !/cookies?/i.test(texto))
-    .sort((a, b) => b.length - a.length);
-  return h1s[0] ?? $("title").text().replace(/\s+/g, " ").trim();
-}
 
 function escaparRegex(texto: string): string {
   return texto.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-function capturar(cuerpo: string, patron: RegExp): RegExpMatchArray | undefined {
-  return cuerpo.match(patron) ?? undefined;
-}
-
-function numeroDeGrupo(coincidencia: RegExpMatchArray | undefined, grupo: number): number | undefined {
-  const valor = coincidencia?.[grupo];
-  return valor === undefined ? undefined : aNumero(valor);
+function numeroNegado(
+  coincidencia: RegExpMatchArray | undefined,
+  grupo: number,
+): number | undefined {
+  const valor = numeroDeGrupo(coincidencia, grupo);
+  return valor === undefined ? undefined : -valor;
 }
 
 /** Tasas por comunidad: solo se escanean los párrafos donde la nota las lista. */
@@ -138,9 +129,9 @@ export function parsearNotaViolencia(html: string, url: string): InformeViolenci
     renuncias_pct: numeroDeGrupo(coincidenciaRenuncias, 2),
     renuncias_variacion_interanual_pct: numeroDeGrupo(coincidenciaRenuncias, 3),
     ordenes_solicitadas: numeroDeGrupo(coincidenciaOrdenesSolicitadas, 1),
-    ordenes_solicitadas_variacion_pct: numeroDeGrupo(coincidenciaOrdenesSolicitadas, 2),
+    ordenes_solicitadas_variacion_pct: numeroNegado(coincidenciaOrdenesSolicitadas, 2),
     ordenes_acordadas: numeroDeGrupo(coincidenciaOrdenesAcordadas, 1),
-    ordenes_acordadas_variacion_pct: numeroDeGrupo(coincidenciaOrdenesAcordadas, 2),
+    ordenes_acordadas_variacion_pct: numeroNegado(coincidenciaOrdenesAcordadas, 2),
     sentencias: numeroDeGrupo(coincidenciaSentencias, 1),
     sentencias_condenatorias_pct: numeroDeGrupo(coincidenciaSentencias, 2),
     violencia_sexual_denuncias: numeroDeGrupo(coincidenciaViolenciaSexual, 1),

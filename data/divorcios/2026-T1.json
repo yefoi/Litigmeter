@@ -1,0 +1,123 @@
+{
+  "version_esquema": 1,
+  "anio": 2026,
+  "trimestre": 1,
+  "generado_en": "2026-09-19T10:22:47.094Z",
+  "origen": "nota_prensa",
+  "fuente": {
+    "url": "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Consejo-General-del-Poder-Judicial/Oficina-de-Comunicacion/Archivo-de-notas-de-prensa/Los-organos-judiciales-registraron-entre-enero-y-marzo-20-832-demandas-de-disolucion-matrimonial--un-14-1---menos-que-en-el-primer-trimestre-de-2025",
+    "titulo": "Los órganos judiciales registraron entre enero y marzo 20.832 demandas de disolución matrimonial, un 14,1 % menos que en el primer trimestre de 2025",
+    "fecha_publicacion": "2026-06-24"
+  },
+  "nacional": {
+    "total": 20832,
+    "variacion_interanual_pct": -14.1,
+    "tasa_media_por_100000": 42.4,
+    "divorcios_consensuados": {
+      "total": 13186,
+      "variacion_interanual_pct": -5.5
+    },
+    "divorcios_no_consensuados": {
+      "total": 6904,
+      "variacion_interanual_pct": -26.9
+    },
+    "separaciones_consensuadas": {
+      "total": 549,
+      "variacion_interanual_pct": -3.5
+    },
+    "separaciones_no_consensuadas": {
+      "total": 177,
+      "variacion_interanual_pct": -30.3
+    },
+    "nulidades": {
+      "total": 16,
+      "variacion_interanual_pct": -15.8
+    },
+    "modificacion_medidas_consensuadas": {
+      "total": 3656,
+      "variacion_interanual_pct": 2
+    },
+    "modificacion_medidas_no_consensuadas": {
+      "total": 6380,
+      "variacion_interanual_pct": -26.6
+    },
+    "guarda_custodia_consensuadas": {
+      "total": 5877,
+      "variacion_interanual_pct": -0.3
+    },
+    "guarda_custodia_no_consensuadas": {
+      "total": 5646,
+      "variacion_interanual_pct": -22.7
+    }
+  },
+  "comunidades": [
+    {
+      "comunidad_autonoma": "Navarra",
+      "tasa_por_100000": 52.4
+    },
+    {
+      "comunidad_autonoma": "Comunidad Valenciana",
+      "tasa_por_100000": 49.6
+    },
+    {
+      "comunidad_autonoma": "Baleares",
+      "tasa_por_100000": 49.3
+    },
+    {
+      "comunidad_autonoma": "Asturias",
+      "tasa_por_100000": 47.2
+    },
+    {
+      "comunidad_autonoma": "Cantabria",
+      "tasa_por_100000": 44.8
+    },
+    {
+      "comunidad_autonoma": "Murcia",
+      "tasa_por_100000": 44.3
+    },
+    {
+      "comunidad_autonoma": "Aragón",
+      "tasa_por_100000": 44.2
+    },
+    {
+      "comunidad_autonoma": "Castilla-La Mancha",
+      "tasa_por_100000": 44
+    },
+    {
+      "comunidad_autonoma": "Andalucía",
+      "tasa_por_100000": 43.8
+    },
+    {
+      "comunidad_autonoma": "Canarias",
+      "tasa_por_100000": 41.7
+    },
+    {
+      "comunidad_autonoma": "Cataluña",
+      "tasa_por_100000": 41.4
+    },
+    {
+      "comunidad_autonoma": "Galicia",
+      "tasa_por_100000": 41
+    },
+    {
+      "comunidad_autonoma": "Extremadura",
+      "tasa_por_100000": 39.7
+    },
+    {
+      "comunidad_autonoma": "Madrid",
+      "tasa_por_100000": 37.4
+    },
+    {
+      "comunidad_autonoma": "La Rioja",
+      "tasa_por_100000": 37.3
+    },
+    {
+      "comunidad_autonoma": "País Vasco",
+      "tasa_por_100000": 36.7
+    },
+    {
+      "comunidad_autonoma": "Castilla y León",
+      "tasa_por_100000": 36.1
+    }
+  ]
+}

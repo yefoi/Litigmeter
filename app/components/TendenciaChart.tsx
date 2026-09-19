@@ -20,6 +20,7 @@ interface Props {
   opcionesSecundarias?: string[];
   nacional?: PuntoSerie[];
   destacados?: string[];
+  unidad?: string;
 }
 
 const SIN_COMPARACION = "";
@@ -32,6 +33,7 @@ export default function TendenciaChart({
   opcionesSecundarias,
   nacional,
   destacados,
+  unidad = "asuntos/1.000 hab.",
 }: Props) {
   const [seleccion, setSeleccion] = useState(opcionInicial);
   const [comparada, setComparada] = useState(SIN_COMPARACION);
@@ -109,7 +111,7 @@ export default function TendenciaChart({
             <Tooltip
               formatter={(valor, nombre) =>
                 typeof valor === "number"
-                  ? [`${valor.toFixed(2).replace(".", ",")} asuntos/1.000 hab.`, String(nombre)]
+                  ? [`${valor.toFixed(2).replace(".", ",")} ${unidad}`, String(nombre)]
                   : [String(valor), String(nombre)]
               }
             />

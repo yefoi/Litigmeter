@@ -143,6 +143,7 @@ export default async function Page() {
           series={serie}
           opciones={Object.keys(serie)}
           opcionInicial="Tasa por 10.000 mujeres"
+          unidad="por 10.000 mujeres"
         />
       </section>
 

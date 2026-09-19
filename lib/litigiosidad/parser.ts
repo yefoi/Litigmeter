@@ -90,7 +90,19 @@ function recortar(texto: string, maximo: number): string {
   return `${corte.slice(0, corte.lastIndexOf(" "))}…`;
 }
 
-function elegirTitulo($: cheerio.CheerioAPI): string {
+export function capturar(texto: string, patron: RegExp): RegExpMatchArray | undefined {
+  return texto.match(patron) ?? undefined;
+}
+
+export function numeroDeGrupo(
+  coincidencia: RegExpMatchArray | undefined,
+  grupo: number,
+): number | undefined {
+  const valor = coincidencia?.[grupo];
+  return valor === undefined ? undefined : aNumero(valor);
+}
+
+export function elegirTitulo($: cheerio.CheerioAPI): string {
   const preferido =
     $("header.cabeceraInterior h1").first().text() ||
     $('meta[property="og:title"]').attr("content") ||

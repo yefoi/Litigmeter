@@ -1,15 +1,18 @@
 import path from "node:path";
+import { escribirInformeCrisis, leerInformeCrisis } from "../lib/crisis/ficheros";
+import { parsearNotaCrisis } from "../lib/crisis/parser";
 import {
   candidatasDelFeed,
   descargar,
   opcion,
   type NotaCandidata,
 } from "../lib/notas/feed";
-import { escribirInformeViolencia, leerInformeViolencia } from "../lib/violencia/ficheros";
-import { parsearNotaViolencia } from "../lib/violencia/parser";
 
 function coincide(titulo: string): boolean {
-  return /violencia de g[eé]nero/i.test(titulo) && /trimestre/i.test(titulo);
+  return (
+    /lanzamiento|desahucio|concurso|ejecuci[oó]n(?:es)? hipotecaria|crisis/i.test(titulo) &&
+    /trimestre/i.test(titulo)
+  );
 }
 
 async function ingerir(
@@ -18,14 +21,15 @@ async function ingerir(
   force: boolean,
 ): Promise<"creado" | "omitido" | "error"> {
   try {
-    const informe = parsearNotaViolencia(await descargar(candidata.url), candidata.url);
-    if (!force && (await leerInformeViolencia(dataBaseDir, informe.anio, informe.trimestre))) {
+    const informe = parsearNotaCrisis(await descargar(candidata.url), candidata.url);
+    if (!force && (await leerInformeCrisis(dataBaseDir, informe.anio, informe.trimestre))) {
       return "omitido";
     }
-    await escribirInformeViolencia(dataBaseDir, informe);
+    await escribirInformeCrisis(dataBaseDir, informe);
     console.log(
-      `  ${informe.anio}-T${informe.trimestre}: ${informe.nacional.denuncias} denuncias, ` +
-        `${informe.comunidades.length} CCAA → data/violencia`,
+      `  ${informe.anio}-T${informe.trimestre}: ${informe.nacional.lanzamientos.total} ` +
+        `lanzamientos, ${informe.nacional.concursos.total} concursos, ` +
+        `${informe.rankings.length} datos CCAA → data/crisis`,
     );
     return "creado";
   } catch (error) {
@@ -48,7 +52,7 @@ async function main(): Promise<void> {
       : (await candidatasDelFeed(coincide)).slice(0, 1);
 
   if (candidatas.length === 0) {
-    console.log("Sin notas trimestrales de violencia de género en el feed; nada que hacer.");
+    console.log("Sin notas trimestrales de crisis en el feed; nada que hacer.");
     return;
   }
 
@@ -57,7 +61,7 @@ async function main(): Promise<void> {
     const resultado = await ingerir(dataBase, candidata, force);
     if (resultado === "creado") creados++;
   }
-  console.log(`Violencia de género: ${creados} informes nuevos de ${candidatas.length} notas.`);
+  console.log(`Crisis y vivienda: ${creados} informes nuevos de ${candidatas.length} notas.`);
 }
 
 main().catch((error) => {

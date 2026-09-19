@@ -18,6 +18,8 @@
     "edictos": "tsx scripts/edictos.ts",
     "prevision": "tsx scripts/prevision.ts",
     "violencia": "tsx scripts/violencia.ts",
+    "crisis": "tsx scripts/crisis.ts",
+    "divorcios": "tsx scripts/divorcios.ts",
     "alertas": "tsx scripts/alertas.ts",
     "contrastar": "tsx scripts/contrastar.ts",
     "calibrar": "tsx scripts/calibrar.ts",
