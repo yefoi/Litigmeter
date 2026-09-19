@@ -34,6 +34,7 @@ npm run edictos        # evidencia real de edictos TEJU (data/edictos, requiere 
 npm run violencia      # violencia de género: denuncias, tasas y órdenes por CCAA (data/violencia)
 npm run crisis         # desahucios, ejecuciones hipotecarias, concursos y despidos (data/crisis)
 npm run divorcios      # divorcios, separaciones y nulidades por CCAA (data/divorcios)
+npm run ordenes        # asuntos por orden jurisdiccional y CCAA 2001-2025 (data/ordenes)
 npm run calibrar       # distribución de probabilidades + CSV para etiquetar
 npm run validar        # valida todos los JSON de data/ con Zod
 npm run watchdog       # comprueba que el informe trimestral esperado está publicado
@@ -229,10 +230,19 @@ no consensuados), nulidades, modificación de medidas y guarda/custodia, además
 100.000 habitantes de las 17 comunidades. La página `/divorcios` incluye el ranking completo
 frente a la media nacional.
 
+## Órdenes jurisdiccionales
+
+`npm run ordenes` descarga el libro "Series Asuntos" del CGPJ (una hoja por orden
+jurisdiccional) y guarda `data/ordenes/ordenes-anual.json`: asuntos ingresados, resueltos y en
+trámite por comunidad autónoma y orden (civil, penal, contencioso-administrativo y social),
+con la serie 2001-2025. La página `/ordenes` muestra la evolución nacional de los cuatro
+órdenes y una tabla por orden con el reparto territorial del último año. Los totales
+nacionales se contrastan con la nota de prensa anual del CGPJ.
+
 ## Verificación
 
 ```bash
-npm test          # 83 tests: parser, enriquecimiento, series, indicadores, edictos, violencia, crisis, divorcios, editorial, watchdog y datos
+npm test          # 84 tests: parser, enriquecimiento, series, indicadores, edictos, violencia, crisis, divorcios, órdenes, editorial, watchdog y datos
 npm run typecheck
 npm run lint
 npm run build
@@ -240,8 +250,9 @@ npm run build
 
 ## Roadmap
 
-- Órdenes jurisdiccionales (civil, penal, social, contencioso) por CCAA: requiere un parser
-  PC-AXIS (`.px`) para la base de datos del CGPJ desde 1995.
+- Detalle subprovincial (partido judicial, tipo de procedimiento, ejecutorias) desde los
+  ficheros PC-AXIS `.px`: el CGPJ publica el ZIP completo `BOL19952025.zip` con 533 tablas y
+  las agregaciones a CCAA (`*.agg`), ya verificado como parseable.
 - Calibrar los umbrales de `es_noticiable` y la gravedad con casos etiquetados.
 
 ## Atribución

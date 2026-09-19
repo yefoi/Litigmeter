@@ -322,6 +322,29 @@ export const divorciosSchema = z.object({
   ),
 });
 
+const medidasOrdenSchema = z.object({
+  ingresados: z.array(z.number().nullable()),
+  resueltos: z.array(z.number().nullable()),
+  en_tramite: z.array(z.number().nullable()),
+});
+
+export const ordenesAnualSchema = z.object({
+  version_esquema: z.literal(1),
+  fuente: z.object({ url: z.string().min(1), titulo: z.string() }),
+  anios: z.array(z.number().int()).min(1),
+  ordenes: z
+    .array(
+      z.object({
+        orden: z.enum(["civil", "penal", "contencioso", "social"]),
+        nacional: medidasOrdenSchema,
+        comunidades: z.array(
+          medidasOrdenSchema.extend({ comunidad_autonoma: z.string().min(1) }),
+        ),
+      }),
+    )
+    .length(4),
+});
+
 export const alertasSchema = z.object({
   version_esquema: z.literal(1),
   anio: z.number().int(),
@@ -435,6 +458,8 @@ export async function validarDatos(dataBaseDir: string): Promise<ErrorValidacion
   if (existsSync(anual)) await comprobar(anual, serieAnualSchema);
   const provincias = path.join(dataBaseDir, "anual", "litigiosidad-provincias.json");
   if (existsSync(provincias)) await comprobar(provincias, serieProvinciasSchema);
+  const ordenes = path.join(dataBaseDir, "ordenes", "ordenes-anual.json");
+  if (existsSync(ordenes)) await comprobar(ordenes, ordenesAnualSchema);
   const reconciliacion = path.join(dataBaseDir, "reconciliacion.json");
   if (existsSync(reconciliacion)) await comprobar(reconciliacion, reconciliacionSchema);
   const previsiones = path.join(dataBaseDir, "previsiones.json");

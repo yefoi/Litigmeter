@@ -71,6 +71,9 @@ jobs:
       - name: Disolución matrimonial
         run: npm run divorcios
 
+      - name: Órdenes jurisdiccionales
+        run: npm run ordenes
+
       - name: Alertas
         run: npm run alertas
         env:

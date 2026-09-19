@@ -12,6 +12,7 @@
     "ingest": "tsx scripts/ingest.ts",
     "backfill-anual": "tsx scripts/backfill-anual.ts",
     "backfill-provincias": "tsx scripts/backfill-provincias.ts",
+    "ordenes": "tsx scripts/ordenes.ts",
     "indicadores": "tsx scripts/indicadores.ts",
     "backfill-trimestral": "tsx scripts/backfill-trimestral.ts",
     "editorial": "tsx scripts/editorial.ts",
