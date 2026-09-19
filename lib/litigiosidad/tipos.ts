@@ -49,6 +49,19 @@ export interface SerieAnual {
   comunidades: { comunidad_autonoma: string; valores: (number | null)[] }[];
 }
 
+/** Serie anual por provincia (2001–2025) de las series estadísticas del CGPJ. */
+export interface SerieProvincias {
+  version_esquema: 1;
+  fuente: { url: string; titulo: string };
+  anios: number[];
+  nacional: (number | null)[];
+  provincias: {
+    provincia: string;
+    comunidad_autonoma?: string;
+    valores: (number | null)[];
+  }[];
+}
+
 export interface ClasificacionLitigiosidad {
   tendencia: Tendencia;
   /** Posición fraccionaria (0–4) sobre cinco niveles descriptivos de carga. */

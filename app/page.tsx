@@ -126,6 +126,8 @@ export default async function Home() {
         {alertas && alertas.alertas.length > 0 ? <a href="#alertas">Alertas</a> : null}
         {editorial ? <a href="#editorial">Editorial</a> : null}
         <a href="#faq">FAQ</a>
+        <a href="/provincias">Provincias</a>
+        <a href="/metodologia">Metodología</a>
         <a href="/feed.xml">RSS</a>
       </nav>
 
@@ -234,7 +236,9 @@ export default async function Home() {
             informes por territorios
           </a>
           . Suscríbete por <Link href="/feed.xml">RSS</Link> o{" "}
-          <Link href="/contraste">contrasta una afirmación</Link>.
+          <Link href="/contraste">contrasta una afirmación</Link>. Más detalle en la{" "}
+          <Link href="/metodologia">metodología</Link> y en las series por{" "}
+          <Link href="/provincias">provincia</Link>.
         </p>
       </footer>
 

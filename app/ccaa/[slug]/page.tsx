@@ -1,6 +1,7 @@
 import path from "node:path";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import FichaClasificacion from "../../components/FichaClasificacion";
 import SerieAnualChart from "../../components/SerieAnualChart";
 import TablaTrimestres from "../../components/TablaTrimestres";
@@ -28,6 +29,28 @@ export const dynamicParams = false;
 
 export function generateStaticParams() {
   return COMUNIDADES.map((comunidad) => ({ slug: slugDeComunidad(comunidad.nombre) }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const comunidad = comunidadDeSlug(slug) ?? "Comunidad";
+  const informes = await leerInformes(path.join(process.cwd(), "data", "litigiosidad"));
+  const ultimo = informes.at(-1);
+  const registro = ultimo?.comunidades.find((c) => c.comunidad_autonoma === comunidad);
+
+  return {
+    title: `${comunidad}: litigiosidad${ultimo ? ` ${etiquetaTrimestre(ultimo)}` : ""} · Litigmeter`,
+    description: registro
+      ? `Tasa de litigiosidad de ${comunidad}: ${formatearTasa(registro.tasa_litigiosidad)} asuntos por 1.000 habitantes (${formatearPorcentaje(registro.variacion_interanual_pct)} interanual). Histórico y clasificación con IA.`
+      : `Serie histórica y clasificación de la litigiosidad de ${comunidad}.`,
+    alternates: {
+      types: { "application/rss+xml": `/ccaa/${slug}/feed.xml` },
+    },
+  };
 }
 
 function formatearNumero(valor: number | undefined): string {
@@ -124,6 +147,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           <a href={`/ccaa/${slug}/feed.xml`} title={`RSS de ${comunidad}`}>
             RSS
           </a>
+          <Link href="/provincias">Provincias</Link>
         </div>
       </header>
 

@@ -10,9 +10,12 @@ notas de prensa del CGPJ, con tendencia, gravedad y noticiabilidad clasificadas 
   y su propia serie histórica usando los informes ya guardados.
 - **Clasificación**: una llamada a `experimental_evaluate` por CCAA y trimestre (~68 al año).
 - **Visualización**: web Next.js prerenderizada con línea de tendencia (Recharts) y
-  comparador de dos series, mapa de calor por CCAA, tabla del último informe, una página por
-  comunidad (`/ccaa/[slug]`, con OpenGraph propio), feed RSS (`/feed.xml`) y resumen
-  editorial generado a partir de las clasificaciones de jev.
+  comparador de dos series, mapa de calor por CCAA, mapa de España, tabla del último informe,
+  una página por comunidad (`/ccaa/[slug]`, con OpenGraph propio), página de provincias
+  (`/provincias`), metodología (`/metodologia`), contraste de afirmaciones (`/contraste`),
+  feed RSS global y por comunidad (`/feed.xml`, `/ccaa/<slug>/feed.xml`) y resumen editorial
+  generado a partir de las clasificaciones de IA. Incluye `sitemap.xml`, `robots.txt` y
+  metadatos por comunidad para buscadores.
 
 ## Puesta en marcha
 
@@ -23,6 +26,7 @@ npm install
 npm run dev            # web en http://localhost:3000
 npm run ingest         # descarga y guarda la última nota trimestral
 npm run backfill-anual # series anuales 2001-2025 del CGPJ (data/anual)
+npm run backfill-provincias # series anuales 2001-2025 por provincia (data/anual)
 npm run indicadores    # congestión, pendencia y resolución por TSJ (data/indicadores)
 npm run backfill-trimestral # histórico trimestral 2017-2025 desde los PDFs de indicadores
 npm run editorial      # resumen editorial del último trimestre (data/editorial)
@@ -106,6 +110,9 @@ y `clasificacion`.
 - `data/anual/litigiosidad-anual.json` guarda la serie anual 2001–2025 por TSJ del CGPJ
   (`npm run backfill-anual`). La ingesta añade `serie_anual` (últimos 10 años) al `state` de
   jev como contexto histórico.
+- `data/anual/litigiosidad-provincias.json` guarda la misma serie por provincia
+  (`npm run backfill-provincias`), que alimenta la página `/provincias` con buscador de serie
+  anual y tabla por comunidad de 2025.
 - `data/indicadores/AAAA-Tn.json` guarda congestión, pendencia y resolución reales por CCAA,
   con el mismo periodo del año anterior y el nacional (`npm run indicadores`, idempotente).
   Cuando existen, la ingesta los pasa a jev y `gravedad_congestion` deja de usar la
@@ -200,9 +207,10 @@ npm run build
 
 ## Roadmap
 
-- Backfill completo 2001–2025 con las series históricas del CGPJ
-  (`Series Tasa de Litigiosidad por TSJ 2001-2025.xlsx`) o PC-AXIS (`.px`) desde 1995.
-- Añadir congestión, pendencia y resolución por orden jurisdiccional.
+- Órdenes jurisdiccionales (civil, penal, social, contencioso) por CCAA: requiere un parser
+  PC-AXIS (`.px`) para la base de datos del CGPJ desde 1995.
+- Nuevas temáticas con el mismo pipeline: violencia de género, desahucios y ejecuciones
+  hipotecarias, concursos o divorcios.
 - Calibrar los umbrales de `es_noticiable` y la gravedad con casos etiquetados.
 
 ## Atribución

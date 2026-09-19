@@ -59,6 +59,20 @@ export const serieAnualSchema = z.object({
   ),
 });
 
+export const serieProvinciasSchema = z.object({
+  version_esquema: z.literal(1),
+  fuente: z.object({ url: z.string().min(1), titulo: z.string() }),
+  anios: z.array(z.number().int()).min(1),
+  nacional: z.array(z.number().nullable()),
+  provincias: z.array(
+    z.object({
+      provincia: z.string(),
+      comunidad_autonoma: z.string().optional(),
+      valores: z.array(z.number().nullable()),
+    }),
+  ),
+});
+
 const tasasIndicadoresSchema = z.object({
   resolucion: z.number().optional(),
   resolucion_anio_anterior: z.number().optional(),
@@ -242,6 +256,8 @@ export async function validarDatos(dataBaseDir: string): Promise<ErrorValidacion
   }
   const anual = path.join(dataBaseDir, "anual", "litigiosidad-anual.json");
   if (existsSync(anual)) await comprobar(anual, serieAnualSchema);
+  const provincias = path.join(dataBaseDir, "anual", "litigiosidad-provincias.json");
+  if (existsSync(provincias)) await comprobar(provincias, serieProvinciasSchema);
   const reconciliacion = path.join(dataBaseDir, "reconciliacion.json");
   if (existsSync(reconciliacion)) await comprobar(reconciliacion, reconciliacionSchema);
   const previsiones = path.join(dataBaseDir, "previsiones.json");
