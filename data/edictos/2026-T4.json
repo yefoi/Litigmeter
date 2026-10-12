@@ -1,0 +1,19 @@
+{
+  "version_esquema": 1,
+  "anio": 2026,
+  "trimestre": 4,
+  "comunidades": {
+    "Madrid": [
+      {
+        "tipo_procedimiento": "mercantil",
+        "resumen": "TRIBUNALES DE INSTANCIA. SECCIÓN DE LO MERCANTIL/JUZGADOS DE LO MERCANTIL - MADRID, 2026-10-12: Sección A. TRIBUNALES DE INSTANCIA. SECCIÓN DE LO MERCANTIL/JUZGADOS DE LO MERCANTIL - MADRID. Procedimiento: Concursal. Resolución: Diligencia. Objeto: Emplazamiento. Plazo: Diez días"
+      }
+    ],
+    "Andalucía": [
+      {
+        "tipo_procedimiento": "civil",
+        "resumen": "TRIBUNALES DE INSTANCIA. SECCIÓN CIVIL Y DE INSTRUCCIÓN/JUZGADOS DE PRIMERA INSTANCIA E INSTRUCCIÓN - CÓRDOBA, 2026-10-12: Sección B. TRIBUNALES DE INSTANCIA. SECCIÓN CIVIL Y DE INSTRUCCIÓN/JUZGADOS DE PRIMERA INSTANCIA E INSTRUCCIÓN - CÓRDOBA. Procedimiento: Civil. Resolución: Decreto. Objeto: Emplazamiento. Plazo: 20…"
+      }
+    ]
+  }
+}
