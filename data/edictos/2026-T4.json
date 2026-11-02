@@ -14,6 +14,18 @@
         "tipo_procedimiento": "civil",
         "resumen": "TRIBUNALES DE INSTANCIA. SECCIÓN CIVIL Y DE INSTRUCCIÓN/JUZGADOS DE PRIMERA INSTANCIA E INSTRUCCIÓN - CÓRDOBA, 2026-10-12: Sección B. TRIBUNALES DE INSTANCIA. SECCIÓN CIVIL Y DE INSTRUCCIÓN/JUZGADOS DE PRIMERA INSTANCIA E INSTRUCCIÓN - CÓRDOBA. Procedimiento: Civil. Resolución: Decreto. Objeto: Emplazamiento. Plazo: 20…"
       }
+    ],
+    "Galicia": [
+      {
+        "tipo_procedimiento": "mercantil",
+        "resumen": "TRIBUNALES DE INSTANCIA. SECCIÓN DE LO MERCANTIL/JUZGADOS DE LO MERCANTIL - A CORUÑA, 2026-11-02: Sección A. TRIBUNALES DE INSTANCIA. SECCIÓN DE LO MERCANTIL/JUZGADOS DE LO MERCANTIL - A CORUÑA. Procedimiento: Concursal. Resolución: Auto. Objeto: Notificación"
+      }
+    ],
+    "Murcia": [
+      {
+        "tipo_procedimiento": "mercantil",
+        "resumen": "TRIBUNALES DE INSTANCIA. SECCIÓN DE LO MERCANTIL/JUZGADOS DE LO MERCANTIL - MURCIA, 2026-11-02: Sección A. TRIBUNALES DE INSTANCIA. SECCIÓN DE LO MERCANTIL/JUZGADOS DE LO MERCANTIL - MURCIA. Procedimiento: Concursal. Resolución: Auto. Objeto: Emplazamiento. Plazo: 15 días"
+      }
     ]
   }
 }
